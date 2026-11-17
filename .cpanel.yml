@@ -1,0 +1,12 @@
+---
+# cPanel deployment for valeem.com.
+# Copies ONLY the folders listed below into public_html.
+# It never deletes files and never touches Moodle or anything else in public_html.
+# To publish a new folder, add a mkdir + cp pair for it here.
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/wwwvalee/public_html
+    - /bin/mkdir -p $DEPLOYPATH/homeschool-pathways
+    - /bin/cp -R homeschool-pathways/. $DEPLOYPATH/homeschool-pathways/
+    - /bin/mkdir -p $DEPLOYPATH/new-home
+    - /bin/cp -R new-home/. $DEPLOYPATH/new-home/
