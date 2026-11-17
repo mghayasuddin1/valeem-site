@@ -8,7 +8,7 @@
  * Deploy > Manage deployments > pencil > Version: New version > Deploy (keeps the same URL).
  */
 
-var SHEET_ID      = '1daozrFg5PwLnY6nxvSBI2kogHZ-9KjQxoFP9LZ1vUqA';
+var SHEET_ID      = 'PASTE_SHEET_ID_HERE';   // the long ID in the Sheet's address bar, between /d/ and /edit
 var NOTIFY_EMAILS = 'contact@valeem.com';   // comma-separate more addresses if needed
 var SHEET_NAME    = 'Enquiries';
 
