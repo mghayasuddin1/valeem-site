@@ -6,13 +6,16 @@ Standalone pages for valeem.com that live alongside the Moodle site.
 | --- | --- | --- |
 | `homeschool-pathways/` | https://www.valeem.com/homeschool-pathways/ | Live, under internal review |
 | `new-home/` | https://www.valeem.com/new-home/ | Draft of the new homepage, for internal review |
+| `root-files/llms.txt` | https://www.valeem.com/llms.txt | Plain-language facts for AI assistants |
 | `tools/lead-capture.gs` | Google Apps Script (not deployed from here) | Reference copy of the form script |
 
 ## How changes reach the site
 
 1. Changes are committed to the `main` branch of this repository.
 2. In cPanel, open **Git Version Control**, click **Manage** on this repository, open **Pull or Deploy**, then click **Update from Remote** followed by **Deploy HEAD Commit**.
-3. `.cpanel.yml` copies only the folders it lists into `public_html`. It never deletes files and never touches Moodle.
+3. `.cpanel.yml` copies only the folders and files it lists into `public_html`. It never deletes files and never touches Moodle.
+
+`new-home/` carries a `noindex` tag while it is a draft. Remove that line when it becomes the real homepage.
 
 ## Forms
 
