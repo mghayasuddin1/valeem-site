@@ -1,0 +1,11 @@
+# valeem.com robots.txt
+# Search engines and AI assistants are welcome to read the public site.
+# Moodle admin and account areas are login-only and are not useful to crawl.
+User-agent: *
+Disallow: /admin/
+Disallow: /login/
+Disallow: /user/
+Disallow: /my/
+Disallow: /cache/
+
+Sitemap: https://www.valeem.com/sitemap.xml

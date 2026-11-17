@@ -7,6 +7,7 @@ Standalone pages for valeem.com that live alongside the Moodle site.
 | `homeschool-pathways/` | https://www.valeem.com/homeschool-pathways/ | Live, under internal review |
 | `new-home/` | https://www.valeem.com/new-home/ | Draft of the new homepage, for internal review |
 | `root-files/llms.txt` | https://www.valeem.com/llms.txt | Plain-language facts for AI assistants |
+| `root-files/robots.txt`, `root-files/sitemap.xml` | Site root | Crawler rules and the page list for search engines. Add each new page to the sitemap |
 | `tools/lead-capture.gs` | Google Apps Script (not deployed from here) | Reference copy of the form script |
 
 ## How changes reach the site

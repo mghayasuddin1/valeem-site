@@ -11,3 +11,5 @@ deployment:
     - /bin/mkdir -p $DEPLOYPATH/new-home
     - /bin/cp -R new-home/. $DEPLOYPATH/new-home/
     - /bin/cp root-files/llms.txt $DEPLOYPATH/llms.txt
+    - /bin/cp root-files/robots.txt $DEPLOYPATH/robots.txt
+    - /bin/cp root-files/sitemap.xml $DEPLOYPATH/sitemap.xml
