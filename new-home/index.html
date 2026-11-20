@@ -11,17 +11,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Valeem | Online Tuition for IGCSE, O &amp; A Level, Coding Courses and Homeschool</title>
-<meta name="description" content="Live one-to-one online tuition for IGCSE, O Level and A Level, coding, IELTS, English and Quran courses, and Homeschool Pathways. Teaching families across the Gulf and Pakistan since 2019. Book a free demo.">
+<meta name="description" content="Live one-to-one online tuition for IGCSE, O Level and A Level with vetted teachers, plus coding, IELTS, English and Quran courses and Homeschool Pathways. Trusted by families in Saudi Arabia and the Gulf. Book a free demo.">
 <link rel="canonical" href="https://www.valeem.com/">
 <meta name="robots" content="noindex, follow"><!-- REMOVE this robots line when this page becomes the real homepage -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Valeem">
 <meta property="og:title" content="Valeem | Live Online Tuition, Skills Courses and Homeschool Pathways">
-<meta property="og:description" content="One-to-one tuition for IGCSE, O Level and A Level, coding and IELTS courses, and a structured homeschool pathway. Book a free demo.">
+<meta property="og:description" content="One-to-one tuition for IGCSE, O Level and A Level with vetted teachers, coding and IELTS courses, and a structured homeschool pathway. Book a free demo.">
 <meta property="og:url" content="https://www.valeem.com/">
 <meta property="og:image" content="https://www.valeem.com/new-home/images/share.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" as="image" href="images/slide-tuition.webp" media="(min-width:761px)">
 <link rel="preload" as="image" href="images/slide-tuition-m.webp" media="(max-width:760px)">
@@ -349,12 +347,124 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
 #start fieldset .f.full{grid-column:1/-1}
 @media (prefers-reduced-motion:reduce){.photo img,.photo::after,.slide img,.cat{transition:none!important}.tabs button::after{transition:none!important}}
 
+
+/* ===== Shared additions (Nov 2026): location bar, page hero, vetting, fees, courses ===== */
+.geo{background:var(--plum-deep);color:#ece4f4;font-size:.92rem}
+.geo .wrap{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:center;min-height:44px;padding-top:8px;padding-bottom:8px;text-align:center}
+.geo b{color:#ffc48a;font-weight:700}
+.geo a{color:#fff;font-weight:700;text-decoration:none;white-space:nowrap}.geo a::after{content:" \2192";color:#ffc48a}
+
+.page-hero{padding:56px 0 64px;background:linear-gradient(180deg,var(--wash),#fff 85%)}
+.ph-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
+.ph-copy{display:flex;flex-direction:column;gap:20px}
+.ph-copy h1 em{font-style:normal;color:var(--orange-ink)}
+.ph-grid .photo{aspect-ratio:1100/935;border-radius:28px 28px 28px 120px;margin:0}
+.crumbs{font-size:.86rem;color:var(--muted)}.crumbs a{color:var(--muted);text-decoration:none}.crumbs a:hover{color:var(--plum)}
+.pills{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:4px 0 0;padding:0}
+.pills li{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:600;font-size:.9rem;color:var(--plum-deep)}
+.pills .icon{width:18px;height:18px;color:var(--orange-ink)}
+@media (max-width:900px){.ph-grid{grid-template-columns:1fr;gap:30px}.page-hero{padding-top:32px}.ph-grid .photo{border-radius:24px 24px 24px 80px;aspect-ratio:4/3.2}.ph-copy .cta-row .btn{flex:1 1 100%}}
+
+/* Teacher vetting: four checks */
+.vet{background:var(--plum-deep);color:#fff}
+.vet h2{color:#fff}.vet .kicker{color:#ffc48a}.vet .lede{color:#d9cde6}
+.checks{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:c;position:relative}
+.checks li{counter-increment:c;position:relative;padding:0 22px 0 0;display:flex;flex-direction:column;gap:10px}
+.checks li::before{content:"0" counter(c);font:700 .78rem/1 var(--body);letter-spacing:.14em;color:#ffc48a}
+.checks .dot{width:56px;height:56px;border-radius:16px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);display:grid;place-items:center;position:relative;z-index:1}
+.checks li:last-child .dot{background:var(--orange);border-color:var(--orange);color:var(--plum-deep)}
+.checks li:not(:last-child)::after{content:"";position:absolute;left:64px;right:8px;top:52px;height:2px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.35) 0 6px,transparent 6px 12px)}
+.checks b{font:700 1.2rem/1.2 var(--display);margin-top:6px}
+.checks span{color:#d9cde6;font-size:.95rem;line-height:1.45}
+.vet-foot{margin-top:40px;padding:20px 24px;border-radius:16px;background:rgba(255,255,255,.07);display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:space-between}
+.vet-foot p{color:#ece4f4;max-width:60ch}
+.vet-foot a{color:#fff;font-weight:700}
+@media (max-width:900px){.checks{grid-template-columns:1fr 1fr;gap:28px 20px}.checks li::after{display:none}}
+@media (max-width:520px){.checks{grid-template-columns:1fr}}
+
+/* Fees: what decides the monthly fee */
+.fees-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:start}
+.factors{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.factors li{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;gap:14px;align-items:flex-start}
+.factors .badge{width:42px;height:42px;border-radius:12px;background:var(--peach);color:var(--orange-ink);display:grid;place-items:center;flex:none}
+.factors b{display:block;font:700 1.02rem/1.25 var(--display);color:var(--plum-deep)}
+.factors span{font-size:.9rem;color:var(--muted)}
+.factors li.wide{grid-column:1/-1;background:var(--plum);border-color:var(--plum)}
+.factors li.wide b{color:#fff}.factors li.wide span{color:#e6dcf0}.factors li.wide .badge{background:rgba(255,255,255,.14);color:#fff}
+@media (max-width:900px){.fees-grid{grid-template-columns:1fr;gap:28px}}
+@media (max-width:520px){.factors{grid-template-columns:1fr}}
+
+/* Feature split (photo + list) */
+.feat{display:grid;grid-template-columns:.9fr 1.1fr;gap:52px;align-items:center}
+.feat .photo{aspect-ratio:4/4.2;border-radius:28px 110px 28px 28px;margin:0}
+.feat.rev .photo{order:2;border-radius:110px 28px 28px 28px}
+@media (max-width:900px){.feat{grid-template-columns:1fr;gap:28px}.feat.rev .photo{order:0}.feat .photo{aspect-ratio:4/3.2}}
+
+/* Course cards */
+.courses{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.course{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;display:grid;grid-template-columns:.85fr 1.15fr}
+.course .photo{margin:0;border:0;border-radius:0;aspect-ratio:auto;min-height:100%}
+.course-body{padding:24px;display:flex;flex-direction:column;gap:10px;border-left:5px solid var(--tone,var(--orange))}
+.course h3{font-size:1.35rem}
+.course .who{font:700 .74rem/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--orange-ink)}
+.course p{color:var(--muted);font-size:.97rem}
+.course .chips li{background:var(--wash)}
+.course.solid{background:var(--plum);border-color:var(--plum);grid-template-columns:1fr}
+.course.solid .course-body{border-left:0}
+.course.solid h3{color:#fff}.course.solid p{color:#e6dcf0}.course.solid .who{color:#ffc48a}.course.solid .chips li{background:rgba(255,255,255,.14);color:#fff}
+.course.solid .big-ic{width:58px;height:58px;border-radius:16px;background:rgba(255,255,255,.12);display:grid;place-items:center;color:#fff}
+@media (max-width:980px){.courses{grid-template-columns:1fr}}
+@media (max-width:560px){.course{grid-template-columns:1fr}.course .photo{aspect-ratio:4/3}.course-body{border-left:0;border-top:5px solid var(--tone,var(--orange))}}
+
+.audience{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.audience div{border-top:3px solid var(--orange);padding-top:16px}
+.audience h3{font-size:1.15rem;margin-bottom:8px}
+.audience p{color:var(--muted);font-size:.96rem}
+@media (max-width:760px){.audience{grid-template-columns:1fr}}
+
+/* Process timeline */
+.timeline{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.timeline li{display:grid;grid-template-columns:48px 1fr;gap:16px;padding-bottom:22px;position:relative}
+.timeline li:not(:last-child)::after{content:"";position:absolute;left:23px;top:48px;bottom:0;width:2px;background:var(--line)}
+.timeline .t-ic{width:48px;height:48px;border-radius:50%;background:var(--plum);color:#fff;display:grid;place-items:center;z-index:1}
+.timeline li:last-child .t-ic{background:var(--orange);color:var(--plum-deep)}
+.timeline b{display:block;font:700 1.08rem/1.3 var(--display);color:var(--plum-deep);padding-top:4px}
+.timeline span{color:var(--muted);font-size:.95rem}
+
+/* Gulf band */
+.gulf{background:var(--plum-deep);color:#fff}
+.gulf h2{color:#fff}.gulf .kicker{color:#ffc48a}.gulf .lede{color:#d9cde6}
+.gulf .photo{border-color:rgba(255,255,255,.15)}
+.gulf .ticks li{color:#ece4f4}.gulf .ticks .icon{color:#ffc48a}
+.gulf .places{margin-top:22px}
+.stat-big{display:flex;gap:14px;align-items:baseline;margin-top:6px}
+.stat-big b{font:700 clamp(2.6rem,6vw,3.6rem)/1 var(--display);color:#ffb366}
+.stat-big span{color:#ece4f4;max-width:30ch}
+.ticks{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px 22px}
+.ticks li{display:flex;gap:10px;align-items:flex-start;font-weight:500}
+.ticks .icon{color:var(--orange-ink);margin-top:2px}
+.feature-list{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.feature-list li{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
+.feature-list li:first-child{padding-top:0}
+.feature-list .badge{width:44px;height:44px;border-radius:12px;background:#fff;border:1px solid var(--line);color:var(--plum);display:grid;place-items:center}
+.feature-list h3{font-size:1.08rem}
+.feature-list p{color:var(--muted);font-size:.97rem;margin-top:3px}
+.ladder.light li:nth-child(-n+2){background:var(--wash);border-color:var(--line);color:var(--plum-deep)}
+.ladder.light li:nth-child(-n+2) span{color:var(--muted)}
+.ladder.light li:nth-child(-n+2) i{color:var(--orange-ink)}
+.ladder.light li:nth-child(-n+2) .ic{background:#fff;color:var(--plum)}
+.ladder.light li:nth-child(4){background:var(--plum);border-color:var(--plum);color:#fff}
+.ladder.light li:nth-child(4) span,.ladder.light li:nth-child(4) i{color:#e6dcf0}
+.ladder.light li:nth-child(4) .ic{background:rgba(255,255,255,.14);color:#fff}
+.page-hero + .numbers{margin-top:0}
+.ladder li span.core{color:#fff}
+.factors li:nth-child(5){grid-column:1/-1}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "EducationalOrganization", "@id": "https://www.valeem.com/#org", "name": "Valeem", "url": "https://www.valeem.com/", "logo": "https://www.valeem.com/new-home/images/valeem-logo.png", "description": "Valeem offers live online education: one-to-one Online Tuition for IGCSE, O Level and A Level, Skills & Courses including coding, IELTS, English and Quran, and Homeschool Pathways for homeschooled children aged 7 to 14.", "foundingDate": "2019", "email": "contact@valeem.com", "telephone": "+92 332 2636574", "parentOrganization": {"@type": "Organization", "name": "E-Resource Center (Pvt) Ltd"}, "areaServed": [{"@type": "Country", "name": "Saudi Arabia"}, {"@type": "Country", "name": "United Arab Emirates"}, {"@type": "Country", "name": "Qatar"}, {"@type": "Country", "name": "Kuwait"}, {"@type": "Country", "name": "Bahrain"}, {"@type": "Country", "name": "Oman"}, {"@type": "Country", "name": "Pakistan"}], "contactPoint": {"@type": "ContactPoint", "contactType": "admissions", "telephone": "+92 332 2636574", "email": "contact@valeem.com", "availableLanguage": ["English", "Urdu"]}, "sameAs": ["https://www.facebook.com/studyatvaleem", "https://www.instagram.com/valeemonline", "https://www.youtube.com/@ValeemOnline", "https://www.linkedin.com/company/valeem-online"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Valeem programmes", "itemListElement": [{"@type": "OfferCatalog", "name": "Online Tuition", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "IGCSE and O Level tuition", "description": "One-to-one live online classes for IGCSE and O Level subjects, with past-paper practice.", "serviceType": "Online education"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "A Level tuition", "description": "One-to-one live online classes with A Level subject specialists.", "serviceType": "Online education"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Grades 5 to 8 tuition", "description": "Live online support in English, Maths and homework for younger students.", "serviceType": "Online education"}}]}, {"@type": "OfferCatalog", "name": "Skills & Courses", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Coding courses", "description": "Scratch for young learners; Python, SQL and Power BI for teenagers and adults.", "serviceType": "Online education"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "IELTS and English", "description": "IELTS preparation, English improvement and language classes.", "serviceType": "Online education"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Quran classes", "description": "Live online Quran classes.", "serviceType": "Online education"}}]}, {"@type": "OfferCatalog", "name": "Homeschool Pathways", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Homeschool Pathways", "description": "Structured online programme for homeschooled children aged 7 to 14, leading towards O Level and A Level.", "serviceType": "Online education", "url": "https://www.valeem.com/homeschool-pathways/"}}]}]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "EducationalOrganization", "@id": "https://www.valeem.com/#org", "name": "Valeem", "url": "https://www.valeem.com/", "logo": "https://www.valeem.com/new-home/images/valeem-logo.png", "description": "Valeem offers live online education: one-to-one Online Tuition for IGCSE, O Level and A Level, Skills & Courses including coding, IELTS, English and Quran, and Homeschool Pathways for homeschooled children aged 7 to 14. Most of its families live in Saudi Arabia and the Gulf.", "foundingDate": "2019", "email": "contact@valeem.com", "telephone": "+92 332 2636574", "parentOrganization": {"@type": "Organization", "name": "E-Resource Center (Pvt) Ltd"}, "areaServed": [{"@type": "Country", "name": "Saudi Arabia"}, {"@type": "Country", "name": "United Arab Emirates"}, {"@type": "Country", "name": "Qatar"}, {"@type": "Country", "name": "Kuwait"}, {"@type": "Country", "name": "Bahrain"}, {"@type": "Country", "name": "Oman"}, {"@type": "Country", "name": "Pakistan"}], "contactPoint": {"@type": "ContactPoint", "contactType": "admissions", "telephone": "+92 332 2636574", "email": "contact@valeem.com", "availableLanguage": ["English", "Urdu"]}, "sameAs": ["https://www.facebook.com/studyatvaleem", "https://www.instagram.com/valeemonline", "https://www.youtube.com/@ValeemOnline", "https://www.linkedin.com/company/valeem-online"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Valeem programmes", "itemListElement": [{"@type": "OfferCatalog", "name": "Online Tuition", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "IGCSE and O Level tuition", "description": "One-to-one live online classes for IGCSE and O Level subjects, with past-paper practice.", "serviceType": "Online education"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "A Level tuition", "description": "One-to-one live online classes with A Level subject specialists.", "serviceType": "Online education"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Grades 5 to 8 tuition", "description": "Live online support in English, Maths and homework for younger students.", "serviceType": "Online education"}}], "url": "https://www.valeem.com/online-tuition/"}, {"@type": "OfferCatalog", "name": "Skills & Courses", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Coding courses", "description": "Scratch for young learners; Python, SQL and Power BI for teenagers and adults.", "serviceType": "Online education"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "IELTS and English", "description": "IELTS preparation, English improvement and language classes.", "serviceType": "Online education"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Quran classes", "description": "Live online Quran classes.", "serviceType": "Online education"}}], "url": "https://www.valeem.com/skills-courses/"}, {"@type": "OfferCatalog", "name": "Homeschool Pathways", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Homeschool Pathways", "description": "Structured online programme for homeschooled children aged 7 to 14, leading towards O Level and A Level.", "serviceType": "Online education", "url": "https://www.valeem.com/homeschool-pathways/"}}], "url": "https://www.valeem.com/homeschool-pathways/"}]}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Valeem", "url": "https://www.valeem.com/", "publisher": {"@id": "https://www.valeem.com/#org"}}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is Valeem?", "acceptedAnswer": {"@type": "Answer", "text": "Valeem is an online education company, teaching live since 2019. It offers three programmes: Online Tuition for IGCSE, O Level and A Level, Skills & Courses such as coding, IELTS, English and Quran, and Homeschool Pathways for homeschooled children aged 7 to 14. Over 650 trained educators teach students in more than 14 countries."}}, {"@type": "Question", "name": "Do you teach students outside Pakistan?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Most of our families live in Saudi Arabia, the UAE and other Gulf countries, and we also teach students in Pakistan and beyond. Classes are scheduled around your time zone."}}, {"@type": "Question", "name": "Is there a free demo class?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Your child can take a free demo class with a suitable teacher before you decide. If a teacher is not the right fit later, we arrange another."}}, {"@type": "Question", "name": "Which levels and curricula does Valeem teach?", "acceptedAnswer": {"@type": "Answer", "text": "One-to-one live tuition for IGCSE, O Level and A Level students, usually from Grade 8 upwards. We also support younger students from Grade 5 with English, Maths and homework."}}, {"@type": "Question", "name": "Are tuition classes one-to-one?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Online Tuition is one-to-one and live, so the teacher can follow your child's syllabus, pace and goals."}}, {"@type": "Question", "name": "How much does online tuition cost?", "acceptedAnswer": {"@type": "Answer", "text": "Fees depend on the level, the subject and how many classes a week your child needs. A counsellor shares the fee after understanding your requirements."}}, {"@type": "Question", "name": "What coding courses do you offer?", "acceptedAnswer": {"@type": "Answer", "text": "Scratch for young learners, and Python, SQL and Power BI for teenagers and adults. Classes are live with a Valeem teacher."}}, {"@type": "Question", "name": "Do you offer IELTS, English and Quran classes?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We offer IELTS preparation, English improvement, language classes and Quran classes, for children and adults."}}, {"@type": "Question", "name": "What is Homeschool Pathways?", "acceptedAnswer": {"@type": "Answer", "text": "A structured online programme for homeschooled children aged 7 to 14, with three learning stages and guidance towards O Level and A Level. Full details and fees are on the Homeschool Pathways page."}}, {"@type": "Question", "name": "How do I get started?", "acceptedAnswer": {"@type": "Answer", "text": "Fill in the form on this page or message us on WhatsApp at +92 332 2636574. A counsellor will call you, understand what you need and arrange a free demo."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is Valeem?", "acceptedAnswer": {"@type": "Answer", "text": "Valeem is an online education company, teaching live since 2019. It offers Online Tuition for IGCSE, O Level and A Level, Skills & Courses such as coding, IELTS, English and Quran, and Homeschool Pathways for homeschooled children aged 7 to 14. Over 650 vetted educators teach students in more than 14 countries."}}, {"@type": "Question", "name": "Do you teach students in Saudi Arabia and the Gulf?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. About 70% of our families live in the Middle East, most of them in Saudi Arabia. Classes are scheduled after school, in your time zone."}}, {"@type": "Question", "name": "How are Valeem teachers selected?", "acceptedAnswer": {"@type": "Answer", "text": "Every teacher passes four checks: an application, proof of an A or B grade in the subject they teach, a one-to-one interview, and onboarding and training before they teach."}}, {"@type": "Question", "name": "Which levels does Valeem teach?", "acceptedAnswer": {"@type": "Answer", "text": "One-to-one live tuition for IGCSE, O Level and A Level students, usually from Grade 8 upwards. We also support younger students from Grade 5 with English, Maths and homework."}}, {"@type": "Question", "name": "How much does online tuition cost?", "acceptedAnswer": {"@type": "Answer", "text": "Tuition is a monthly plan. The fee depends on the grade, the number of months, classes per week, class length and whether you want a fixed time slot. A counsellor shares the fee after the free demo."}}, {"@type": "Question", "name": "How does payment work?", "acceptedAnswer": {"@type": "Answer", "text": "Once you are happy with the demo and the teacher, we send a monthly invoice and the plan renews each month. Many families pay from a Saudi or Pakistani bank account."}}, {"@type": "Question", "name": "What skills courses do you offer?", "acceptedAnswer": {"@type": "Answer", "text": "Coding (Scratch for young learners; Python, SQL and Power BI for teens and adults), IELTS preparation, English improvement, language classes and Quran classes."}}, {"@type": "Question", "name": "What is Homeschool Pathways?", "acceptedAnswer": {"@type": "Answer", "text": "A structured online programme for homeschooled children aged 7 to 14, with three learning stages and guidance towards O Level and A Level. Full details and fees are on the Homeschool Pathways page."}}, {"@type": "Question", "name": "Is there a free demo class?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Your child takes a free live demo at a time that suits you. If a teacher is not the right fit later, we arrange another."}}, {"@type": "Question", "name": "How do I get started?", "acceptedAnswer": {"@type": "Answer", "text": "Fill in the form on this page or message us on WhatsApp at +92 332 2636574. A counsellor will call you, understand what you need and arrange a free demo."}}]}</script>
 </head>
-<body>
+<body data-lead="HOMEPAGE">
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
@@ -384,6 +494,14 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
     <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8.300 8 9 4.600-.7 8-4.500 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="m8.500 14-1.500 7 5-3 5 3-1.500-7"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-repeat" viewBox="0 0 24 24"><path d="M17 2l4 4-4 4M3 11V9a3 3 0 0 1 3-3h15M7 22l-4-4 4-4M21 13v2a3 3 0 0 1-3 3H3"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+    <symbol id="i-invoice" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h3"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.500 2.500M15.500 15.500 18 18M18 6l-2.500 2.500M8.500 15.500 6 18"/></symbol>
   </defs>
 </svg>
 
@@ -391,11 +509,11 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
   <div class="wrap bar">
     <a class="brand" href="#top" aria-label="Valeem home"><img src="images/valeem-logo.png" alt="Valeem" width="132" height="48"></a>
     <nav class="nav" id="nav" aria-label="Main">
-      <a href="#tuition">Online Tuition</a>
-      <a href="#skills">Skills &amp; Courses</a>
+      <a href="https://www.valeem.com/online-tuition/">Online Tuition</a>
+      <a href="https://www.valeem.com/skills-courses/">Skills &amp; Courses</a>
       <a href="https://www.valeem.com/homeschool-pathways/">Homeschool Pathways</a>
+      <a href="https://www.valeem.com/teach-with-valeem/">Teach With Us</a>
       <a href="https://www.valeem.com/mod/page/view.php?id=2">About Us</a>
-      <a href="https://www.valeem.com/blog/">Blog</a>
       <a href="#contact">Contact</a>
       <a href="https://www.valeem.com/login/index.php">Log In</a>
     </nav>
@@ -403,8 +521,10 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
     <button class="menu-btn" id="menuBtn" aria-controls="nav" aria-expanded="false" aria-label="Open menu"><svg class="icon"><use href="#i-menu"/></svg></button>
   </div>
 </header>
+<div class="geo" id="geo" hidden><div class="wrap"><span id="geoText"></span><a id="geoLink" href="#"></a></div></div>
 
 <main id="top">
+
 
 <!-- 1. SWIPEABLE BANNER: one slide per programme -->
 <section class="hero" id="hero" aria-roledescription="carousel" aria-label="Valeem programmes">
@@ -417,7 +537,7 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
         <p class="lede">A trained subject teacher and a plan built around your child, at times that suit your time zone.</p>
         <div class="cta-row">
           <a class="btn btn-accent" href="#demo" data-cta="slide-tuition" data-prog="Online Tuition: IGCSE, O Level or A Level">Book a Free Demo</a>
-          <a class="btn btn-ghost on-dark" href="#tuition">Explore Online Tuition</a>
+          <a class="btn btn-ghost on-dark" href="https://www.valeem.com/online-tuition/">Explore Online Tuition</a>
         </div>
       </div></div>
     </article>
@@ -429,7 +549,7 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
         <p class="lede">Scratch for young learners, Python, SQL and Power BI for adults, plus IELTS, English, languages and Quran classes.</p>
         <div class="cta-row">
           <a class="btn btn-accent" href="#demo" data-cta="slide-skills" data-prog="Skills & Courses: Coding">Ask About a Course</a>
-          <a class="btn btn-ghost on-dark" href="#skills">See All Courses</a>
+          <a class="btn btn-ghost on-dark" href="https://www.valeem.com/skills-courses/">See All Courses</a>
         </div>
       </div></div>
     </article>
@@ -489,7 +609,7 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
           <h3>Online Tuition</h3>
           <p class="for">One-to-one classes for IGCSE, O Level and A Level, plus support from Grade 5.</p>
           <ul class="chips"><li>IGCSE</li><li>O Level</li><li>A Level</li><li>Grades 5–8</li></ul>
-          <a class="more" href="#tuition">Explore Online Tuition</a>
+          <a class="more" href="https://www.valeem.com/online-tuition/">Explore Online Tuition</a>
         </div>
       </article>
       <article class="cat c2">
@@ -499,7 +619,7 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
           <h3>Skills &amp; Courses</h3>
           <p class="for">Coding for children and adults, IELTS, English, languages and Quran.</p>
           <ul class="chips"><li>Scratch</li><li>Python</li><li>SQL</li><li>Power BI</li><li>IELTS</li><li>Quran</li></ul>
-          <a class="more" href="#skills">See All Courses</a>
+          <a class="more" href="https://www.valeem.com/skills-courses/">See All Courses</a>
         </div>
       </article>
       <article class="cat c3">
@@ -537,7 +657,7 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
         <li><a href="https://www.valeem.com/online-tuition-uae/">UAE</a></li>
         <li>Qatar</li><li>Kuwait</li><li>Bahrain</li><li>Oman</li><li>Pakistan</li>
       </ul>
-      <a class="btn btn-accent" href="#demo" data-cta="tuition" data-prog="Online Tuition: IGCSE, O Level or A Level">Book a Free Demo</a>
+      <div class="cta-row"><a class="btn btn-accent" href="#demo" data-cta="tuition" data-prog="Online Tuition: IGCSE, O Level or A Level">Book a Free Demo</a><a class="btn btn-ghost on-dark" href="https://www.valeem.com/online-tuition/">Tuition Details</a></div>
     </div>
   </div>
 </section>
@@ -545,7 +665,7 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
 <!-- 5. SKILLS & COURSES -->
 <section id="skills" class="wash">
   <div class="wrap skill-grid">
-    <figure class="photo"><img src="images/g3.webp" alt="Two students working through a coding exercise together" width="747" height="560" loading="lazy" style="object-position:50% 40%"></figure>
+    <figure class="photo"><img src="images/skills.webp" alt="Two boys working through a coding exercise on a laptop" width="900" height="945" loading="lazy"></figure>
     <div>
       <div class="head" style="margin-bottom:28px">
         <p class="kicker">02 · Skills &amp; Courses</p>
@@ -559,8 +679,28 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
       </div>
       <div class="cta-row" style="margin-top:24px">
         <a class="btn btn-primary" href="#demo" data-cta="skills" data-prog="Skills & Courses: Coding">Ask About a Course</a>
-        <a class="btn btn-ghost" data-wa="skills" href="#" target="_blank" rel="noopener"><svg class="icon"><use href="#i-wa"/></svg>WhatsApp Us</a>
+        <a class="btn btn-ghost" href="https://www.valeem.com/skills-courses/">See All Courses</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="teachers" class="vet">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">How we choose teachers</p>
+      <h2>Every Valeem Teacher Passes Four Checks.</h2>
+      <p class="lede">Fewer teachers make it through, so your child learns from someone who knows the subject and can teach it.</p>
+    </div>
+    <ol class="checks" aria-label="Teacher selection process">
+      <li><span class="dot"><svg class="icon"><use href="#i-file"/></svg></span><b>Application</b><span>Teachers apply and share their subjects, levels and teaching background.</span></li>
+      <li><span class="dot"><svg class="icon"><use href="#i-award"/></svg></span><b>Proven grades</b><span>They must prove an A or B grade in the subject they teach, at O Level, IGCSE or A Level.</span></li>
+      <li><span class="dot"><svg class="icon"><use href="#i-chat"/></svg></span><b>One-to-one interview</b><span>Our team checks subject knowledge, academic depth and how clearly and confidently they teach.</span></li>
+      <li><span class="dot"><svg class="icon"><use href="#i-sparkle"/></svg></span><b>Onboarding and training</b><span>Training on managing student and parent expectations, using AI, presentations and running live classes.</span></li>
+    </ol>
+    <div class="vet-foot">
+      <p>A teacher who isn't the right fit for your child? We arrange another.</p>
+      <a href="https://www.valeem.com/teach-with-valeem/">Are you a teacher? Apply to teach</a>
     </div>
   </div>
 </section>
@@ -573,7 +713,7 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
       <p class="kicker">About Valeem</p>
       <h2>Live Online Teaching, Built Around One Student at a Time.</h2>
       <p class="lede">Since 2019, Valeem has recruited and trained subject teachers, matched them with students and run classes on its own learning platform, so parents can follow progress.</p>
-      <p class="lede">Today 650+ educators teach students in 14+ countries, with our largest community of families in the Middle East.</p>
+      <p class="lede">Today 650+ educators teach students in 14+ countries, and 70% of our families live in the Middle East, most of them in Saudi Arabia.</p>
       <a class="more" href="https://www.valeem.com/mod/page/view.php?id=2">More about Valeem</a>
     </div>
   </div>
@@ -597,7 +737,7 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
     <figure class="photo"><img src="images/g5.webp" alt="A student giving a thumbs up during a class" width="747" height="560" loading="lazy"></figure>
     <figure class="photo"><img src="images/g4.webp" alt="A student working on her laptop at home" width="420" height="560" loading="lazy"></figure>
     <figure class="photo"><img src="images/g6.webp" alt="A student smiling at her phone" width="420" height="560" loading="lazy"></figure>
-    <figure class="photo"><img src="images/g3.webp" alt="Two students working together on a laptop" width="747" height="560" loading="lazy"></figure>
+    <figure class="photo"><img src="images/g8.webp" alt="A student smiling during an evening class on her laptop" width="420" height="560" loading="lazy"></figure>
     <figure class="photo"><img src="images/g7.webp" alt="A student on a call during an online lesson" width="420" height="560" loading="lazy"></figure>
   </div>
 </section>
@@ -611,22 +751,42 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
     </div>
     <ol class="flow">
       <li><b>Tell us what you need</b><span>Level, subject or course, and your goals.</span></li>
-      <li><b>Speak to a counsellor</b><span>We match a suitable teacher.</span></li>
-      <li><b>Take a free demo</b><span>Meet the teacher before you commit.</span></li>
-      <li><b>Start learning</b><span>Agree a timetable and follow progress.</span></li>
+      <li><b>Free demo at your time</b><span>A live trial class, scheduled around you.</span></li>
+      <li><b>We match the teacher</b><span>A vetted teacher who suits your child.</span></li>
+      <li><b>Monthly plan and invoice</b><span>Once you are happy, classes continue month to month.</span></li>
     </ol>
   </div>
 </section>
 
+<section id="fees">
+  <div class="wrap fees-grid">
+    <div class="head" style="margin-bottom:0">
+      <p class="kicker">How fees work</p>
+      <h2>One Monthly Fee, Built Around Your Child.</h2>
+      <p class="lede">Tuition is a monthly plan. Your counsellor shares the fee after the free demo, based on five things.</p>
+      
+      <div class="cta-row" style="margin-top:6px"><a class="btn btn-primary" href="#demo" data-cta="fees">Get Your Fee After a Free Demo</a></div>
+    </div>
+    <ul class="factors">
+      <li><span class="badge"><svg class="icon"><use href="#i-cap"/></svg></span><div><b>Grade or level</b><span>Grade 5 to A Level</span></div></li>
+      <li><span class="badge"><svg class="icon"><use href="#i-repeat"/></svg></span><div><b>Classes per week</b><span>How often your child learns</span></div></li>
+      <li><span class="badge"><svg class="icon"><use href="#i-clock"/></svg></span><div><b>Class length</b><span>Minutes per class</span></div></li>
+      <li><span class="badge"><svg class="icon"><use href="#i-lock"/></svg></span><div><b>Fixed time slot</b><span>A time reserved only for your child</span></div></li>
+      <li><span class="badge"><svg class="icon"><use href="#i-calendar"/></svg></span><div><b>Number of months</b><span>Longer plans cost less per month</span></div></li>
+      <li class="wide"><span class="badge"><svg class="icon"><use href="#i-invoice"/></svg></span><div><b>Invoiced monthly</b><span>Your plan renews each month with an invoice. Many families pay from a Saudi or Pakistani bank account.</span></div></li>
+    </ul>
+  </div>
+</section>
+
 <!-- 9. WHY VALEEM -->
-<section id="why">
+<section id="why" class="wash">
   <div class="wrap">
     <div class="head">
       <p class="kicker">Why parents choose Valeem</p>
       <h2>Good Teaching, and a Team That Keeps You Informed.</h2>
     </div>
     <div class="cards">
-      <article class="card"><span class="badge"><svg class="icon"><use href="#i-user"/></svg></span><h3>Trained subject teachers</h3><p>Selected for their subject and trained to teach live online.</p></article>
+      <article class="card"><span class="badge"><svg class="icon"><use href="#i-user"/></svg></span><h3>Vetted subject teachers</h3><p>Proven A or B grades, interviewed and trained.</p></article>
       <article class="card"><span class="badge"><svg class="icon"><use href="#i-live"/></svg></span><h3>Live and one-to-one</h3><p>Full attention, real questions, your child's own pace.</p></article>
       <article class="card"><span class="badge"><svg class="icon"><use href="#i-compass"/></svg></span><h3>A plan for your child</h3><p>Built around the syllabus, strengths and gaps.</p></article>
       <article class="card"><span class="badge"><svg class="icon"><use href="#i-chart"/></svg></span><h3>Progress you can see</h3><p>Classes, resources and progress in one place.</p></article>
@@ -637,23 +797,23 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
 </section>
 
 <!-- 10. TEACH WITH US -->
-<section id="team" class="wash">
+<section id="team">
   <div class="wrap team">
     <div class="team-photos">
-      <figure class="photo"><img src="images/teach-1.webp" alt="A Valeem educator teaching on her laptop" width="700" height="805" loading="lazy"></figure>
-      <figure class="photo"><img src="images/teach-2.webp" alt="A Valeem educator smiling during an online lesson" width="700" height="805" loading="lazy"></figure>
+      <figure class="photo"><img src="images/teach-1.webp" alt="A Valeem teacher explaining a concept during a live class" width="700" height="805" loading="lazy"></figure>
+      <figure class="photo"><img src="images/teach-2.webp" alt="A Valeem teacher preparing a lesson on her laptop" width="700" height="805" loading="lazy"></figure>
     </div>
     <div class="head" style="margin-bottom:0">
       <p class="kicker">For teachers</p>
       <h2>Teach With Valeem.</h2>
-      <p class="lede">Join 650+ educators teaching students in 14+ countries. We train you on our platform and match you with students who need your subject.</p>
-      <div class="cta-row"><a class="btn btn-ghost" href="https://www.valeem.com/mod/page/view.php?id=21">Become a Teacher</a></div>
+      <p class="lede">Join 650+ educators teaching students in 14+ countries. If you hold an A or B grade in your subject and love explaining it, we will train you and match you with students.</p>
+      <div class="cta-row"><a class="btn btn-primary" href="https://www.valeem.com/teach-with-valeem/">Apply to Teach</a><a class="btn btn-ghost" href="https://www.valeem.com/teach-with-valeem/#process">See the Selection Process</a></div>
     </div>
   </div>
 </section>
 
 <!-- 11. CONTACT + DEMO FORM -->
-<section id="start">
+<section id="start" class="wash">
   <div class="wrap start-grid" id="contact">
     <div>
       <div class="head" style="margin-bottom:0">
@@ -720,18 +880,18 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
     </div>
     <div class="faq">
       <h3>General</h3>
-      <details><summary>What is Valeem?</summary><div class="a"><p>Valeem is an online education company, teaching live since 2019. It offers three programmes: Online Tuition for IGCSE, O Level and A Level, Skills &amp; Courses such as coding, IELTS, English and Quran, and Homeschool Pathways for homeschooled children aged 7 to 14. Over 650 trained educators teach students in more than 14 countries.</p></div></details>
-      <details><summary>Do you teach students outside Pakistan?</summary><div class="a"><p>Yes. Most of our families live in Saudi Arabia, the UAE and other Gulf countries, and we also teach students in Pakistan and beyond. Classes are scheduled around your time zone.</p></div></details>
-      <details><summary>Is there a free demo class?</summary><div class="a"><p>Yes. Your child can take a free demo class with a suitable teacher before you decide. If a teacher is not the right fit later, we arrange another.</p></div></details>
+      <details><summary>What is Valeem?</summary><div class="a"><p>Valeem is an online education company, teaching live since 2019. It offers Online Tuition for IGCSE, O Level and A Level, Skills &amp; Courses such as coding, IELTS, English and Quran, and Homeschool Pathways for homeschooled children aged 7 to 14. Over 650 vetted educators teach students in more than 14 countries.</p></div></details>
+      <details><summary>Do you teach students in Saudi Arabia and the Gulf?</summary><div class="a"><p>Yes. About 70% of our families live in the Middle East, most of them in Saudi Arabia. Classes are scheduled after school, in your time zone.</p></div></details>
+      <details><summary>How are Valeem teachers selected?</summary><div class="a"><p>Every teacher passes four checks: an application, proof of an A or B grade in the subject they teach, a one-to-one interview, and onboarding and training before they teach.</p></div></details>
       <h3>Online Tuition</h3>
-      <details><summary>Which levels and curricula does Valeem teach?</summary><div class="a"><p>One-to-one live tuition for IGCSE, O Level and A Level students, usually from Grade 8 upwards. We also support younger students from Grade 5 with English, Maths and homework.</p></div></details>
-      <details><summary>Are tuition classes one-to-one?</summary><div class="a"><p>Yes. Online Tuition is one-to-one and live, so the teacher can follow your child&#x27;s syllabus, pace and goals.</p></div></details>
-      <details><summary>How much does online tuition cost?</summary><div class="a"><p>Fees depend on the level, the subject and how many classes a week your child needs. A counsellor shares the fee after understanding your requirements.</p></div></details>
-      <h3>Skills &amp; Courses</h3>
-      <details><summary>What coding courses do you offer?</summary><div class="a"><p>Scratch for young learners, and Python, SQL and Power BI for teenagers and adults. Classes are live with a Valeem teacher.</p></div></details>
-      <details><summary>Do you offer IELTS, English and Quran classes?</summary><div class="a"><p>Yes. We offer IELTS preparation, English improvement, language classes and Quran classes, for children and adults.</p></div></details>
-      <h3>Getting started</h3>
+      <details><summary>Which levels does Valeem teach?</summary><div class="a"><p>One-to-one live tuition for IGCSE, O Level and A Level students, usually from Grade 8 upwards. We also support younger students from Grade 5 with English, Maths and homework.</p></div></details>
+      <details><summary>How much does online tuition cost?</summary><div class="a"><p>Tuition is a monthly plan. The fee depends on the grade, the number of months, classes per week, class length and whether you want a fixed time slot. A counsellor shares the fee after the free demo.</p></div></details>
+      <details><summary>How does payment work?</summary><div class="a"><p>Once you are happy with the demo and the teacher, we send a monthly invoice and the plan renews each month. Many families pay from a Saudi or Pakistani bank account.</p></div></details>
+      <h3>Skills &amp; Homeschool</h3>
+      <details><summary>What skills courses do you offer?</summary><div class="a"><p>Coding (Scratch for young learners; Python, SQL and Power BI for teens and adults), IELTS preparation, English improvement, language classes and Quran classes.</p></div></details>
       <details><summary>What is Homeschool Pathways?</summary><div class="a"><p>A structured online programme for homeschooled children aged 7 to 14, with three learning stages and guidance towards O Level and A Level. Full details and fees are on the <a href="https://www.valeem.com/homeschool-pathways/">Homeschool Pathways page</a>.</p></div></details>
+      <h3>Getting started</h3>
+      <details><summary>Is there a free demo class?</summary><div class="a"><p>Yes. Your child takes a free live demo at a time that suits you. If a teacher is not the right fit later, we arrange another.</p></div></details>
       <details><summary>How do I get started?</summary><div class="a"><p>Fill in the form on this page or message us on WhatsApp at +92 332 2636574. A counsellor will call you, understand what you need and arrange a free demo.</p></div></details>
     </div>
   </div>
@@ -743,19 +903,19 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
   <div class="wrap">
     <div class="foot">
       <div>
-        <a class="logo" href="#top"><img src="images/valeem-logo.png" alt="Valeem" width="121" height="44"></a>
+        <a class="logo" href="https://www.valeem.com/"><img src="images/valeem-logo.png" alt="Valeem" width="121" height="44"></a>
         <p>Live online tuition, skills courses and a structured homeschool pathway. Teaching online since 2019.</p>
       </div>
       <div><h4>Programmes</h4><ul>
-        <li><a href="#tuition">Online Tuition</a></li>
-        <li><a href="#skills">Skills &amp; Courses</a></li>
+        <li><a href="https://www.valeem.com/online-tuition/">Online Tuition</a></li>
+        <li><a href="https://www.valeem.com/skills-courses/">Skills &amp; Courses</a></li>
         <li><a href="https://www.valeem.com/homeschool-pathways/">Homeschool Pathways</a></li>
         <li><a href="https://www.valeem.com/online-tuition-saudi-arabia/">Tuition in Saudi Arabia</a></li>
         <li><a href="https://www.valeem.com/online-tuition-uae/">Tuition in the UAE</a></li>
       </ul></div>
       <div><h4>Valeem</h4><ul>
         <li><a href="https://www.valeem.com/mod/page/view.php?id=2">About us</a></li>
-        <li><a href="https://www.valeem.com/mod/page/view.php?id=21">Become a teacher</a></li>
+        <li><a href="https://www.valeem.com/teach-with-valeem/">Teach with Valeem</a></li>
         <li><a href="https://www.valeem.com/blog/">Blog</a></li>
         <li><a href="https://www.valeem.com/login/index.php">Student log in</a></li>
         <li><a href="https://www.valeem.com/mod/page/view.php?id=3">Terms &amp; Conditions</a></li>
@@ -781,7 +941,8 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
 (function(){
   var WHATSAPP_NUMBER = '923322636574';
   var LEAD_ENDPOINT   = 'https://script.google.com/macros/s/AKfycbw5O8zgbUlM1L16OP2LMHxirFEzaSJOI-p6-Abr2YTx-1TndikshseIqZIHTZYTjtY1/exec';
-  var WA_TEXT = "Hello, I'm interested in Valeem's classes. I would like to book a free demo.";
+  var WA_TEXT = document.body.getAttribute('data-wa-text') || "Hello, I'm interested in Valeem's classes. I would like to book a free demo.";
+  var LEAD = document.body.getAttribute('data-lead') || 'HOMEPAGE';
   function waUrl(t){ return 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(t || WA_TEXT); }
   function $(s,r){ return (r||document).querySelector(s); }
   function $all(s,r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); }
@@ -808,12 +969,31 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
   if('IntersectionObserver' in window){ new IntersectionObserver(function(en){ sticky.style.visibility = en[0].isIntersecting ? 'hidden' : 'visible'; }, {threshold:.15}).observe($('#demo')); }
   $('#yr').textContent = new Date().getFullYear();
 
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Location: Cloudflare tells us the visitor's country; Gulf families see a line for them */
+  var GULF = {SA:['Saudi Arabia', 'https://www.valeem.com/online-tuition-saudi-arabia/', 'Riyadh, Saudi Arabia', 'Saudi time'], AE:['the UAE', 'https://www.valeem.com/online-tuition-uae/', 'Dubai, UAE', 'UAE time'], QA:['Qatar', '', 'Doha, Qatar', 'Qatar time'], KW:['Kuwait', '', 'Kuwait City, Kuwait', 'Kuwait time'], BH:['Bahrain', '', 'Manama, Bahrain', 'Bahrain time'], OM:['Oman', '', 'Muscat, Oman', 'Oman time']};
+  if(window.fetch && /valeem\.com$/.test(location.hostname)){
+    fetch('/cdn-cgi/trace', {cache:'no-store'}).then(function(r){ return r.ok ? r.text() : ''; }).then(function(t){
+      var m = /loc=([A-Z]{2})/.exec(t || ''); if(!m) return;
+      var c = m[1], g = GULF[c], bar = $('#geo'), city = $('#city');
+      document.documentElement.setAttribute('data-country', c);
+      if(city && g) city.placeholder = 'e.g. ' + g[2];
+      if(city && c === 'PK') city.placeholder = 'e.g. Karachi, Pakistan';
+      if(g && bar){
+        $('#geoText').innerHTML = '<b>Families in ' + g[0] + ':</b> classes are scheduled after school, in ' + g[3] + '.';
+        var l = $('#geoLink'); if(g[1]){ l.href = g[1]; l.textContent = 'Tuition in ' + g[0]; } else { l.remove(); }
+        bar.hidden = false; track('geo_bar_shown', {country:c});
+      }
+    }).catch(function(){});
+  }
+
   /* Programme preselect from any CTA with data-prog */
   $all('[data-prog]').forEach(function(a){ a.addEventListener('click', function(){ var s = $('#prog'); if(s){ s.value = a.dataset.prog; } }); });
 
+  if(document.getElementById('slides')) (function(){
   /* Banner carousel: native swipe (scroll-snap), tabs, arrows, gentle autoplay */
   var hero = $('#hero'), track = $('#slides'), slides = $all('.slide'), tabs = $all('.tabs button'), cur = 0, timer = null, DUR = 7000;
-  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   hero.style.setProperty('--dur', DUR + 'ms');
   function mark(i){
     cur = i;
@@ -846,8 +1026,11 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
   hero.addEventListener('keydown', function(e){ if(e.key === 'ArrowRight'){ go(cur + 1, true); } else if(e.key === 'ArrowLeft'){ go(cur - 1, true); } });
   mark(0); if(still){ hero.classList.add('paused'); } else { restart(); }
 
+  })();
+
   /* Gallery strip arrows */
   var strip = $('#strip');
+  if(strip){
   function step(d){ strip.scrollBy({left: d * Math.max(320, strip.clientWidth * 0.6), behavior: still ? 'auto' : 'smooth'}); }
   $('#gPrev').addEventListener('click', function(){ step(-1); });
   $('#gNext').addEventListener('click', function(){ step(1); });
@@ -878,13 +1061,13 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
     check('phone', 'Please enter a phone or WhatsApp number we can reach you on.', f.phone.value.replace(/\D/g,'').length >= 7);
     check('email', 'That email address does not look right. Check it, or leave it blank.', !f.email.value.trim() || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.value.trim()));
     check('city', 'Please tell us your city and country.', f.city_country.value.trim().length > 1);
-    check('prog', 'Please choose a programme.', !!f.interests.value);
+    check('prog', 'Please choose an option.', !!f.interests.value);
     check('consent', 'Please tick the box so we can contact you about your enquiry.', f.consent.checked);
     if(first) first.focus();
     return ok;
   }
   function summary(){
-    var f = form.elements, l = ['Hello, I would like to book a free demo class with Valeem.', '', 'Name: ' + f.parent_name.value.trim(), 'City/country: ' + f.city_country.value.trim(), 'Programme: ' + f.interests.value];
+    var f = form.elements, l = [(LEAD === 'TEACHER APPLICATION' ? 'Hello, I would like to apply to teach with Valeem.' : 'Hello, I would like to book a free demo class with Valeem.'), '', 'Name: ' + f.parent_name.value.trim(), 'City/country: ' + f.city_country.value.trim(), 'Programme: ' + f.interests.value];
     if(f.background.value.trim()) l.push('Subject/class: ' + f.background.value.trim());
     if(f.message.value.trim()) l.push('Message: ' + f.message.value.trim());
     return l.join('\n');
@@ -900,7 +1083,7 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
     track('demo_form_submit');
     var btn = $('#submitBtn'), label = btn.textContent; btn.disabled = true; btn.textContent = 'Sending…';
     var body = new URLSearchParams(new FormData(form)); body.delete('website');
-    body.set('interests', 'HOMEPAGE: ' + form.elements.interests.value);
+    body.set('interests', LEAD + ': ' + form.elements.interests.value);
     body.append('submitted_at', new Date().toISOString());
     fetch(LEAD_ENDPOINT, {method:'POST', mode:'no-cors', body:body}).then(function(){
       form.hidden = true; var t = $('#thanks'); t.hidden = false; t.focus();
@@ -911,6 +1094,7 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
       track('demo_form_error', {type:'network'});
     });
   });
+  }
 })();
 </script>
 </body>

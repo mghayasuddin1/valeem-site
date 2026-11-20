@@ -1,26 +1,43 @@
 # Valeem
 
-> Valeem provides one-to-one live online tuition for Cambridge O Level, IGCSE and A Level
-> students, taught by trained subject teachers. Valeem has taught live online since 2019,
-> has a network of 650+ trained educators, and serves students in 14+ countries.
-> Its largest community of families is in the Gulf (Saudi Arabia, the UAE and neighbouring
-> countries), alongside Pakistan.
+> Valeem is an online education company that has taught live since 2019. It offers three programmes:
+> Online Tuition (one-to-one live classes for IGCSE, O Level and A Level, plus support from Grade 5),
+> Skills & Courses (coding, IELTS, English, languages and Quran) and Homeschool Pathways.
+> Valeem has 650+ vetted educators and students in 14+ countries. About 70% of its families live in
+> the Middle East, most of them in Saudi Arabia; many are Pakistani families living in the Gulf.
 
 ## Programmes
-- O Level and IGCSE tuition: one-to-one live online classes, syllabus coverage and past-paper practice.
-- A Level tuition: one-to-one live online classes with subject specialists.
-- Valeem Homeschool Pathways: a structured online academic programme for homeschooled children,
+- Online Tuition: one-to-one live online classes for IGCSE, O Level and A Level (usually Grade 8 upwards),
+  with syllabus coverage and past-paper practice. Younger students from Grade 5 get English, Maths and
+  homework support. Page: https://www.valeem.com/online-tuition/
+- Skills & Courses: Scratch coding for young learners; Python, SQL and Power BI for teenagers and adults;
+  IELTS preparation, English improvement, language classes and Quran classes.
+  Page: https://www.valeem.com/skills-courses/
+- Homeschool Pathways: a structured online academic programme for homeschooled children,
   with three stages (Explorers ages 7-9, Innovators ages 10-12, Scholars ages 13-14) and
   guidance towards O Level, IGCSE and A Level. Valeem is not a Cambridge school or examination centre.
   Homeschool fees (PKR): enrolment 9,500 for all stages; monthly 11,000 (Explorers), 12,500 (Innovators),
   14,000 (Scholars); 10% sibling discount on monthly fees. Same fees for families outside Pakistan.
-  Live online classes in small batches of 12-15 students.
+  Live online classes in small batches of 12-15 students. Page: https://www.valeem.com/homeschool-pathways/
+
+## How teachers are selected
+Every Valeem teacher passes four checks:
+1. Application.
+2. Proof of an A or B grade in the subject they teach, at O Level, IGCSE or A Level.
+3. A one-to-one interview on subject knowledge, academic depth and confident teaching.
+4. Onboarding and training: managing student and parent expectations, using AI, presentations and live classes.
+
+## How fees work (Online Tuition)
+Tuition is a monthly plan, invoiced each month. The fee depends on the grade or level, the number of months,
+classes per week, class length and whether the family wants a fixed time slot. A counsellor shares the fee
+after a free demo class. Many families pay from a Saudi or Pakistani bank account.
 
 ## How it works
-1. A parent or student tells Valeem the level, subject and goals.
-2. A Valeem counsellor matches a suitable teacher.
-3. The student takes a free demo class.
-4. Classes start on an agreed timetable, scheduled for the family's time zone.
+1. A parent or student tells Valeem the level, subject or course, and goals.
+2. The student takes a free live demo class at a time that suits the family.
+3. Valeem matches a vetted teacher.
+4. Once the family is happy, Valeem shares the monthly plan and invoice.
+5. Classes continue month to month, scheduled for the family's time zone.
 
 ## Where we teach
 Online, worldwide. Main regions: Saudi Arabia, United Arab Emirates, Qatar, Kuwait, Bahrain, Oman and Pakistan.
@@ -32,9 +49,10 @@ Online, worldwide. Main regions: Saudi Arabia, United Arab Emirates, Qatar, Kuwa
 
 ## Key pages
 - Home: https://www.valeem.com/
-- Valeem Homeschool Pathways: https://www.valeem.com/homeschool-pathways/
+- Online Tuition: https://www.valeem.com/online-tuition/
+- Skills & Courses: https://www.valeem.com/skills-courses/
+- Homeschool Pathways: https://www.valeem.com/homeschool-pathways/
 - Online tuition in Saudi Arabia: https://www.valeem.com/online-tuition-saudi-arabia/
 - Online tuition in the UAE: https://www.valeem.com/online-tuition-uae/
-- Become a teacher: https://www.valeem.com/mod/page/view.php?id=21
-- FAQs: https://www.valeem.com/mod/page/view.php?id=18
+- Teach with Valeem: https://www.valeem.com/teach-with-valeem/
 - Blog: https://www.valeem.com/blog/
