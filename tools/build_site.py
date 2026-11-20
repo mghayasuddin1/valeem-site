@@ -26,10 +26,16 @@ js = js.replace("check('prog', 'Please choose a programme.', !!f.interests.value
 js = js.replace("'Hello, I would like to book a free demo class with Valeem.'", "(LEAD === 'TEACHER APPLICATION' ? 'Hello, I would like to apply to teach with Valeem.' : 'Hello, I would like to book a free demo class with Valeem.')")
 a, b = js.index('  /* Banner carousel'), js.index('  /* Gallery strip arrows */')
 js = js[:a] + '  if(document.getElementById(\'slides\')) (function(){\n' + js[a:b] + '  })();\n\n' + js[b:]
-a = js.index('  /* Gallery strip arrows */'); b = js.index('\n})();', a)
-gal = js[a:b]
-gal = gal.replace("  var strip = $('#strip');", "  var strip = $('#strip');\n  if(strip){")
-js = js[:a] + gal + '\n  }' + js[b:]
+a = js.index('  /* Gallery strip arrows */'); f = js.index("  var form = $('#leadForm')", a); b = js.index('\n})();', f)
+gal = js[a:f].replace("  var strip = $('#strip');", "  var strip = $('#strip');\n  if(strip){")
+js = js[:a] + gal.rstrip() + "\n  }\n\n  if($('#leadForm')){\n" + js[f:b] + '\n  }' + r'''
+
+  /* Infinity forms: count views and starts (the form itself sits on Infinity's site) */
+  $all('iframe[data-infinity]').forEach(function(fr){
+    var kind = fr.getAttribute('data-infinity'), seen = false, started = false;
+    if('IntersectionObserver' in window){ new IntersectionObserver(function(en, ob){ if(en[0].isIntersecting && !seen){ seen = true; track('infinity_form_view', {form:kind}); ob.disconnect(); } }, {threshold:.3}).observe(fr); }
+    window.addEventListener('blur', function(){ setTimeout(function(){ if(document.activeElement === fr && !started){ started = true; track('infinity_form_start', {form:kind}); } }, 0); });
+  });''' + js[b:]
 # 'still' is defined inside the carousel closure; define it globally for the gallery
 js = js.replace("  /* Programme preselect", "  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;\n\n  /* Programme preselect")
 js = js.replace("  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;\n  hero.style", "  hero.style")
@@ -51,7 +57,7 @@ js = js.replace("  /* Programme preselect", r'''  /* Location: Cloudflare tells 
   }
 
   /* Programme preselect''')
-assert 'LEAD + ' in js and "if(document.getElementById('slides'))" in js and 'if(strip){' in js and 'cdn-cgi/trace' in js
+assert "if($('#leadForm'))" in js and 'infinity_form_view' in js and 'LEAD + ' in js and "if(document.getElementById('slides'))" in js and 'if(strip){' in js and 'cdn-cgi/trace' in js
 SCRIPT = js
 
 # ---------- shared parts ----------
@@ -71,7 +77,7 @@ def head(title, desc, canonical, og_title, og_desc, og_img, jsonld, preload='', 
     return '<!DOCTYPE html>\n<html lang="en">\n<head>\n' + '\n'.join(x for x in s if x) + '\n</head>\n'
 
 NAV = [('Online Tuition', B + '/online-tuition/', 'tuition'), ('Skills &amp; Courses', B + '/skills-courses/', 'skills'),
-       ('Homeschool Pathways', B + '/homeschool-pathways/', 'homeschool'), ('Teach With Us', B + '/teach-with-valeem/', 'teach'),
+       ('Homeschool Pathways', B + '/homeschool-pathways/', 'homeschool'), ('Teach With Us', B + '/teach-at-valeem/', 'teach'),
        ('About Us', B + '/mod/page/view.php?id=2', 'about'), ('Contact', '#contact', 'contact'), ('Log In', B + '/login/index.php', 'login')]
 def header(active, cta='Book a Free Demo', cta_href='#demo', home_href=B + '/'):
     links = '\n'.join(f'      <a href="{h}"' + (' aria-current="page"' if k == active else '') + f'>{t}</a>' for t, h, k in NAV)
@@ -104,7 +110,7 @@ FOOTER = f'''<footer>
       </ul></div>
       <div><h4>Valeem</h4><ul>
         <li><a href="{B}/mod/page/view.php?id=2">About us</a></li>
-        <li><a href="{B}/teach-with-valeem/">Teach with Valeem</a></li>
+        <li><a href="{B}/teach-at-valeem/">Teach with Valeem</a></li>
         <li><a href="{B}/blog/">Blog</a></li>
         <li><a href="{B}/login/index.php">Student log in</a></li>
         <li><a href="{B}/mod/page/view.php?id=3">Terms &amp; Conditions</a></li>
@@ -142,7 +148,7 @@ def vet_section(kicker='How we choose teachers', title='Every Teacher Passes Fou
     f = f'''
     <div class="vet-foot">
       <p>A teacher who isn't the right fit for your child? We arrange another.</p>
-      <a href="{B}/teach-with-valeem/">Are you a teacher? Apply to teach</a>
+      <a href="{B}/teach-at-valeem/">Are you a teacher? Apply to teach</a>
     </div>''' if foot else ''
     return f'''<section id="{sid}" class="vet">
   <div class="wrap">
@@ -190,7 +196,7 @@ def timeline():
     return '<ol class="timeline">\n' + '\n'.join(f'        <li><span class="t-ic"><svg class="icon"><use href="#{i}"/></svg></span><div><b>{t}</b><span>{d}</span></div></li>' for i, t, d in STEPS) + '\n      </ol>'
 
 def form_section(options, kicker='Contact us', title='Book a Free Demo Class.', lede='Tell us what you need. A counsellor will call you to arrange a demo with a suitable teacher.',
-                 form_title='Request your free demo', submit='Book a Free Demo Class', teacher=False, wash=False):
+                 form_title='Request your free demo', submit='Book a Free Demo Class', teacher=False, wash=False, infinity=True):
     opts = []
     for o in options:
         if isinstance(o, tuple):
@@ -220,6 +226,26 @@ def form_section(options, kicker='Contact us', title='Book a Free Demo Class.', 
         <li><svg class="icon"><use href="#i-check"/></svg>Confident speaking and explaining</li>
         <li><svg class="icon"><use href="#i-check"/></svg>Ready to teach live online</li>
       </ul>'''
+    if infinity:
+        fid, h = (INF_TEACHER, 2350) if teacher else (INF_STUDENT, 980)
+        kind = 'teacher' if teacher else 'student'
+        card = f'''    <div class="form-card embed" id="demo">
+      <iframe data-infinity="{kind}" src="https://app.startinfinity.com/form/{fid}" title="{esc(form_title)}" loading="lazy" class="inf inf-{kind}"></iframe>
+      <p class="form-alt">Form not loading? <a href="https://app.startinfinity.com/form/{fid}" target="_blank" rel="noopener" data-cta="infinity-open">Open it in a new tab</a> or <a data-wa="form" href="#" target="_blank" rel="noopener">WhatsApp us</a>.</p>
+    </div>'''
+        return f'''<section id="start"{' class="wash"' if wash else ''}>
+  <div class="wrap start-grid" id="contact">
+    <div>
+      <div class="head" style="margin-bottom:0">
+        <p class="kicker">{kicker}</p>
+        <h2>{title}</h2>
+        <p class="lede">{lede}</p>
+      </div>{side}
+    </div>
+{card}
+  </div>
+</section>
+'''
     return f'''<section id="start"{' class="wash"' if wash else ''}>
   <div class="wrap start-grid" id="contact">
     <div>
@@ -294,6 +320,8 @@ def faq(groups, title='Questions Parents and Students Ask.', wash=True):
 '''
     return sec, ld
 
+INF_STUDENT = 'iwRmYUkbwrC'
+INF_TEACHER = 'f5ff3893-4c5c-4b7b-82c1-f4bca5817094'
 ORG = {"@type": "EducationalOrganization", "@id": B + "/#org", "name": "Valeem", "url": B + "/"}
 def crumbs_ld(name, url):
     return {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
@@ -356,8 +384,9 @@ rep('<img src="images/teach-2.webp" alt="A Valeem educator smiling during an onl
 rep('<p class="lede">Join 650+ educators teaching students in 14+ countries. We train you on our platform and match you with students who need your subject.</p>',
     '<p class="lede">Join 650+ educators teaching students in 14+ countries. If you hold an A or B grade in your subject and love explaining it, we will train you and match you with students.</p>')
 rep(f'<div class="cta-row"><a class="btn btn-ghost" href="https://www.valeem.com/mod/page/view.php?id=21">Become a Teacher</a></div>',
-    f'<div class="cta-row"><a class="btn btn-primary" href="{B}/teach-with-valeem/">Apply to Teach</a><a class="btn btn-ghost" href="{B}/teach-with-valeem/#process">See the Selection Process</a></div>')
-rep('<section id="start">', '<section id="start" class="wash">')
+    f'<div class="cta-row"><a class="btn btn-primary" href="{B}/teach-at-valeem/">Apply to Teach</a><a class="btn btn-ghost" href="{B}/teach-at-valeem/#process">See the Selection Process</a></div>')
+a_ = main.index('<!-- 11. CONTACT'); b_ = main.index('<!-- 12. FAQS -->')
+main = main[:a_] + '<!-- 11. CONTACT: Infinity free-trial form -->\n' + form_section([], title='Book a Free Trial Class.', lede='Tell us what you need. A counsellor will call you to arrange a free trial class with a suitable teacher.', form_title='Register for a free trial lesson', wash=True) + '\n' + main[b_:]
 home_faq = [
  ("General", [
   ("What is Valeem?", "Valeem is an online education company, teaching live since 2019. It offers Online Tuition for IGCSE, O Level and A Level, Skills & Courses such as coding, IELTS, English and Quran, and Homeschool Pathways for homeschooled children aged 7 to 14. Over 650 vetted educators teach students in more than 14 countries."),
@@ -608,7 +637,7 @@ open(R + '/skills-courses/index.html', 'w').write(page(h, ' data-lead="SKILLS PA
 # =====================================================================
 # TEACH WITH VALEEM
 # =====================================================================
-url = B + '/teach-with-valeem/'
+url = B + '/teach-at-valeem/'
 eq = [("", [
   ("What do I need to teach with Valeem?", "An A or B grade in the subject you want to teach, at O Level, IGCSE or A Level, confident spoken English, and the ability to teach live online."),
   ("What is the selection process?", "Four steps: you apply, you share proof of your subject grades, you have a one-to-one interview with our team, and you complete onboarding and training before your first class."),
@@ -675,11 +704,11 @@ main = page_hero('Teach With Valeem', 'Teach with Valeem', 'Teach Students Acros
 </section>
 
 ''' + form_section(['O Level or IGCSE', 'A Level', 'Grades 5–8', 'Skills courses (coding, IELTS, English, languages, Quran)', 'Homeschool Pathways'],
-                   kicker='Apply to teach', title='Start Your Application.', lede='Step one takes about a minute. If your profile fits, our team will contact you for the next step.',
+                   kicker='Apply to teach', title='Start Your Application.', lede='Fill in the Valeem Instructor Registration Form. If your profile fits, our team will contact you for the next step.',
                    form_title='Teacher application', submit='Send My Application', teacher=True, wash=True) + fs
 h = head('Teach With Valeem | Online Teaching Jobs for IGCSE, O Level and A Level Teachers',
   'Apply to teach IGCSE, O Level, A Level, coding, IELTS and Quran live online with Valeem. Four-step selection: application, proven A or B grades, interview and training.',
   url, 'Teach With Valeem', 'Join 650+ educators teaching students in 14+ countries. Apply in a minute.',
   url + 'images/hero.webp', [job, ld, crumbs_ld('Teach With Valeem', url)])
-open(R + '/teach-with-valeem/index.html', 'w').write(page(h, ' data-lead="TEACHER APPLICATION" data-wa-text="Hello, I would like to apply to teach with Valeem."', 'teach', main, cta='Apply to Teach', sticky_label='Apply to Teach'))
+open(R + '/teach-at-valeem/index.html', 'w').write(page(h, ' data-lead="TEACHER APPLICATION" data-wa-text="Hello, I would like to apply to teach with Valeem."', 'teach', main, cta='Apply to Teach', sticky_label='Apply to Teach'))
 print('built 4 pages')

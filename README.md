@@ -10,7 +10,7 @@ Standalone pages for valeem.com that live alongside the Moodle site.
 | `online-tuition-uae/` | https://www.valeem.com/online-tuition-uae/ | UAE page; price guidance pending |
 | `online-tuition/` | https://www.valeem.com/online-tuition/ | Online Tuition category page |
 | `skills-courses/` | https://www.valeem.com/skills-courses/ | Skills & Courses category page |
-| `teach-with-valeem/` | https://www.valeem.com/teach-with-valeem/ | Teacher page and application form (leads tagged TEACHER APPLICATION) |
+| `teach-at-valeem/` | https://www.valeem.com/teach-at-valeem/ | Teacher page and application form (leads tagged TEACHER APPLICATION) |
 | `root-files/llms.txt` | https://www.valeem.com/llms.txt | Plain-language facts for AI assistants |
 | `root-files/robots.txt`, `root-files/sitemap.xml` | Site root | Crawler rules and the page list for search engines. Add each new page to the sitemap |
 | `tools/lead-capture.gs` | Google Apps Script (not deployed from here) | Reference copy of the form script |

@@ -459,6 +459,11 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
 .page-hero + .numbers{margin-top:0}
 .ladder li span.core{color:#fff}
 .factors li:nth-child(5){grid-column:1/-1}
+/* Infinity forms embedded (heights measured from the live forms) */
+.form-card.embed{padding:14px}
+iframe.inf{width:100%;border:0;display:block;border-radius:14px;background:#fff}
+.inf-student{height:1140px}.inf-teacher{height:2360px}
+@media (max-width:600px){.inf-student{height:1210px}.inf-teacher{height:2450px}.form-card.embed{padding:6px}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "EducationalOrganization", "@id": "https://www.valeem.com/#org", "name": "Valeem", "url": "https://www.valeem.com/", "logo": "https://www.valeem.com/new-home/images/valeem-logo.png", "description": "Valeem offers live online education: one-to-one Online Tuition for IGCSE, O Level and A Level, Skills & Courses including coding, IELTS, English and Quran, and Homeschool Pathways for homeschooled children aged 7 to 14. Most of its families live in Saudi Arabia and the Gulf.", "foundingDate": "2019", "email": "contact@valeem.com", "telephone": "+92 332 2636574", "parentOrganization": {"@type": "Organization", "name": "E-Resource Center (Pvt) Ltd"}, "areaServed": [{"@type": "Country", "name": "Saudi Arabia"}, {"@type": "Country", "name": "United Arab Emirates"}, {"@type": "Country", "name": "Qatar"}, {"@type": "Country", "name": "Kuwait"}, {"@type": "Country", "name": "Bahrain"}, {"@type": "Country", "name": "Oman"}, {"@type": "Country", "name": "Pakistan"}], "contactPoint": {"@type": "ContactPoint", "contactType": "admissions", "telephone": "+92 332 2636574", "email": "contact@valeem.com", "availableLanguage": ["English", "Urdu"]}, "sameAs": ["https://www.facebook.com/studyatvaleem", "https://www.instagram.com/valeemonline", "https://www.youtube.com/@ValeemOnline", "https://www.linkedin.com/company/valeem-online"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Valeem programmes", "itemListElement": [{"@type": "OfferCatalog", "name": "Online Tuition", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "IGCSE and O Level tuition", "description": "One-to-one live online classes for IGCSE and O Level subjects, with past-paper practice.", "serviceType": "Online education"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "A Level tuition", "description": "One-to-one live online classes with A Level subject specialists.", "serviceType": "Online education"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Grades 5 to 8 tuition", "description": "Live online support in English, Maths and homework for younger students.", "serviceType": "Online education"}}], "url": "https://www.valeem.com/online-tuition/"}, {"@type": "OfferCatalog", "name": "Skills & Courses", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Coding courses", "description": "Scratch for young learners; Python, SQL and Power BI for teenagers and adults.", "serviceType": "Online education"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "IELTS and English", "description": "IELTS preparation, English improvement and language classes.", "serviceType": "Online education"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Quran classes", "description": "Live online Quran classes.", "serviceType": "Online education"}}], "url": "https://www.valeem.com/skills-courses/"}, {"@type": "OfferCatalog", "name": "Homeschool Pathways", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Homeschool Pathways", "description": "Structured online programme for homeschooled children aged 7 to 14, leading towards O Level and A Level.", "serviceType": "Online education", "url": "https://www.valeem.com/homeschool-pathways/"}}], "url": "https://www.valeem.com/homeschool-pathways/"}]}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Valeem", "url": "https://www.valeem.com/", "publisher": {"@id": "https://www.valeem.com/#org"}}</script>
@@ -512,7 +517,7 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
       <a href="https://www.valeem.com/online-tuition/">Online Tuition</a>
       <a href="https://www.valeem.com/skills-courses/">Skills &amp; Courses</a>
       <a href="https://www.valeem.com/homeschool-pathways/">Homeschool Pathways</a>
-      <a href="https://www.valeem.com/teach-with-valeem/">Teach With Us</a>
+      <a href="https://www.valeem.com/teach-at-valeem/">Teach With Us</a>
       <a href="https://www.valeem.com/mod/page/view.php?id=2">About Us</a>
       <a href="#contact">Contact</a>
       <a href="https://www.valeem.com/login/index.php">Log In</a>
@@ -700,7 +705,7 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
     </ol>
     <div class="vet-foot">
       <p>A teacher who isn't the right fit for your child? We arrange another.</p>
-      <a href="https://www.valeem.com/teach-with-valeem/">Are you a teacher? Apply to teach</a>
+      <a href="https://www.valeem.com/teach-at-valeem/">Are you a teacher? Apply to teach</a>
     </div>
   </div>
 </section>
@@ -807,19 +812,19 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
       <p class="kicker">For teachers</p>
       <h2>Teach With Valeem.</h2>
       <p class="lede">Join 650+ educators teaching students in 14+ countries. If you hold an A or B grade in your subject and love explaining it, we will train you and match you with students.</p>
-      <div class="cta-row"><a class="btn btn-primary" href="https://www.valeem.com/teach-with-valeem/">Apply to Teach</a><a class="btn btn-ghost" href="https://www.valeem.com/teach-with-valeem/#process">See the Selection Process</a></div>
+      <div class="cta-row"><a class="btn btn-primary" href="https://www.valeem.com/teach-at-valeem/">Apply to Teach</a><a class="btn btn-ghost" href="https://www.valeem.com/teach-at-valeem/#process">See the Selection Process</a></div>
     </div>
   </div>
 </section>
 
-<!-- 11. CONTACT + DEMO FORM -->
+<!-- 11. CONTACT: Infinity free-trial form -->
 <section id="start" class="wash">
   <div class="wrap start-grid" id="contact">
     <div>
       <div class="head" style="margin-bottom:0">
         <p class="kicker">Contact us</p>
-        <h2>Book a Free Demo Class.</h2>
-        <p class="lede">Tell us what you need. A counsellor will call you to arrange a demo with a suitable teacher.</p>
+        <h2>Book a Free Trial Class.</h2>
+        <p class="lede">Tell us what you need. A counsellor will call you to arrange a free trial class with a suitable teacher.</p>
       </div>
       <ul class="contact-list">
         <li><a data-wa="contact" href="#" target="_blank" rel="noopener"><span class="badge"><svg class="icon"><use href="#i-wa"/></svg></span>WhatsApp +92 332 2636574</a></li>
@@ -827,46 +832,9 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
         <li><a href="tel:+923322636574"><span class="badge"><svg class="icon"><use href="#i-phone"/></svg></span>Call +92 332 2636574</a></li>
       </ul>
     </div>
-
-    <div class="form-card" id="demo">
-      <form id="leadForm" novalidate>
-        <h3>Request your free demo</h3>
-        <p>It takes about a minute.</p>
-        <fieldset>
-          <legend>Your details</legend>
-          <div class="f"><label for="pname">Parent or student name</label><input type="text" id="pname" name="parent_name" autocomplete="name" required><span class="err" id="pname-err"></span></div>
-          <div class="f"><label for="phone">WhatsApp or contact number</label><input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" placeholder="Include country code" required><span class="err" id="phone-err"></span></div>
-          <div class="f"><label for="email">Email address <small>(optional)</small></label><input type="email" id="email" name="email" autocomplete="email"><span class="err" id="email-err"></span></div>
-          <div class="f"><label for="city">City and country</label><input type="text" id="city" name="city_country" placeholder="e.g. Riyadh, Saudi Arabia" required><span class="err" id="city-err"></span></div>
-        </fieldset>
-        <fieldset>
-          <legend>What do you need?</legend>
-          <div class="f"><label for="prog">Programme</label>
-            <select id="prog" name="interests" required>
-              <option value="">Select</option>
-              <optgroup label="Online Tuition"><option>Online Tuition: IGCSE, O Level or A Level</option><option>Online Tuition: Grades 5–8</option></optgroup>
-              <optgroup label="Skills &amp; Courses"><option>Skills &amp; Courses: Coding</option><option>Skills &amp; Courses: IELTS, English or languages</option><option>Skills &amp; Courses: Quran</option></optgroup>
-              <optgroup label="Homeschool Pathways"><option>Homeschool Pathways</option></optgroup>
-              <option>Not sure yet</option>
-            </select><span class="err" id="prog-err"></span></div>
-          <div class="f"><label for="bg">Subject, course or class <small>(optional)</small></label><input type="text" id="bg" name="background" placeholder="e.g. O Level Physics, Grade 10"></div>
-          <div class="f full"><label for="msg">Anything else? <small>(optional)</small></label><textarea id="msg" name="message" placeholder="Goals, preferred timings, or anything we should know."></textarea></div>
-        </fieldset>
-        <label class="consent" for="consent"><input type="checkbox" id="consent" name="consent" required><span>I agree that Valeem may contact me by phone, WhatsApp or email about this enquiry.</span></label>
-        <span class="err" id="consent-err"></span>
-        <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_content"><input type="hidden" name="utm_term">
-        <input type="hidden" name="landing_page"><input type="hidden" name="referrer">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
-        <button class="btn btn-primary" type="submit" id="submitBtn">Book a Free Demo Class</button>
-        <div class="form-msg" id="formMsg" role="alert" hidden></div>
-        <p class="form-alt">Prefer to talk now? <a data-wa="form" href="#" target="_blank" rel="noopener">Chat with us on WhatsApp</a></p>
-      </form>
-      <div class="thanks" id="thanks" role="status" tabindex="-1" hidden>
-        <span class="tick"><svg class="icon" style="width:32px;height:32px"><use href="#i-check"/></svg></span>
-        <h3>Thank you. We've received your request.</h3>
-        <p>A Valeem counsellor will contact you shortly to understand what you need and arrange a free demo.</p>
-        <a class="btn btn-ghost" data-wa="thanks" href="#" target="_blank" rel="noopener"><svg class="icon"><use href="#i-wa"/></svg>Message us on WhatsApp</a>
-      </div>
+    <div class="form-card embed" id="demo">
+      <iframe data-infinity="student" src="https://app.startinfinity.com/form/iwRmYUkbwrC" title="Register for a free trial lesson" loading="lazy" class="inf inf-student"></iframe>
+      <p class="form-alt">Form not loading? <a href="https://app.startinfinity.com/form/iwRmYUkbwrC" target="_blank" rel="noopener" data-cta="infinity-open">Open it in a new tab</a> or <a data-wa="form" href="#" target="_blank" rel="noopener">WhatsApp us</a>.</p>
     </div>
   </div>
 </section>
@@ -915,7 +883,7 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
       </ul></div>
       <div><h4>Valeem</h4><ul>
         <li><a href="https://www.valeem.com/mod/page/view.php?id=2">About us</a></li>
-        <li><a href="https://www.valeem.com/teach-with-valeem/">Teach with Valeem</a></li>
+        <li><a href="https://www.valeem.com/teach-at-valeem/">Teach with Valeem</a></li>
         <li><a href="https://www.valeem.com/blog/">Blog</a></li>
         <li><a href="https://www.valeem.com/login/index.php">Student log in</a></li>
         <li><a href="https://www.valeem.com/mod/page/view.php?id=3">Terms &amp; Conditions</a></li>
@@ -1034,7 +1002,9 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
   function step(d){ strip.scrollBy({left: d * Math.max(320, strip.clientWidth * 0.6), behavior: still ? 'auto' : 'smooth'}); }
   $('#gPrev').addEventListener('click', function(){ step(-1); });
   $('#gNext').addEventListener('click', function(){ step(1); });
+  }
 
+  if($('#leadForm')){
   var form = $('#leadForm'), KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'], attr = {};
   try{ attr = JSON.parse(sessionStorage.getItem('vhome_attr') || '{}'); }catch(e){}
   try{
@@ -1095,6 +1065,13 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
     });
   });
   }
+
+  /* Infinity forms: count views and starts (the form itself sits on Infinity's site) */
+  $all('iframe[data-infinity]').forEach(function(fr){
+    var kind = fr.getAttribute('data-infinity'), seen = false, started = false;
+    if('IntersectionObserver' in window){ new IntersectionObserver(function(en, ob){ if(en[0].isIntersecting && !seen){ seen = true; track('infinity_form_view', {form:kind}); ob.disconnect(); } }, {threshold:.3}).observe(fr); }
+    window.addEventListener('blur', function(){ setTimeout(function(){ if(document.activeElement === fr && !started){ started = true; track('infinity_form_start', {form:kind}); } }, 0); });
+  });
 })();
 </script>
 </body>
