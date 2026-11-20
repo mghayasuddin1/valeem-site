@@ -10,6 +10,10 @@ deployment:
     - /bin/cp -R homeschool-pathways/. $DEPLOYPATH/homeschool-pathways/
     - /bin/mkdir -p $DEPLOYPATH/new-home
     - /bin/cp -R new-home/. $DEPLOYPATH/new-home/
+    - /bin/mkdir -p $DEPLOYPATH/online-tuition-saudi-arabia
+    - /bin/cp -R online-tuition-saudi-arabia/. $DEPLOYPATH/online-tuition-saudi-arabia/
+    - /bin/mkdir -p $DEPLOYPATH/online-tuition-uae
+    - /bin/cp -R online-tuition-uae/. $DEPLOYPATH/online-tuition-uae/
     - /bin/cp root-files/llms.txt $DEPLOYPATH/llms.txt
     - /bin/cp root-files/robots.txt $DEPLOYPATH/robots.txt
     - /bin/cp root-files/sitemap.xml $DEPLOYPATH/sitemap.xml
