@@ -315,6 +315,103 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
 @media (max-width:480px){.foot{grid-template-columns:1fr}}
 @media (min-width:761px){footer{padding-bottom:56px}}
 
+
+/* ===== Redesign (Nov 2026): banner, numbers, photo hover, folds, timeline ===== */
+.banner{position:relative;padding:0!important;min-height:620px;display:flex;align-items:center;overflow:hidden;background:var(--plum-deep);color:#fff}
+.banner picture{position:absolute;inset:0}
+.banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% 35%}
+.banner::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(43,17,69,.95) 0%,rgba(43,17,69,.86) 34%,rgba(43,17,69,.35) 62%,rgba(43,17,69,0) 82%)}
+.banner .wrap{position:relative;z-index:2;width:100%;padding-top:72px;padding-bottom:132px}
+.banner-copy{max-width:600px;display:flex;flex-direction:column;gap:20px}
+.banner h1{color:#fff}
+.banner h1 em{font-style:normal;color:#ffb366}
+.banner .kicker{color:#ffc48a}
+.banner .lede{color:#ece4f4;font-size:1.12rem;max-width:52ch}
+@media (max-width:760px){
+  .banner{display:block;min-height:0}
+  .banner picture{position:relative;display:block;aspect-ratio:900/742}
+  .banner picture::after{content:"";position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(rgba(43,17,69,0),var(--plum-deep))}
+  .banner::before{display:none}
+  .banner .wrap{padding-top:4px;padding-bottom:104px}
+  .banner .cta-row .btn{flex:1 1 100%}
+}
+.numbers{position:relative;z-index:3;margin-top:-80px}
+.numbers ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:0 30px 60px -36px rgba(43,17,69,.55);overflow:hidden}
+.numbers li{display:flex;gap:14px;align-items:center;padding:24px 22px;border-right:1px solid var(--line)}
+.numbers li:last-child{border-right:0}
+.numbers .badge{width:50px;height:50px;border-radius:14px;background:var(--wash);color:var(--plum);display:grid;place-items:center;flex:none}
+.numbers b{display:block;white-space:nowrap;font:700 clamp(1.3rem,2vw,1.6rem)/1.05 var(--display);color:var(--plum-deep);font-variant-numeric:tabular-nums}
+.numbers span{font-size:.9rem;color:var(--muted)}
+@media (max-width:900px){.numbers ul{grid-template-columns:1fr 1fr}.numbers li:nth-child(2){border-right:0}.numbers li:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+@media (max-width:520px){.numbers li{flex-direction:column;align-items:flex-start;padding:18px 16px;gap:10px}.numbers .badge{width:40px;height:40px}}
+#challenge{padding-top:64px}
+
+/* Photos: larger, with a soft brighten and light sweep on hover */
+.photo{isolation:isolate}
+.photo img{transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .8s ease}
+.photo::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,0) 38%,rgba(255,255,255,.3) 50%,rgba(255,255,255,0) 62%);transform:translateX(-130%);transition:transform 1s ease}
+.photo:hover img{transform:scale(1.045);filter:brightness(1.07) saturate(1.05)}
+.photo:hover::after{transform:translateX(130%)}
+.photo.tall{aspect-ratio:1000/850;border-radius:28px 28px 28px 110px}
+.stage .photo{margin:-28px -28px 6px;border:0;border-radius:0;aspect-ratio:16/10}
+.stage::before{z-index:2}
+.stage .photo img{object-position:50% 35%}
+
+/* Pathway infographic, larger with an icon per stage */
+.band{min-height:150px;padding:16px 18px;gap:6px}
+.band .ic{width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.14);display:grid;place-items:center;margin-bottom:6px;color:#fff}
+.band b{font-size:1.3rem}
+.b4 .ic{background:rgba(43,17,69,.14);color:var(--plum-deep)}
+.b5 .ic{background:var(--wash);color:var(--plum)}
+@media (max-width:860px){.band{min-height:0}.band .ic{display:none}}
+
+/* Folds */
+.fold-wrap{padding:56px 0}
+details.fold{border:1px solid var(--line);border-radius:22px;background:#fff;box-shadow:0 20px 40px -34px rgba(43,17,69,.5)}
+.fold-wrap.wash details.fold{background:#fff}
+details.fold>summary{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding:30px 32px;min-height:0;font:inherit;color:inherit;cursor:pointer;list-style:none;border-radius:22px}
+details.fold>summary::after{display:none}
+details.fold>summary:hover .fold-toggle{background:var(--plum);color:#fff;border-color:var(--plum)}
+.fold-head{display:flex;flex-direction:column;gap:10px}
+.fold-title{font:700 clamp(1.5rem,3vw,2.2rem)/1.15 var(--display);color:var(--plum-deep);letter-spacing:-.015em;text-wrap:balance}
+.fold-line{color:var(--muted);font-size:1.02rem}
+.fold-toggle{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border:2px solid var(--line);border-radius:999px;font:700 .82rem/1 var(--body);letter-spacing:.04em;text-transform:uppercase;color:var(--plum);white-space:nowrap;transition:background .2s,color .2s,border-color .2s}
+.fold-toggle .icon{width:18px;height:18px;transition:transform .3s}
+.fold-toggle .less-t,details.fold[open] .fold-toggle .more-t{display:none}
+details.fold[open] .fold-toggle .less-t{display:inline}
+details.fold[open] .fold-toggle .icon{transform:rotate(180deg)}
+.fold-body{padding:0 32px 32px;animation:foldIn .45s ease}
+@keyframes foldIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.fold-body.learn{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:start}
+.fold-body .ps-top{grid-template-columns:1.6fr .7fr;margin-bottom:24px;align-items:stretch}
+.fold-body .ps-top .photo{aspect-ratio:auto;min-height:320px}
+.fold-body .support-grid{grid-template-columns:repeat(2,1fr)}
+.fold-body .pull{margin-top:0}
+@media (max-width:900px){.fold-body.learn,.fold-body .ps-top{grid-template-columns:1fr}.fold-body .ps-top .photo{min-height:0;aspect-ratio:4/3}}
+@media (max-width:640px){details.fold>summary{grid-template-columns:1fr;padding:24px 20px;gap:16px}.fold-toggle{justify-self:start}.fold-body{padding:0 20px 24px}.fold-body .support-grid{grid-template-columns:1fr}.fold-wrap{padding:40px 0}}
+
+/* Getting-started timeline */
+.timeline{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:20px;position:relative}
+.timeline::before{content:"";position:absolute;left:10%;right:10%;top:30px;height:2px;background:repeating-linear-gradient(90deg,var(--line) 0 10px,transparent 10px 18px)}
+.timeline li{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px}
+.t-ic{width:62px;height:62px;border-radius:50%;background:var(--plum);color:#fff;display:grid;place-items:center;box-shadow:0 0 0 8px #fff;margin-bottom:8px;transition:transform .3s}
+.t-ic .icon{width:26px;height:26px}
+.timeline li:last-child .t-ic{background:var(--orange);color:var(--plum-deep)}
+.timeline li:hover .t-ic{transform:translateY(-3px)}
+.timeline b{font:700 1.05rem/1.3 var(--display);color:var(--plum-deep)}
+.timeline span:not(.t-ic){color:var(--muted);font-size:.93rem;max-width:22ch}
+@media (max-width:860px){
+  .timeline{grid-template-columns:1fr;gap:0;padding-left:8px}
+  .timeline::before{left:38px;right:auto;top:10px;bottom:10px;width:2px;height:auto;background:repeating-linear-gradient(180deg,var(--line) 0 10px,transparent 10px 18px)}
+  .timeline li{display:grid;grid-template-columns:62px 1fr;column-gap:16px;text-align:left;align-items:start;padding-bottom:18px}
+  .timeline .t-ic{grid-row:span 2;margin:0;width:56px;height:56px}
+  .timeline span:not(.t-ic){max-width:none}
+}
+@media (prefers-reduced-motion:reduce){.photo img,.photo::after,.t-ic,.fold-toggle .icon{transition:none}.fold-body{animation:none}.photo:hover img{transform:none}}
+
+/* Shorter text rhythm on phones */
+@media (max-width:640px){section{padding:56px 0}.head{margin-bottom:28px}.lede{font-size:1.02rem}.q-grid li{padding:16px 16px 16px 50px;font-size:1rem}}
+
 /* Sticky mobile CTA */
 .sticky{position:fixed;left:0;right:0;bottom:0;z-index:40;display:none;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(255,255,255,.97);border-top:1px solid var(--line)}
 .sticky .btn{min-height:48px;padding:10px 14px;font-size:.82rem}
@@ -349,6 +446,9 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
     <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.500-7-10a4 4 0 0 1 7-2.500A4 4 0 0 1 19 10c0 5.500-7 10-7 10z"/></symbol>
     <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
     <symbol id="i-clip" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2.500h6V4M9 10h6M9 14h6M9 18h3"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
   </defs>
 </svg>
 
@@ -373,49 +473,43 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
 
 <main>
 
-<!-- 1. HERO -->
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <p class="kicker">Valeem Homeschool Pathways · A programme by Valeem</p>
+<!-- 1. HERO BANNER -->
+<section class="banner">
+  <picture>
+    <source media="(max-width: 760px)" srcset="images/banner-mobile.webp" width="900" height="742">
+    <img src="images/banner.webp" alt="A young homeschooled student in headphones gives a thumbs up during a live online class" width="1920" height="872" fetchpriority="high">
+  </picture>
+  <div class="wrap">
+    <div class="banner-copy">
+      <p class="kicker">Valeem Homeschool Pathways</p>
       <h1>You've Chosen Homeschooling. Now Let's Build a <em>Clear Academic Pathway</em> for Your Child.</h1>
-      <p class="lede">Homeschooling gives families the flexibility to choose how their children learn. But building a structured academic journey, finding the right teachers and planning towards future qualifications can be challenging.</p>
-      <p class="lede">Valeem Homeschool Pathways brings together experienced educators, structured live online classes, academic counselling and parent support to help your child progress with confidence.</p>
+      <p class="lede">Experienced teachers, structured live online classes and academic counselling that take your child from strong foundations towards O Levels and A Levels.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#consultation" data-cta="hero">Book a Parent Consultation</a>
-        <a class="btn btn-ghost" data-wa="hero" href="#" target="_blank" rel="noopener"><svg class="icon"><use href="#i-wa"/></svg>Chat with us on WhatsApp</a>
-      </div>
-      <ul class="proof">
-        <li><b>Since 2019</b>delivering online education</li>
-        <li><b>650+</b>trained educators in the Valeem network</li>
-        <li><b>14+ countries</b>where Valeem students learn</li>
-      </ul>
-    </div>
-    <div class="hero-visual">
-      <figure class="photo" style="margin:0">
-        <img src="images/hero.webp" alt="A young student wearing headphones gives a thumbs up during an online class at home" width="1000" height="1075" fetchpriority="high">
-      </figure>
-      <div class="mini-path" aria-hidden="true">
-        <p>One continuous journey</p>
-        <ol>
-          <li style="--h:1">Explorers</li>
-          <li style="--h:2">Innovators</li>
-          <li style="--h:3">Scholars</li>
-          <li style="--h:4">O Levels</li>
-          <li style="--h:5">A Levels</li>
-        </ol>
+        <a class="btn btn-accent" href="#consultation" data-cta="hero">Book a Parent Consultation</a>
+        <a class="btn btn-ghost on-dark" data-wa="hero" href="#" target="_blank" rel="noopener"><svg class="icon"><use href="#i-wa"/></svg>Chat on WhatsApp</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 2. THE CHALLENGE -->
+<!-- 2. KEY NUMBERS (infographic) -->
+<div class="numbers">
+  <div class="wrap">
+    <ul aria-label="Valeem in numbers">
+      <li><span class="badge"><svg class="icon"><use href="#i-calendar"/></svg></span><div><b>Since 2019</b><span>teaching live online</span></div></li>
+      <li><span class="badge"><svg class="icon"><use href="#i-user"/></svg></span><div><b>650+</b><span>trained educators</span></div></li>
+      <li><span class="badge"><svg class="icon"><use href="#i-globe"/></svg></span><div><b>14+</b><span>countries</span></div></li>
+      <li><span class="badge"><svg class="icon"><use href="#i-users"/></svg></span><div><b>12–15</b><span>students per batch</span></div></li>
+    </ul>
+  </div>
+</div>
+
+<!-- 3. THE CHALLENGE -->
 <section id="challenge">
   <div class="wrap">
     <div class="head">
       <p class="kicker">If you are already homeschooling</p>
       <h2>You've Taken Charge of Your Child's Education. But Who's Helping You Plan the Academic Journey?</h2>
-      <p class="lede">Most homeschooling parents we speak with are confident about their decision. The questions come later, as children grow and the subjects get harder.</p>
     </div>
     <ul class="q-grid">
       <li>Are we following the right academic structure?</li>
@@ -429,17 +523,16 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
   </div>
 </section>
 
-<!-- 3. INTRODUCING THE PROGRAMME -->
+<!-- 4. INTRODUCING THE PROGRAMME -->
 <section id="about" class="wash">
-  <div class="wrap split">
-    <div class="head">
-      <p class="kicker">About the programme</p>
-      <h2>A Structured Academic Programme Designed for Homeschool Families.</h2>
-      <p class="lede">Valeem Homeschool Pathways is an online homeschooling programme that gives your child subject teachers, a clear progression and a long-term plan, while your family keeps the flexibility that made you choose homeschooling.</p>
-      <p class="lede">You stay in charge of your child's education. We bring the teaching, the structure and the guidance.</p>
-    </div>
+  <div class="wrap split" style="align-items:center">
+    <figure class="photo tall" style="margin:0"><img src="images/about.webp" alt="A student laughing during a live online class at home" width="1000" height="850" loading="lazy"></figure>
     <div>
-      <figure class="photo wide" style="margin:0 0 24px"><img src="images/learning-together.webp" alt="Two children learning together at home with a laptop" width="1000" height="638" loading="lazy"></figure>
+      <div class="head" style="margin-bottom:24px">
+        <p class="kicker">About the programme</p>
+        <h2>A Structured Academic Programme Designed for Homeschool Families.</h2>
+        <p class="lede">Subject teachers, a clear progression and a long-term plan, while your family keeps the flexibility of homeschooling. You stay in charge; we bring the teaching, structure and guidance.</p>
+      </div>
       <ul class="ticks">
         <li><svg class="icon"><use href="#i-check"/></svg>Structured live online learning</li>
         <li><svg class="icon"><use href="#i-check"/></svg>Experienced subject educators</li>
@@ -450,12 +543,12 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
         <li><svg class="icon"><use href="#i-check"/></svg>O Level and IGCSE preparation</li>
         <li><svg class="icon"><use href="#i-check"/></svg>LMS-supported learning</li>
       </ul>
-      <p class="umbrella"><strong>Part of Valeem.</strong> Homeschool Pathways is a dedicated programme within Valeem, the education technology company that has delivered live online education since 2019. It runs on the same teachers, systems and support that Valeem families already use.</p>
+      <p class="umbrella"><strong>Part of Valeem.</strong> Teaching live online since 2019, with the same teachers, systems and support Valeem families already use.</p>
     </div>
   </div>
 </section>
 
-<!-- 4. WHY FAMILIES CHOOSE VALEEM -->
+<!-- 5. WHY FAMILIES CHOOSE VALEEM -->
 <section id="why">
   <div class="wrap">
     <div class="head">
@@ -463,92 +556,94 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
       <h2>Flexibility for Your Family. Structure for Your Child's Future.</h2>
     </div>
     <div class="cards">
-      <article class="card"><span class="badge"><svg class="icon"><use href="#i-compass"/></svg></span><h3>Structure without rigidity</h3><p>A planned academic framework across three stages, without the fixed routine of a conventional school day.</p></article>
-      <article class="card"><span class="badge"><svg class="icon"><use href="#i-user"/></svg></span><h3>Experienced online educators</h3><p>Teachers drawn from Valeem's established network, trained to teach live and keep children engaged online.</p></article>
-      <article class="card"><span class="badge"><svg class="icon"><use href="#i-book"/></svg></span><h3>Subject-specific learning</h3><p>Each subject is taught by an educator who knows it, so you are not expected to teach everything yourself.</p></article>
-      <article class="card"><span class="badge"><svg class="icon"><use href="#i-heart"/></svg></span><h3>Support for parents and students</h3><p>A dedicated parent counsellor, one-to-one consultations and counselling that helps your child understand their own strengths.</p></article>
-      <article class="card"><span class="badge"><svg class="icon"><use href="#i-chart"/></svg></span><h3>Progress you can follow</h3><p>Regular progress updates, weekly recaps and digital resources through Valeem's learning management system.</p></article>
-      <article class="card"><span class="badge"><svg class="icon"><use href="#i-cap"/></svg></span><h3>Guidance towards qualifications</h3><p>A plan that looks ahead to O Levels, IGCSE and A Levels, including subject choices and the private-candidate route.</p></article>
+      <article class="card"><span class="badge"><svg class="icon"><use href="#i-compass"/></svg></span><h3>Structure without rigidity</h3><p>A planned framework across three stages, without a fixed school-day routine.</p></article>
+      <article class="card"><span class="badge"><svg class="icon"><use href="#i-user"/></svg></span><h3>Experienced online educators</h3><p>Teachers from Valeem's network, trained to teach live online.</p></article>
+      <article class="card"><span class="badge"><svg class="icon"><use href="#i-book"/></svg></span><h3>Subject-specific learning</h3><p>Each subject taught by a specialist, so you don't have to teach everything yourself.</p></article>
+      <article class="card"><span class="badge"><svg class="icon"><use href="#i-heart"/></svg></span><h3>Support for parents and students</h3><p>A dedicated parent counsellor and one-to-one consultations.</p></article>
+      <article class="card"><span class="badge"><svg class="icon"><use href="#i-chart"/></svg></span><h3>Progress you can follow</h3><p>Regular updates, weekly recaps and resources on our learning platform.</p></article>
+      <article class="card"><span class="badge"><svg class="icon"><use href="#i-cap"/></svg></span><h3>Guidance towards qualifications</h3><p>A plan towards O Levels, IGCSE and A Levels, including the private-candidate route.</p></article>
     </div>
   </div>
 </section>
 
-<!-- 5. THREE LEARNING STAGES -->
+<!-- 6. THREE LEARNING STAGES -->
 <section id="stages" class="wash">
   <div class="wrap">
     <div class="head">
       <p class="kicker">Our three learning stages</p>
       <h2>Explorers to Innovators to Scholars: Each Stage Prepares Your Child for the Next.</h2>
-      <p class="lede">Age ranges are a guide. Your child's placement also considers academic readiness, previous learning, strengths and individual needs.</p>
+      <p class="lede">Ages are a guide. Placement also considers readiness and previous learning.</p>
     </div>
     <div class="stages">
       <article class="stage s1">
+        <figure class="photo"><img src="images/live-class.webp" alt="A young student in headphones following a live lesson" width="1000" height="666" loading="lazy"></figure>
         <p class="step">Stage 1 · Foundation</p>
         <h3>Explorers</h3>
         <span class="age">Ages 7–9</span>
-        <p class="tag">Start with strong foundations. Build confidence for the journey ahead.</p>
+        <p class="tag">Strong foundations and the confidence for what comes next.</p>
         <dl>
           <div><dt>Subjects</dt><dd><ul class="chips"><li>English</li><li>Mathematics</li><li>Communication Skills</li></ul></dd></div>
-          <div><dt>Focus</dt><dd>Reading, writing and language foundations, numeracy, confident communication and consistent learning habits.</dd></div>
-          <div><dt>Your child leaves with</dt><dd>Solid literacy and numeracy, curiosity, and the confidence to take on more demanding work.</dd></div>
+          <div><dt>Focus</dt><dd>Literacy, numeracy, confident communication and learning habits.</dd></div>
+          <div><dt>Your child leaves with</dt><dd>Strong basics and the confidence for harder work.</dd></div>
         </dl>
       </article>
       <article class="stage s2">
+        <figure class="photo"><img src="images/learning-together.webp" alt="Two children learning together at home with a laptop" width="1000" height="638" loading="lazy"></figure>
         <p class="step">Stage 2 · Exploration</p>
         <h3>Innovators</h3>
         <span class="age">Ages 10–12</span>
         <p class="tag">Explore more. Think deeper. Discover your strengths.</p>
         <dl>
           <div><dt>Core subjects</dt><dd><ul class="chips"><li>English</li><li>Mathematics</li><li>Communication Skills</li></ul></dd></div>
-          <div><dt>Rotational subject exposure</dt><dd><ul class="chips"><li>Biology</li><li>Business Studies</li><li>Computer Science</li></ul></dd></div>
-          <div><dt>Focus</dt><dd>Analytical thinking, wider subject awareness, presentation skills and independent learning.</dd></div>
-          <div><dt>Your child leaves with</dt><dd>Stronger foundations and a clearer sense of which subjects interest them.</dd></div>
+          <div><dt>Rotational subjects</dt><dd><ul class="chips"><li>Biology</li><li>Business Studies</li><li>Computer Science</li></ul></dd></div>
+          <div><dt>Focus</dt><dd>Analytical thinking, presentation skills and independent learning.</dd></div>
+          <div><dt>Your child leaves with</dt><dd>A clearer sense of which subjects interest them.</dd></div>
         </dl>
       </article>
       <article class="stage s3">
+        <figure class="photo"><img src="images/student-laptop.webp" alt="A student working on a laptop at home" width="1000" height="731" loading="lazy"></figure>
         <p class="step">Stage 3 · Readiness</p>
         <h3>Scholars</h3>
         <span class="age">Ages 13–14</span>
         <p class="tag">Turn academic potential into a clear qualification pathway.</p>
         <dl>
-          <div><dt>Subjects</dt><dd>A subject combination planned with an academic counsellor around your child's strengths, goals and qualification requirements.</dd></div>
-          <div><dt>Focus</dt><dd>Academic maturity, subject specialisation, examination technique and the transition towards O Levels and IGCSE.</dd></div>
-          <div><dt>Your child leaves with</dt><dd>Deeper subject knowledge, independent study habits and a plan for examination entry.</dd></div>
+          <div><dt>Subjects</dt><dd>A combination planned with a counsellor around your child's strengths and goals.</dd></div>
+          <div><dt>Focus</dt><dd>Subject specialisation, exam technique and the move to O Levels and IGCSE.</dd></div>
+          <div><dt>Your child leaves with</dt><dd>Independent study habits and a plan for exam entry.</dd></div>
         </dl>
       </article>
     </div>
-    <p class="note">Children from around six and a half may be considered for Explorers, depending on readiness. In Innovators, students meet the wider subjects through a rotational model, so not every subject runs every week.</p>
+    <p class="note">Children from about six and a half may join Explorers, depending on readiness. Innovators' wider subjects rotate, so not every subject runs every week.</p>
     <div class="cta-band">
       <p>Not sure which stage fits your child? We'll help you work it out.</p>
-      <a class="btn btn-primary" href="#consultation" data-cta="stages">Find the Right Stage for Your Child</a>
+      <a class="btn btn-primary" href="#consultation" data-cta="stages">Find the Right Stage</a>
     </div>
   </div>
 </section>
 
-<!-- 6. LONG-TERM PATHWAY (priority section) -->
+<!-- 7. LONG-TERM PATHWAY (infographic) -->
 <section id="pathway" class="pathway">
   <div class="wrap">
     <div class="head">
       <p class="kicker">The long-term academic pathway</p>
       <h2>Homeschooling Today. Recognised Academic Qualifications Tomorrow.</h2>
-      <p class="lede">This is more than a set of online classes. It is a planned route for a homeschooled child, from first foundations to O Level and A Level preparation.</p>
+      <p class="lede">A planned route from first foundations to O Level and A Level preparation.</p>
     </div>
     <ol class="climb" aria-label="Academic pathway from Explorers to A Levels">
-      <li class="band b1"><i>Ages 7–9</i><b>Explorers</b><span>Strong foundations</span></li>
-      <li class="band b2"><i>Ages 10–12</i><b>Innovators</b><span>Subject exploration and academic development</span></li>
-      <li class="band b3"><i>Ages 13–14</i><b>Scholars</b><span>Subject specialisation and examination readiness</span></li>
-      <li class="band b4"><i>Typically ages 13–15</i><b>O Levels</b><span>Staged examination sittings, depending on readiness</span></li>
-      <li class="band b5"><i>The following two years</i><b>A Levels</b><span>Further subject specialisation</span></li>
+      <li class="band b1"><span class="ic"><svg class="icon"><use href="#i-compass"/></svg></span><i>Ages 7–9</i><b>Explorers</b><span>Strong foundations</span></li>
+      <li class="band b2"><span class="ic"><svg class="icon"><use href="#i-bulb"/></svg></span><i>Ages 10–12</i><b>Innovators</b><span>Subject exploration</span></li>
+      <li class="band b3"><span class="ic"><svg class="icon"><use href="#i-route"/></svg></span><i>Ages 13–14</i><b>Scholars</b><span>Exam readiness</span></li>
+      <li class="band b4"><span class="ic"><svg class="icon"><use href="#i-clip"/></svg></span><i>Typically 13–15</i><b>O Levels</b><span>Sat in stages, by readiness</span></li>
+      <li class="band b5"><span class="ic"><svg class="icon"><use href="#i-cap"/></svg></span><i>The next two years</i><b>A Levels</b><span>Further specialisation</span></li>
     </ol>
     <ol class="ages" aria-hidden="true"><li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li>12</li><li>13</li><li>14</li><li>15</li><li>16</li><li>17</li></ol>
     <p class="ages-label">Indicative age of the student</p>
-
     <div class="path-notes">
-      <div><h3>Foundation years</h3><p>Explorers and Innovators build subject understanding, learning habits, curiosity and academic confidence.</p></div>
-      <div><h3>O Levels in stages</h3><p>The intended plan is for suitable students to begin their first O Level examinations at around age 13, with remaining subjects spread across later sittings, typically by 14–15. Your child does not have to sit every subject at once.</p></div>
-      <div><h3>On to A Levels</h3><p>After O Levels, students can progress towards A Levels over roughly the next two academic years, with guidance on subject choices and planning.</p></div>
+      <div><h3>Foundation years</h3><p>Explorers and Innovators build understanding, learning habits and confidence.</p></div>
+      <div><h3>O Levels in stages</h3><p>Suitable students may sit their first O Levels around age 13, with the rest typically by 14–15. Not every subject at once.</p></div>
+      <div><h3>On to A Levels</h3><p>About two further years, with guidance on subject choices.</p></div>
     </div>
-    <p class="caveat"><strong>Readiness comes first.</strong> Ages are a planning reference, not a promise. The timing of any examination depends on your child's academic readiness, subject choices and the requirements of the examination board and examination centre.</p>
+    <p class="caveat"><strong>Readiness comes first.</strong> Ages are a planning guide, not a promise. Exam timing depends on readiness, subject choices and the rules of the examination board and centre.</p>
     <div class="cta-band">
       <p>See where your child sits on this pathway today.</p>
       <a class="btn btn-accent" href="#consultation" data-cta="pathway">Book a Parent Consultation</a>
@@ -556,90 +651,97 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
   </div>
 </section>
 
-<!-- 7. HOW LEARNING HAPPENS -->
-<section id="learning">
-  <div class="wrap learn">
-    <div>
-      <div class="head" style="margin-bottom:24px">
-        <p class="kicker">How learning happens</p>
-        <h2>Live Teaching, Real Interaction and Time to Revise.</h2>
-        <p class="lede">Your child learns with a teacher, not from a playlist of videos.</p>
-      </div>
-      <figure class="photo wide" style="margin:0">
-        <img src="images/live-class.webp" alt="A student wearing headphones follows a live Valeem class on a laptop" width="1000" height="666" loading="lazy">
-      </figure>
-      <div class="skills">
-        <h3>Skills beyond the core subjects</h3>
-        <ul class="chips"><li>Communication Skills</li><li>Coding and Digital Literacy</li><li>Creativity and Innovation</li><li>Future-Ready Learning</li><li>Personal Development</li></ul>
-        <p>These complementary areas run according to the current programme schedule for each cohort.</p>
-      </div>
-    </div>
-    <ul class="feature-list">
-      <li><span class="badge"><svg class="icon"><use href="#i-live"/></svg></span><div><h3>Live interactive online classes</h3><p>Your child asks questions, gets answers and takes part in the lesson with an experienced educator.</p></div></li>
-      <li><span class="badge"><svg class="icon"><use href="#i-bulb"/></svg></span><div><h3>Concept-based teaching</h3><p>Teachers explain why something works, so your child understands it instead of memorising it.</p></div></li>
-      <li><span class="badge"><svg class="icon"><use href="#i-puzzle"/></svg></span><div><h3>Activity-based learning</h3><p>Activities and practical exercises let children apply what they learn and stay engaged.</p></div></li>
-      <li><span class="badge"><svg class="icon"><use href="#i-loop"/></svg></span><div><h3>Weekly recap sessions</h3><p>The week's concepts are revisited so they stay, and gaps are caught early.</p></div></li>
-      <li><span class="badge"><svg class="icon"><use href="#i-play"/></svg></span><div><h3>Recorded lessons for revision</h3><p>Where recordings are available, your child can return to a lesson and revise at their own pace.</p></div></li>
-      <li><span class="badge"><svg class="icon"><use href="#i-book"/></svg></span><div><h3>Digital learning resources</h3><p>Relevant learning materials are shared with students to support each subject.</p></div></li>
-      <li><span class="badge"><svg class="icon"><use href="#i-grid"/></svg></span><div><h3>Learning Management System</h3><p>Resources, materials and academic coordination are organised in one online learning environment.</p></div></li>
-    </ul>
-  </div>
-</section>
-
-<!-- 8. PARENT SUPPORT -->
-<section id="parent-support" class="wash">
+<!-- 8. HOW LEARNING HAPPENS (fold) -->
+<section class="fold-wrap">
   <div class="wrap">
-    <div class="ps-top">
-    <div class="head" style="margin-bottom:0">
-      <p class="kicker">Parent support and academic counselling</p>
-      <h2>We're Not Just Supporting the Student. We're Supporting the Parent Too.</h2>
-      <p class="lede">Academic decisions work best when they reflect your child's individual strengths, interests and readiness. Our counsellors help you make them with clear information.</p>
-    </div>
-    <figure class="photo" style="margin:0"><img src="images/counsellor.webp" alt="A member of the Valeem team working on a laptop" width="800" height="997" loading="lazy"></figure>
-    </div>
-    <div class="support-grid">
-      <article class="card"><span class="badge"><svg class="icon"><use href="#i-user"/></svg></span><h3>Dedicated parent counsellor</h3><p>One person who knows your family and your child's journey.</p></article>
-      <article class="card"><span class="badge"><svg class="icon"><use href="#i-chat"/></svg></span><h3>One-to-one consultations</h3><p>Private conversations about progress, concerns and next steps.</p></article>
-      <article class="card"><span class="badge"><svg class="icon"><use href="#i-chart"/></svg></span><h3>Regular progress updates</h3><p>You know how your child is doing and what needs attention.</p></article>
-      <article class="card"><span class="badge"><svg class="icon"><use href="#i-route"/></svg></span><h3>Academic counselling</h3><p>Planning what to study at each stage and when to move on.</p></article>
-      <article class="card"><span class="badge"><svg class="icon"><use href="#i-users"/></svg></span><h3>Student counselling</h3><p>Helping your child recognise their interests, strengths and goals.</p></article>
-      <article class="card"><span class="badge"><svg class="icon"><use href="#i-clip"/></svg></span><h3>Subject-selection guidance</h3><p>Choosing subjects that fit your child's strengths and future plans.</p></article>
-      <article class="card"><span class="badge"><svg class="icon"><use href="#i-cap"/></svg></span><h3>Examination pathway guidance</h3><p>Understanding the route to O Levels, IGCSE and A Levels.</p></article>
-      <article class="card"><span class="badge"><svg class="icon"><use href="#i-heart"/></svg></span><h3>Ongoing communication</h3><p>A team you can reach when questions come up during the year.</p></article>
-    </div>
-    <div class="pull">
-      <svg class="icon"><use href="#i-heart"/></svg>
-      <p>You don't have to figure out your child's entire academic journey alone. Valeem guides both the student and the parent.</p>
-    </div>
-    <div class="cta-band" style="background:#fff">
-      <p>Talk to a homeschool counsellor about your child.</p>
-      <a class="btn btn-primary" href="#consultation" data-cta="parent-support">Book a Parent Consultation</a>
-    </div>
+    <details class="fold" id="learning">
+      <summary>
+        <span class="fold-head">
+          <span class="kicker">How learning happens</span>
+          <span class="fold-title">Live Teaching, Real Interaction and Time to Revise.</span>
+          <span class="fold-line">Your child learns with a teacher, not from a playlist of videos.</span>
+        </span>
+        <span class="fold-toggle" aria-hidden="true"><span class="more-t">See how classes work</span><span class="less-t">Show less</span><svg class="icon"><use href="#i-chevron"/></svg></span>
+      </summary>
+      <div class="fold-body learn">
+        <div>
+          <figure class="photo wide" style="margin:0"><img src="images/learning.webp" alt="A student smiling while taking part in a live online lesson" width="1000" height="625" loading="lazy"></figure>
+          <div class="skills">
+            <h3>Skills beyond the core subjects</h3>
+            <ul class="chips"><li>Communication Skills</li><li>Coding and Digital Literacy</li><li>Creativity and Innovation</li><li>Future-Ready Learning</li><li>Personal Development</li></ul>
+            <p>These run according to each cohort's current schedule.</p>
+          </div>
+        </div>
+        <ul class="feature-list">
+          <li><span class="badge"><svg class="icon"><use href="#i-live"/></svg></span><div><h3>Live interactive classes</h3><p>Your child asks, answers and takes part with an experienced educator.</p></div></li>
+          <li><span class="badge"><svg class="icon"><use href="#i-bulb"/></svg></span><div><h3>Concept-based teaching</h3><p>Understanding why something works, not memorising it.</p></div></li>
+          <li><span class="badge"><svg class="icon"><use href="#i-puzzle"/></svg></span><div><h3>Activity-based learning</h3><p>Practical exercises that keep children engaged.</p></div></li>
+          <li><span class="badge"><svg class="icon"><use href="#i-loop"/></svg></span><div><h3>Weekly recap sessions</h3><p>Concepts revisited and gaps caught early.</p></div></li>
+          <li><span class="badge"><svg class="icon"><use href="#i-play"/></svg></span><div><h3>Recorded lessons</h3><p>Revise at their own pace, where recordings are available.</p></div></li>
+          <li><span class="badge"><svg class="icon"><use href="#i-book"/></svg></span><div><h3>Digital learning resources</h3><p>Materials shared for each subject.</p></div></li>
+          <li><span class="badge"><svg class="icon"><use href="#i-grid"/></svg></span><div><h3>Learning Management System</h3><p>Resources and coordination in one online place.</p></div></li>
+        </ul>
+      </div>
+    </details>
   </div>
 </section>
 
-<!-- 9. EXAMINATION GUIDANCE -->
+<!-- 9. PARENT SUPPORT (fold) -->
+<section class="fold-wrap wash">
+  <div class="wrap">
+    <details class="fold" id="parent-support">
+      <summary>
+        <span class="fold-head">
+          <span class="kicker">Parent support and academic counselling</span>
+          <span class="fold-title">We're Not Just Supporting the Student. We're Supporting the Parent Too.</span>
+          <span class="fold-line">Clear advice on stages, subjects and exams, for you and your child.</span>
+        </span>
+        <span class="fold-toggle" aria-hidden="true"><span class="more-t">See parent support</span><span class="less-t">Show less</span><svg class="icon"><use href="#i-chevron"/></svg></span>
+      </summary>
+      <div class="fold-body">
+        <div class="ps-top">
+          <div class="support-grid">
+            <article class="card"><span class="badge"><svg class="icon"><use href="#i-user"/></svg></span><h3>Dedicated parent counsellor</h3><p>One person who knows your family and your child's journey.</p></article>
+            <article class="card"><span class="badge"><svg class="icon"><use href="#i-chat"/></svg></span><h3>One-to-one consultations</h3><p>Private conversations about progress and next steps.</p></article>
+            <article class="card"><span class="badge"><svg class="icon"><use href="#i-chart"/></svg></span><h3>Regular progress updates</h3><p>You know how your child is doing and what needs attention.</p></article>
+            <article class="card"><span class="badge"><svg class="icon"><use href="#i-route"/></svg></span><h3>Academic counselling</h3><p>What to study at each stage and when to move on.</p></article>
+            <article class="card"><span class="badge"><svg class="icon"><use href="#i-users"/></svg></span><h3>Student counselling</h3><p>Helping your child recognise their strengths and goals.</p></article>
+            <article class="card"><span class="badge"><svg class="icon"><use href="#i-clip"/></svg></span><h3>Subject-selection guidance</h3><p>Subjects that fit your child's strengths and plans.</p></article>
+            <article class="card"><span class="badge"><svg class="icon"><use href="#i-cap"/></svg></span><h3>Examination pathway guidance</h3><p>The route to O Levels, IGCSE and A Levels.</p></article>
+            <article class="card"><span class="badge"><svg class="icon"><use href="#i-heart"/></svg></span><h3>Ongoing communication</h3><p>A team you can reach whenever questions come up.</p></article>
+          </div>
+          <figure class="photo" style="margin:0"><img src="images/counsellor.webp" alt="A member of the Valeem team working on a laptop" width="800" height="997" loading="lazy"></figure>
+        </div>
+        <div class="pull">
+          <svg class="icon"><use href="#i-heart"/></svg>
+          <p>You don't have to figure out your child's academic journey alone. Valeem guides both the student and the parent.</p>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- 10. EXAMINATION GUIDANCE -->
 <section id="exams">
   <div class="wrap split">
     <div class="head">
       <p class="kicker">Examination guidance</p>
       <h2>Preparing for O Levels? Let's Plan the Journey Properly.</h2>
-      <p class="lede">O Level preparation for homeschool students involves more than lessons. Subjects, timing and the private-candidate route all need planning, and we help you with each.</p>
-      <figure class="photo wide" style="margin:6px 0 0"><img src="images/student-laptop.webp" alt="A student working on a laptop at home" width="1000" height="731" loading="lazy"></figure>
-      <p class="fineprint">Final examination entry requirements and arrangements are set by the relevant examination board and examination centre. Subject availability for private candidates, practical components, registration deadlines and entry conditions vary by year and country, so we check them with you for your child's situation. Valeem is not a Cambridge school or an examination centre.</p>
+      <p class="lede">Subjects, timing and the private-candidate route all need planning. We help with each.</p>
+      <p class="fineprint">Entry rules, subject availability, practicals and deadlines are set by the examination board and centre, and vary by year and country; we check them for your child. Valeem is not a Cambridge school or examination centre.</p>
     </div>
     <ul class="exam-list" style="grid-template-columns:1fr">
-      <li><h3>Academic preparation</h3><p>Subject teaching aimed at Cambridge O Level and IGCSE pathways, using relevant British-curriculum coursebooks.</p></li>
-      <li><h3>Subject planning</h3><p>A subject combination and sitting plan built around your child's strengths and goals.</p></li>
-      <li><h3>Past papers and examination technique</h3><p>Practice and technique support where it is relevant to the subject and stage.</p></li>
-      <li><h3>Readiness evaluation</h3><p>An honest view of whether your child is ready for a sitting, before you commit to one.</p></li>
-      <li><h3>Private-candidate guidance</h3><p>Help understanding how homeschooled students can register and sit as private candidates, and what examination boards and centres require.</p></li>
-      <li><h3>A Level planning</h3><p>Early thinking about what comes after O Levels, so subject choices keep options open.</p></li>
+      <li><h3>Academic preparation</h3><p>Teaching aimed at Cambridge O Level and IGCSE, with British-curriculum coursebooks.</p></li>
+      <li><h3>Subject planning</h3><p>A subject combination and sitting plan built around your child's strengths.</p></li>
+      <li><h3>Past papers and exam technique</h3><p>Practice where it is relevant to the subject and stage.</p></li>
+      <li><h3>Readiness evaluation</h3><p>An honest view before you commit to a sitting.</p></li>
+      <li><h3>Private-candidate guidance</h3><p>How homeschooled students register and sit as private candidates.</p></li>
+      <li><h3>A Level planning</h3><p>Subject choices that keep future options open.</p></li>
     </ul>
   </div>
 </section>
 
-<!-- 10. THE VALEEM DIFFERENCE -->
+<!-- 11. THE VALEEM DIFFERENCE -->
 <section id="difference" class="wash">
   <div class="wrap">
     <div class="head">
@@ -647,62 +749,70 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
       <h2>Built on Years of Experience in Online Education. Designed for the Homeschool Journey.</h2>
     </div>
     <div class="stats">
-      <div><b>Since 2019</b><span>Delivering live online education, with foundations laid in November 2018.</span></div>
-      <div><b>650+</b><span>Trained online educators across Valeem's wider teaching network.</span></div>
-      <div><b>14+ countries</b><span>Where students have learned with Valeem, including Pakistan and the Gulf.</span></div>
-      <div><b>Thousands</b><span>Of students served through Valeem's online education.</span></div>
-      <div><b>Dedicated</b><span>A homeschooling academic programme with its own structure and counselling.</span></div>
-      <div><b>Running now</b><span>Homeschooling families are already learning with us in Explorers and Innovators cohorts.</span></div>
+      <div><b>Thousands</b><span>of students taught online by Valeem.</span></div>
+      <div><b>Dedicated</b><span>a homeschool programme with its own structure and counselling.</span></div>
+      <div><b>Running now</b><span>Explorers and Innovators cohorts are already learning with us.</span></div>
     </div>
-    <p class="story">Homeschool Pathways grew out of our conversations with homeschooling parents. They told us individual subject tuition was not enough. They needed a structured programme, consistent teachers, academic counselling and a realistic route to future qualifications. We built the programme around those needs, and it continues to be shaped by the families in it.</p>
-    <p class="story" style="margin-top:12px">Classes are online, so families across Pakistan can join from any city. Families in the UAE, Saudi Arabia and other Gulf countries are welcome to enquire; scheduling, subjects and examination arrangements are confirmed during consultation.</p>
+    <p class="story">Homeschool Pathways grew out of conversations with homeschooling parents who needed more than subject tuition: structure, consistent teachers, counselling and a realistic route to qualifications. Families across Pakistan, the UAE, Saudi Arabia and the wider Gulf are welcome to enquire.</p>
   </div>
 </section>
 
-<!-- 11. PARENT VOICES -->
+<!-- 12. PARENT VOICES -->
 <section id="voices">
   <div class="wrap voices">
     <div class="head" style="margin-bottom:0">
       <p class="kicker">Parent voices and our team</p>
       <h2>Real Experiences, Shared Only With Permission.</h2>
-      <p class="lede">We publish parent experiences only when a family has agreed to share them, in their own words. As our current families give their permission, their stories will appear here.</p>
-      <p class="lede">Until then, meet the person who leads the programme, and how we promise to work with every parent.</p>
+      <p class="lede">We publish parent stories only with their permission. Until then, meet the person who leads the programme and how we work with every family.</p>
     </div>
     <!-- TESTIMONIALS: add only genuine, approved quotes. Template:
     <figure class="card"><blockquote>"Approved quote"</blockquote><figcaption>Parent of an Explorers student, Lahore (shared with permission)</figcaption></figure> -->
     <div>
     <article class="person">
       <span class="avatar" aria-hidden="true">AS</span>
-      <!-- When Valeem supplies her approved photo and profile: replace the avatar span with
-           <img class="avatar" src="images/anisa-saba-abbasi.webp" alt="Anisa Saba Abbasi" width="72" height="72"> and extend the paragraph below. -->
-      <div><p class="role">Programme Head</p><h3>Anisa Saba Abbasi</h3><p>An IBA graduate, author, certified STREAM educator and homeschooling mother, Anisa leads Valeem Homeschool Pathways. Her focus is bridging the gap between homeschooling and formal qualifications: building meaningful academic pathways, connecting homeschoolers with subject specialists and mentors, and helping families guide their children confidently into higher education.</p></div>
+      <div><p class="role">Programme Head</p><h3>Anisa Saba Abbasi</h3><p>An IBA graduate, author, certified STREAM educator and homeschooling mother, Anisa leads Valeem Homeschool Pathways. She focuses on bridging homeschooling and formal qualifications, connecting families with subject specialists and mentors.</p></div>
     </article>
     <ul class="principles">
-      <li><h3>We listen first</h3><p>Every family starts with a conversation about their child, before any programme is recommended.</p></li>
-      <li><h3>We keep you informed</h3><p>You hear about progress and concerns from us, without having to chase.</p></li>
-      <li><h3>We give honest advice</h3><p>If your child needs more time before a stage or an examination, we will say so.</p></li>
+      <li><h3>We listen first</h3><p>Every family starts with a conversation about their child.</p></li>
+      <li><h3>We keep you informed</h3><p>You hear about progress and concerns without having to chase.</p></li>
+      <li><h3>We give honest advice</h3><p>If your child needs more time before a stage or exam, we say so.</p></li>
     </ul>
     </div>
   </div>
 </section>
 
-<!-- 12. HOW TO GET STARTED + FORM -->
+<!-- 13. GETTING STARTED (timeline infographic) -->
+<section id="steps">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">How to get started</p>
+      <h2>Your Homeschool Journey Starts With a Conversation.</h2>
+    </div>
+    <ol class="timeline">
+      <li><span class="t-ic"><svg class="icon"><use href="#i-chat"/></svg></span><b>Send an enquiry</b><span>Use the form or WhatsApp.</span></li>
+      <li><span class="t-ic"><svg class="icon"><use href="#i-user"/></svg></span><b>Speak with a counsellor</b><span>We call to arrange a convenient time.</span></li>
+      <li><span class="t-ic"><svg class="icon"><use href="#i-compass"/></svg></span><b>Discuss your child's needs</b><span>Age, background, homeschooling and goals.</span></li>
+      <li><span class="t-ic"><svg class="icon"><use href="#i-route"/></svg></span><b>Get a recommendation</b><span>Stage, subjects, timetable, fees and support.</span></li>
+      <li><span class="t-ic"><svg class="icon"><use href="#i-check"/></svg></span><b>Decide to enrol</b><span>We guide you through onboarding.</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 14. CONSULTATION FORM -->
 <section id="start" class="wash">
   <div class="wrap start-grid">
     <div>
       <div class="head" style="margin-bottom:0">
-        <p class="kicker">How to get started</p>
-        <h2>Your Homeschool Journey Starts With a Conversation.</h2>
-        <p class="lede">A consultation carries no obligation. It is a chance for us to understand your child and for you to ask anything.</p>
+        <p class="kicker">Book a consultation</p>
+        <h2>Tell Us About Your Child.</h2>
+        <p class="lede">No obligation: a chance for us to understand your child and for you to ask anything.</p>
       </div>
-      <ol class="steps">
-        <li><div><b>Submit an enquiry</b><span>Use the form or message us on WhatsApp.</span></div></li>
-        <li><div><b>Speak with our homeschool counsellor</b><span>We contact you to arrange a convenient time.</span></div></li>
-        <li><div><b>Discuss your child's learning needs</b><span>Age, background, current homeschooling and goals.</span></div></li>
-        <li><div><b>Receive a recommended stage and programme</b><span>With subjects, timetable, fees and available support.</span></div></li>
-        <li><div><b>Decide whether to enrol</b><span>If you go ahead, we guide you through onboarding.</span></div></li>
-      </ol>
-      <a class="btn btn-ghost" data-wa="start" href="#" target="_blank" rel="noopener" style="margin-top:8px"><svg class="icon"><use href="#i-wa"/></svg>Chat with us on WhatsApp</a>
+      <ul class="ticks" style="grid-template-columns:1fr;margin-top:24px">
+        <li><svg class="icon"><use href="#i-check"/></svg>Takes about two minutes</li>
+        <li><svg class="icon"><use href="#i-check"/></svg>A counsellor contacts you to arrange a time</li>
+        <li><svg class="icon"><use href="#i-check"/></svg>No commitment to enrol</li>
+      </ul>
+      <a class="btn btn-ghost" data-wa="start" href="#" target="_blank" rel="noopener" style="margin-top:24px"><svg class="icon"><use href="#i-wa"/></svg>Chat with us on WhatsApp</a>
     </div>
 
     <div class="form-card" id="consultation">
@@ -772,7 +882,7 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
   </div>
 </section>
 
-<!-- 13. FAQ -->
+<!-- 15. FAQ -->
 <section id="faqs">
   <div class="wrap">
     <div class="head">
@@ -812,7 +922,7 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
   </div>
 </section>
 
-<!-- 14. FINAL CTA -->
+<!-- 16. FINAL CTA -->
 <section style="padding-top:0">
   <div class="wrap">
     <div class="final">
@@ -925,6 +1035,11 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
   }
 
   $('#yr').textContent = new Date().getFullYear();
+  /* Open a fold when someone follows a link to it (menu or shared link) */
+  function openFold(){ var id = location.hash.slice(1); var el = id && document.getElementById(id); if(el && el.tagName === 'DETAILS'){ el.open = true; } }
+  window.addEventListener('hashchange', openFold); openFold();
+  $all('details.fold').forEach(function(d){ d.addEventListener('toggle', function(){ if(d.open) track('fold_open', {section:d.id}); }); });
+
 
   /* Attribution: keep UTM values from the first page view of the visit */
   var form = $('#leadForm'), KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'], attr = {};
