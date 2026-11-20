@@ -370,7 +370,7 @@ home_faq = [
   ("How does payment work?", "Once you are happy with the demo and the teacher, we send a monthly invoice and the plan renews each month. Many families pay from a Saudi or Pakistani bank account."),
  ]),
  ("Skills & Homeschool", [
-  ("What skills courses do you offer?", "Coding (Scratch for young learners; Python, SQL and Power BI for teens and adults), IELTS preparation, English improvement, language classes and Quran classes."),
+  ("What skills courses do you offer?", "Coding (Scratch for young learners; Python, SQL and Power BI for teens and adults), IELTS preparation, English improvement, language classes (English, Urdu, Arabic, Chinese and German) and Quran classes."),
   ("What is Homeschool Pathways?", "A structured online programme for homeschooled children aged 7 to 14, with three learning stages and guidance towards O Level and A Level. Full details and fees are on the Homeschool Pathways page.", ("Homeschool Pathways page", B + "/homeschool-pathways/")),
  ]),
  ("Getting started", [
@@ -403,7 +403,7 @@ url = B + '/online-tuition/'
 tq = [
  ("", [
   ("Which levels does Valeem teach?", "IGCSE, O Level and A Level (AS and A2), usually from Grade 8 upwards. We also teach younger students from Grade 5 in English and Maths, and help with homework."),
-  ("Which subjects can my child study?", "Tell us the subject and your child's board and level. We match a teacher who holds an A or B grade in that subject and has passed our interview and training."),
+  ("Which subjects can my child study?", "All subjects offered for IGCSE, O Level and A Level in schools in Pakistan and Saudi Arabia. We match a teacher who holds an A or B grade in that subject and has passed our interview and training."),
   ("Are classes one-to-one?", "Yes. Every Online Tuition class is live and one-to-one, so the teacher follows your child's syllabus, pace and goals."),
   ("How much does online tuition cost?", "Tuition is a monthly plan. The fee depends on the grade, the number of months, classes per week, class length and whether you want a fixed time slot. A counsellor shares the fee after the free demo."),
   ("How do we pay?", "We send a monthly invoice and the plan renews each month. Many families pay from a Saudi or Pakistani bank account."),
@@ -436,7 +436,7 @@ main = page_hero('Online Tuition', 'Online Tuition · IGCSE · O Level · A Leve
     <div class="head">
       <p class="kicker">Levels we teach</p>
       <h2>A Teacher for Every Step, From Grade 5 to A Level.</h2>
-      <p class="lede">Most of our students take IGCSE and O Level, and stay with us into A Level.</p>
+      <p class="lede">Every subject taught for IGCSE, O Level and A Level in schools in Pakistan and Saudi Arabia.</p>
     </div>
     <ol class="ladder light" aria-label="Online tuition levels">
       <li><span class="ic"><svg class="icon"><use href="#i-book"/></svg></span><i>Grades 5–7</i><b>Strong Basics</b><span>English, Maths and homework support.</span></li>
@@ -514,7 +514,7 @@ sq = [("", [
   ("What coding courses does Valeem offer?", "Scratch for young learners, and Python, SQL and Power BI for teenagers and adults. Classes are live with a Valeem teacher."),
   ("What age can my child start coding?", "Young learners start with Scratch, a visual way to learn coding. Tell us your child's age and we will suggest the right starting point."),
   ("Do you offer IELTS preparation?", "Yes. IELTS preparation is taught live for teenagers and adults, alongside English improvement classes."),
-  ("Which languages do you teach?", "Tell us the language you want to learn and your current level, and a counsellor will confirm availability and timings."),
+  ("Which languages do you teach?", "English, Urdu, Arabic, Chinese and German, for children and adults, from beginner level upwards."),
   ("Do you offer Quran classes?", "Yes. Live online Quran classes are available for children and adults."),
   ("How are courses priced?", "Courses are billed monthly. The fee depends on the course, classes per week and class length, and is shared after a free demo."),
 ])]
@@ -554,7 +554,7 @@ main = page_hero('Skills &amp; Courses', 'Skills &amp; Courses · Children and a
     <div class="courses">
 {ccard('kids.webp', 'A young learner in headphones giving a thumbs up at his laptop', 'Young learners', 'Coding for Kids', 'Children learn to think like coders with Scratch, building games and stories step by step.', ['Scratch', 'Logic', 'Problem solving'], 'Skills &amp; Courses: Coding')}
 {ccard('adults.webp', 'An adult learner working through a data exercise on his laptop', 'Teens and adults', 'Coding and Data', 'Job-ready skills for students and working adults, from first lines of code to dashboards.', ['Python', 'SQL', 'Power BI'], 'Skills &amp; Courses: Coding', 'var(--plum)')}
-{ccard('english.webp', 'A student smiling while practising English on her laptop', 'Teens and adults', 'English and IELTS', 'Prepare for IELTS, speak and write with confidence, or learn a new language.', ['IELTS', 'English improvement', 'Language classes'], 'Skills &amp; Courses: IELTS, English or languages', '#a784c7')}
+{ccard('english.webp', 'A student smiling while practising English on her laptop', 'Teens and adults', 'Languages and IELTS', 'Prepare for IELTS, speak and write with confidence, or learn a new language.', ['IELTS', 'English', 'Urdu', 'Arabic', 'Chinese', 'German'], 'Skills &amp; Courses: IELTS, English or languages', '#a784c7')}
       <article class="course solid">
         <div class="course-body">
           <span class="big-ic"><svg class="icon" style="width:28px;height:28px"><use href="#i-book"/></svg></span>

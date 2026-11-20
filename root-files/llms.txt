@@ -8,10 +8,11 @@
 
 ## Programmes
 - Online Tuition: one-to-one live online classes for IGCSE, O Level and A Level (usually Grade 8 upwards),
+  in every subject offered for these exams in schools in Pakistan and Saudi Arabia,
   with syllabus coverage and past-paper practice. Younger students from Grade 5 get English, Maths and
   homework support. Page: https://www.valeem.com/online-tuition/
 - Skills & Courses: Scratch coding for young learners; Python, SQL and Power BI for teenagers and adults;
-  IELTS preparation, English improvement, language classes and Quran classes.
+  IELTS preparation, English improvement, language classes (English, Urdu, Arabic, Chinese and German) and Quran classes.
   Page: https://www.valeem.com/skills-courses/
 - Homeschool Pathways: a structured online academic programme for homeschooled children,
   with three stages (Explorers ages 7-9, Innovators ages 10-12, Scholars ages 13-14) and
