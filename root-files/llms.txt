@@ -12,6 +12,8 @@
 - Valeem Homeschool Pathways: a structured online academic programme for homeschooled children,
   with three stages (Explorers ages 7-9, Innovators ages 10-12, Scholars ages 13-14) and
   guidance towards O Level, IGCSE and A Level. Valeem is not a Cambridge school or examination centre.
+  Homeschool fees (PKR): enrolment 9,500 for all stages; monthly 11,000 (Explorers), 12,500 (Innovators),
+  14,000 (Scholars); 10% sibling discount on monthly fees. Same fees for families outside Pakistan.
 
 ## How it works
 1. A parent or student tells Valeem the level, subject and goals.
