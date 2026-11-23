@@ -21,6 +21,7 @@ deployment:
     - /bin/mkdir -p $DEPLOYPATH/teach-at-valeem
     - /bin/cp -R teach-at-valeem/. $DEPLOYPATH/teach-at-valeem/
     - /bin/cp root-files/home-index.html $DEPLOYPATH/index.html
+    - /bin/cp root-files/htaccess $DEPLOYPATH/.htaccess
     - /bin/cp root-files/llms.txt $DEPLOYPATH/llms.txt
     - /bin/cp root-files/robots.txt $DEPLOYPATH/robots.txt
     - /bin/cp root-files/sitemap.xml $DEPLOYPATH/sitemap.xml

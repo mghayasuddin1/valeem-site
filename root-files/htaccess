@@ -1,0 +1,8 @@
+# Valeem: show the new homepage (index.html) at valeem.com/.
+# Moodle keeps everything else, including its own site-home link /?redirect=0.
+# To roll back, delete or rename this file (public_html/.htaccess).
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{QUERY_STRING} !(^|&)redirect=
+RewriteRule ^$ /index.html [L]
+</IfModule>
