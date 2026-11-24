@@ -131,3 +131,10 @@ iframe.inf{width:100%;border:0;display:block;border-radius:14px;background:#fff}
 .steps-plain li{counter-increment:s;position:relative;padding:16px 18px 16px 58px;border:1px solid var(--line);border-radius:14px;background:#fff}
 .steps-plain li:before{content:counter(s);position:absolute;left:16px;top:14px;width:30px;height:30px;border-radius:50%;background:var(--orange);color:#fff;font-weight:700;display:grid;place-items:center}
 .steps-plain b{display:block;margin-bottom:2px}
+.quotes{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.quote{margin:0;padding:26px 26px 22px;border:1px solid var(--line);border-radius:var(--r,20px);background:#fff;display:flex;flex-direction:column;gap:16px}
+.quote .q{width:28px;height:28px;color:var(--orange)}
+.quote blockquote{margin:0;font-size:1.02rem;line-height:1.6;color:var(--ink)}
+.quote figcaption{margin-top:auto;display:flex;flex-direction:column;gap:2px}
+.quote figcaption span{color:var(--muted);font-size:.9rem}
+@media (max-width:760px){.quotes{grid-template-columns:1fr}}

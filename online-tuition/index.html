@@ -477,6 +477,13 @@ iframe.inf{width:100%;border:0;display:block;border-radius:14px;background:#fff}
 .steps-plain li{counter-increment:s;position:relative;padding:16px 18px 16px 58px;border:1px solid var(--line);border-radius:14px;background:#fff}
 .steps-plain li:before{content:counter(s);position:absolute;left:16px;top:14px;width:30px;height:30px;border-radius:50%;background:var(--orange);color:#fff;font-weight:700;display:grid;place-items:center}
 .steps-plain b{display:block;margin-bottom:2px}
+.quotes{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.quote{margin:0;padding:26px 26px 22px;border:1px solid var(--line);border-radius:var(--r,20px);background:#fff;display:flex;flex-direction:column;gap:16px}
+.quote .q{width:28px;height:28px;color:var(--orange)}
+.quote blockquote{margin:0;font-size:1.02rem;line-height:1.6;color:var(--ink)}
+.quote figcaption{margin-top:auto;display:flex;flex-direction:column;gap:2px}
+.quote figcaption span{color:var(--muted);font-size:.9rem}
+@media (max-width:760px){.quotes{grid-template-columns:1fr}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Online Tuition for IGCSE, O Level and A Level", "serviceType": "Online tutoring", "description": "Live one-to-one online tuition for IGCSE, O Level and A Level, plus English, Maths and homework support from Grade 5. Vetted teachers, free demo, monthly plans.", "url": "https://www.valeem.com/online-tuition/", "provider": {"@type": "EducationalOrganization", "@id": "https://www.valeem.com/#org", "name": "Valeem", "url": "https://www.valeem.com/"}, "areaServed": [{"@type": "Country", "name": "Saudi Arabia"}, {"@type": "Country", "name": "United Arab Emirates"}, {"@type": "Country", "name": "Qatar"}, {"@type": "Country", "name": "Kuwait"}, {"@type": "Country", "name": "Bahrain"}, {"@type": "Country", "name": "Oman"}, {"@type": "Country", "name": "Pakistan"}], "audience": {"@type": "EducationalAudience", "educationalRole": "student"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Which levels does Valeem teach?", "acceptedAnswer": {"@type": "Answer", "text": "IGCSE, O Level and A Level (AS and A2), usually from Grade 8 upwards. We also teach younger students from Grade 5 in English and Maths, and help with homework."}}, {"@type": "Question", "name": "Which subjects can my child study?", "acceptedAnswer": {"@type": "Answer", "text": "All subjects offered for IGCSE, O Level and A Level in schools in Pakistan and Saudi Arabia. We match a teacher who holds an A or B grade in that subject and has passed our interview and training."}}, {"@type": "Question", "name": "Are classes one-to-one?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every Online Tuition class is live and one-to-one, so the teacher follows your child's syllabus, pace and goals."}}, {"@type": "Question", "name": "How much does online tuition cost?", "acceptedAnswer": {"@type": "Answer", "text": "Tuition is a monthly plan. The fee depends on the grade, the number of months, classes per week, class length and whether you want a fixed time slot. A counsellor shares the fee after the free demo."}}, {"@type": "Question", "name": "How do we pay?", "acceptedAnswer": {"@type": "Answer", "text": "We send a monthly invoice and the plan renews each month. Many families pay from a Saudi or Pakistani bank account."}}, {"@type": "Question", "name": "What time are classes for families in Saudi Arabia?", "acceptedAnswer": {"@type": "Answer", "text": "Classes are scheduled after school in Saudi time (AST, UTC+3), at times that suit your child."}}, {"@type": "Question", "name": "Can my child try a class first?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The first class is a free live demo at your time. If the teacher isn't the right fit later, we arrange another."}}, {"@type": "Question", "name": "How are teachers selected?", "acceptedAnswer": {"@type": "Answer", "text": "Every teacher passes four checks: an application, proof of an A or B grade in the subject they teach, a one-to-one interview, and onboarding and training."}}]}</script>
@@ -695,6 +702,21 @@ iframe.inf{width:100%;border:0;display:block;border-radius:14px;background:#fff}
   </div>
 </section>
 
+<section id="testimonials">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">In their words</p>
+      <h2>What Parents and Students Say.</h2>
+      <p class="lede">From families and students who learn with Valeem, many of them in Saudi Arabia.</p>
+    </div>
+    <div class="quotes">
+      <figure class="quote"><svg class="icon q" aria-hidden="true"><use href="#i-chat"/></svg><blockquote>Valeem has been a blessing for our O Level preparation. We found a tutor who understood our child&#x27;s needs and progress improved within weeks!</blockquote><figcaption><b>Parent from Jeddah</b><span>Saudi Arabia · O Level tuition</span></figcaption></figure>
+      <figure class="quote"><svg class="icon q" aria-hidden="true"><use href="#i-chat"/></svg><blockquote>My name is Fatima Shah, I live in Dammam, Saudi Arabia. I am an A Level student and a private candidate studying at Valeem. I was struggling to find teachers, I kept looking for online courses but was hopeless at some point when my friend told me about Valeem. I immediately contacted them and had my demo classes. It&#x27;s great to see such wonderful, talented, passionate and committed teachers there.</blockquote><figcaption><b>Fatima Shah</b><span>A Level private candidate, Dammam</span></figcaption></figure>
+      <figure class="quote"><svg class="icon q" aria-hidden="true"><use href="#i-chat"/></svg><blockquote>My sessions with Sir Murtaza Farooq have been very encouraging. He is a great teacher. He is always very well prepared for the class, which helps a lot! Sir Murtaza always keeps a check on his students, whether they&#x27;re doing their work or not. Overall, he is a good teacher and I would recommend him.</blockquote><figcaption><b>Shireen Khan</b><span>O Level student</span></figcaption></figure>
+      <figure class="quote"><svg class="icon q" aria-hidden="true"><use href="#i-chat"/></svg><blockquote>Ms. Javeria is a brilliant teacher with a very professional method of teaching. She has full grip on her subjects. Wajih is now settled with her. Initially he had some challenges but now, Alhamdulillah, he has adjusted. Thank you Valeem.</blockquote><figcaption><b>Mr &amp; Mrs Imran Ansari</b><span>Parents, online tuition</span></figcaption></figure>
+    </div>
+  </div>
+</section>
 <section id="start" class="wash">
   <div class="wrap start-grid" id="contact">
     <div>

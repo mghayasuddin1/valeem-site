@@ -108,13 +108,13 @@ for slug, lvl, name, code, focus, topics, hard in SUBJECTS:
 # COUNTRY PAGES  (same URLs as before)
 # =====================================================================
 COUNTRIES = {
- 'SA': dict(folder='online-tuition-saudi-arabia', name='Saudi Arabia', the='Saudi Arabia', adj='Saudi', tz='Saudi time (AST, UTC+3)', short='Saudi time',
+ 'SA': dict(folder='online-tuition-saudi-arabia', name='Saudi Arabia', title='Saudi Arabia', the='Saudi Arabia', adj='Saudi', tz='Saudi time (AST, UTC+3)', short='Saudi time',
             week='The Saudi school week runs Sunday to Thursday, with Friday and Saturday as the weekend.',
             cities=['Riyadh', 'Jeddah', 'Dammam', 'Al Khobar', 'Makkah', 'Madinah', 'Taif', 'Jubail', 'Abha', 'Tabuk'],
             stat='70%', statline='of our families live in the Middle East, most of them in Saudi Arabia.',
             pay='Many families pay from a Saudi or Pakistani bank account.',
             schools='international and Pakistani curriculum schools in the Kingdom', lead='SAUDI PAGE'),
- 'AE': dict(folder='online-tuition-uae', name='the UAE', the='the UAE', adj='UAE', tz='UAE time (GST, UTC+4)', short='UAE time',
+ 'AE': dict(folder='online-tuition-uae', name='the UAE', title='the UAE', the='the UAE', adj='UAE', tz='UAE time (GST, UTC+4)', short='UAE time',
             week='UAE schools run Monday to Friday, with a shorter Friday, and the weekend on Saturday and Sunday.',
             cities=['Dubai', 'Abu Dhabi', 'Sharjah', 'Ajman', 'Al Ain', 'Ras Al Khaimah', 'Fujairah'],
             stat='70%', statline='of our families live in the Middle East, including many in the UAE.',
@@ -130,7 +130,7 @@ for cc, c in COUNTRIES.items():
         ("How much does tuition cost?", f"Tuition is a monthly plan. The fee depends on the grade, the number of months, classes per week, class length and whether you want a fixed time slot. A counsellor shares the fee after the free demo. {c['pay']}"),
         ("Can my child try a class first?", "Yes. The first class is a free live demo at your time. If the teacher isn't the right fit later, we arrange another."),
     ] + ([("Can my child sit O Level or IGCSE exams as a private candidate in Saudi Arabia?", "Yes. In Saudi Arabia, private candidates usually register for Cambridge exams through the British Council. Our private candidate guide explains the steps, and Valeem prepares students for the exams.", ("private candidate guide", B + "/online-tuition-saudi-arabia/private-candidate-guide/"))] if cc == 'SA' else []))]
-    fs, ld = faq(q, title=f'Tuition in {c["name"][0].upper() + c["name"][1:]}: Your Questions Answered.')
+    fs, ld = faq(q, title=f'Tuition in {c['title']}: Your Questions Answered.')
     service = {"@context": "https://schema.org", "@type": "Service", "name": f"Online tuition in {c['the']}", "serviceType": "Online tutoring",
                "description": f"Live one-to-one online tuition for IGCSE, O Level and A Level for families in {c['the']}, in {c['short']}.",
                "url": url, "provider": ORG, "areaServed": {"@type": "Country", "name": 'Saudi Arabia' if cc == 'SA' else 'United Arab Emirates'}}
@@ -148,7 +148,7 @@ for cc, c in COUNTRIES.items():
   </div>
 </section>
 ''' if cc == 'SA' else ''
-    main = page_hero(f'Tuition in {c["the"]}', f'Online Tuition · {c["adj"]} families', f'O Level, IGCSE and A Level Tuition in {c["name"][0].upper() + c["name"][1:]}, <em>in {c["short"]}.</em>',
+    main = page_hero(f'Tuition in {c["the"]}', f'Online Tuition · {c["adj"]} families', f'O Level, IGCSE and A Level Tuition in {c['title']}, <em>in {c["short"]}.</em>',
         f"One-to-one live classes with vetted teachers, scheduled after school in {c['tz']}.",
         '<a class="btn btn-primary" href="#demo" data-cta="hero" data-prog="Online Tuition: IGCSE, O Level or A Level">Book a Free Demo</a>' + WA_BTN,
         [('i-user', 'One-to-one'), ('i-play', 'Free demo'), ('i-clock', c['short'])], 'hero.webp', 'A student giving a thumbs up beside her laptop during an online class') + f'''
@@ -209,8 +209,8 @@ for cc, c in COUNTRIES.items():
   </div>
 </section>
 
-''' + form_section([], title='Book a Free Demo Class.', lede=f'Tell us what your child needs. A counsellor will call you to arrange a free demo in {c["short"]}.', form_title='Register for a free trial lesson', wash=True) + fs
-    h = head(f'Online O Level, IGCSE and A Level Tuition in {c["name"][0].upper() + c["name"][1:]} | Valeem',
+''' + testimonials() + form_section([], title='Book a Free Demo Class.', lede=f'Tell us what your child needs. A counsellor will call you to arrange a free demo in {c["short"]}.', form_title='Register for a free trial lesson', wash=True) + fs
+    h = head(f'Online O Level, IGCSE and A Level Tuition in {c['title']} | Valeem',
              f'Live one-to-one online tuition for O Level, IGCSE and A Level for families in {c["the"]}. Vetted teachers, classes in {c["short"]}, free demo, monthly plans.',
              url, f'Online Tuition in {c["the"]} | Valeem', f'One-to-one IGCSE, O Level and A Level classes in {c["short"]}. Free demo.',
              url + 'images/share.jpg', [service, ld, crumbs_ld(f'Tuition in {c["the"]}', url)])

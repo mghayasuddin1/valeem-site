@@ -323,6 +323,21 @@ def faq(groups, title='Questions Parents and Students Ask.', wash=True):
 '''
     return sec, ld
 
+
+# ---------- testimonials (published on the previous valeem.com homepage) ----------
+TESTIMONIALS = [
+ ("Valeem has been a blessing for our O Level preparation. We found a tutor who understood our child's needs and progress improved within weeks!", "Parent from Jeddah", "Saudi Arabia · O Level tuition"),
+ ("My name is Fatima Shah, I live in Dammam, Saudi Arabia. I am an A Level student and a private candidate studying at Valeem. I was struggling to find teachers, I kept looking for online courses but was hopeless at some point when my friend told me about Valeem. I immediately contacted them and had my demo classes. It's great to see such wonderful, talented, passionate and committed teachers there.", "Fatima Shah", "A Level private candidate, Dammam"),
+ ("My sessions with Sir Murtaza Farooq have been very encouraging. He is a great teacher. He is always very well prepared for the class, which helps a lot! Sir Murtaza always keeps a check on his students, whether they're doing their work or not. Overall, he is a good teacher and I would recommend him.", "Shireen Khan", "O Level student"),
+ ("Ms. Javeria is a brilliant teacher with a very professional method of teaching. She has full grip on her subjects. Wajih is now settled with her. Initially he had some challenges but now, Alhamdulillah, he has adjusted. Thank you Valeem.", "Mr & Mrs Imran Ansari", "Parents, online tuition"),
+]
+def testimonials(wash=False, title='What Parents and Students Say.'):
+    cards = '\n'.join(f'      <figure class="quote"><svg class="icon q" aria-hidden="true"><use href="#i-chat"/></svg><blockquote>{esc(q)}</blockquote><figcaption><b>{esc(n)}</b><span>{esc(w)}</span></figcaption></figure>' for q, n, w in TESTIMONIALS)
+    cls = ' class="wash"' if wash else ''
+    return (f'<section id="testimonials"{cls}>\n  <div class="wrap">\n    <div class="head">\n      <p class="kicker">In their words</p>\n      <h2>{title}</h2>\n'
+            '      <p class="lede">From families and students who learn with Valeem, many of them in Saudi Arabia.</p>\n    </div>\n'
+            f'    <div class="quotes">\n{cards}\n    </div>\n  </div>\n</section>\n')
+
 INF_STUDENT = 'iwRmYUkbwrC'
 INF_TEACHER = 'f5ff3893-4c5c-4b7b-82c1-f4bca5817094'
 ORG = {"@type": "EducationalOrganization", "@id": B + "/#org", "name": "Valeem", "url": B + "/"}
@@ -389,7 +404,7 @@ rep('<p class="lede">Join 650+ educators teaching students in 14+ countries. We 
 rep(f'<div class="cta-row"><a class="btn btn-ghost" href="https://www.valeem.com/mod/page/view.php?id=21">Become a Teacher</a></div>',
     f'<div class="cta-row"><a class="btn btn-primary" href="{B}/teach-at-valeem/">Apply to Teach</a><a class="btn btn-ghost" href="{B}/teach-at-valeem/#process">See the Selection Process</a></div>')
 a_ = main.index('<!-- 11. CONTACT'); b_ = main.index('<!-- 12. FAQS -->')
-main = main[:a_] + '<!-- 11. CONTACT: Infinity free-trial form -->\n' + form_section([], title='Book a Free Trial Class.', lede='Tell us what you need. A counsellor will call you to arrange a free trial class with a suitable teacher.', form_title='Register for a free trial lesson', wash=True) + '\n' + main[b_:]
+main = main[:a_] + testimonials() + '\n<!-- 11. CONTACT: Infinity free-trial form -->\n' + form_section([], title='Book a Free Trial Class.', lede='Tell us what you need. A counsellor will call you to arrange a free trial class with a suitable teacher.', form_title='Register for a free trial lesson', wash=True) + '\n' + main[b_:]
 home_faq = [
  ("General", [
   ("What is Valeem?", "Valeem is an online education company, teaching live since 2019. It offers Online Tuition for IGCSE, O Level and A Level, Skills & Courses such as coding, IELTS, English and Quran, and Homeschool Pathways for homeschooled children aged 7 to 14. Over 650 vetted educators teach students in more than 14 countries."),
@@ -549,7 +564,7 @@ main = page_hero('Online Tuition', 'Online Tuition · IGCSE · O Level · A Leve
   </div>
 </section>
 
-''' + form_section([('Online Tuition', ['Online Tuition: IGCSE, O Level or A Level', 'Online Tuition: Grades 5–8']), 'Not sure yet'], wash=True) + fs
+''' + testimonials() + form_section([('Online Tuition', ['Online Tuition: IGCSE, O Level or A Level', 'Online Tuition: Grades 5–8']), 'Not sure yet'], wash=True) + fs
 h = head('Online Tuition for IGCSE, O Level and A Level | Valeem',
   'Live one-to-one online tuition for IGCSE, O Level and A Level with vetted teachers who hold A or B grades. Classes in Saudi and Gulf time zones, free demo, monthly plans.',
   url, 'Online Tuition for IGCSE, O Level and A Level | Valeem', 'Vetted one-to-one teachers, classes in your time zone, a free demo and monthly plans.',
