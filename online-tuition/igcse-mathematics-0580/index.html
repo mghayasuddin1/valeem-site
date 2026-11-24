@@ -493,6 +493,62 @@ iframe.inf{width:100%;border:0;display:block;border-radius:14px;background:#fff}
 .quote figcaption{margin-top:auto;display:flex;flex-direction:column;gap:2px}
 .quote figcaption span{color:var(--muted);font-size:.9rem}
 @media (max-width:760px){.quotes{grid-template-columns:1fr}}
+.fold-wrap{padding:56px 0}
+details.fold{border:1px solid var(--line);border-radius:22px;background:#fff;box-shadow:0 20px 40px -34px rgba(43,17,69,.5)}
+.fold-wrap.wash details.fold{background:#fff}
+details.fold>summary{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding:30px 32px;min-height:0;font:inherit;color:inherit;cursor:pointer;list-style:none;border-radius:22px}
+details.fold>summary::after{display:none}
+details.fold>summary:hover .fold-toggle{background:var(--plum);color:#fff;border-color:var(--plum)}
+.fold-head{display:flex;flex-direction:column;gap:10px}
+.fold-title{font:700 clamp(1.5rem,3vw,2.2rem)/1.15 var(--display);color:var(--plum-deep);letter-spacing:-.015em;text-wrap:balance}
+.fold-line{color:var(--muted);font-size:1.02rem}
+.fold-toggle{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border:2px solid var(--line);border-radius:999px;font:700 .82rem/1 var(--body);letter-spacing:.04em;text-transform:uppercase;color:var(--plum);white-space:nowrap;transition:background .2s,color .2s,border-color .2s}
+.fold-toggle .icon{width:18px;height:18px;transition:transform .3s}
+.fold-toggle .less-t,details.fold[open] .fold-toggle .more-t{display:none}
+details.fold[open] .fold-toggle .less-t{display:inline}
+details.fold[open] .fold-toggle .icon{transform:rotate(180deg)}
+.fold-body{padding:0 32px 32px;animation:foldIn .45s ease}
+@keyframes foldIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.fold-body.learn{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:start}
+.fold-body .ps-top{grid-template-columns:1.6fr .7fr;margin-bottom:24px;align-items:stretch}
+.fold-body .ps-top .photo{aspect-ratio:auto;min-height:320px}
+.fold-body .support-grid{grid-template-columns:repeat(2,1fr)}
+.fold-body .pull{margin-top:0}
+@media (max-width:900px){.fold-body.learn,.fold-body .ps-top{grid-template-columns:1fr}.fold-body .ps-top .photo{min-height:0;aspect-ratio:4/3}}
+@media (max-width:640px){details.fold>summary{grid-template-columns:1fr;padding:24px 20px;gap:16px}.fold-toggle{justify-self:start}.fold-body{padding:0 20px 24px}.fold-body .support-grid{grid-template-columns:1fr}.fold-wrap{padding:40px 0}}
+.fold-body .wrap{padding:0;max-width:none;width:auto}
+.fold-body .head>.kicker,.fold-body .head>h2,.fold-body .head>.lede{display:none}
+.fold-body .head:empty{display:none}
+.fold-body.wash,.fold-body.vet,.fold-body.gulf{background:transparent}
+@media (prefers-reduced-motion:reduce){.fold-toggle .icon{transition:none}.fold-body{animation:none}}
+.quote figcaption{flex-direction:row;align-items:center;gap:14px}
+.quote .who{display:flex;flex-direction:column;gap:2px}
+.quote .who span{color:var(--muted);font-size:.9rem}
+.quote .av{width:56px;height:56px;border-radius:50%;object-fit:cover;object-position:50% 25%;flex:none;background:var(--line)}
+.quote .av-i{display:grid;place-items:center;color:var(--plum)}
+.quote .av-i .icon{width:26px;height:26px}
+.press{padding:34px 0}
+.press-row{display:flex;align-items:center;gap:22px 34px;flex-wrap:wrap;justify-content:space-between}
+.press-k{display:flex;align-items:center;gap:8px;margin:0;font:700 .78rem/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.press-k .icon{width:18px;height:18px;color:var(--orange)}
+.press-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:14px 34px;align-items:center}
+.press-list a{font:700 1.2rem/1 var(--display);color:var(--plum-deep);text-decoration:none;opacity:.8;transition:opacity .2s}
+.press-list a:hover{opacity:1;color:var(--plum)}
+.press-more{display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--plum);text-decoration:none;white-space:nowrap}
+.press-more .icon{width:16px;height:16px}
+.news{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.news a{display:flex;flex-direction:column;gap:10px;height:100%;padding:24px 26px;border:1px solid var(--line);border-radius:20px;background:#fff;color:var(--ink);text-decoration:none;transition:border-color .2s,transform .2s}
+.news a:hover{border-color:var(--orange);transform:translateY(-2px)}
+.news .src{display:flex;justify-content:space-between;gap:10px;font:700 .78rem/1.2 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--orange)}
+.news .src time{color:var(--muted);letter-spacing:.04em}
+.news h3{margin:0;font:700 1.2rem/1.3 var(--display);color:var(--plum-deep)}
+.news p{margin:0;color:var(--muted)}
+.news .go{margin-top:auto;display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--plum)}
+.news .go .icon{width:16px;height:16px}
+.event-photos{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:0}
+.event-photos img{width:100%;height:100%;aspect-ratio:4/3;object-fit:cover;border-radius:20px}
+.event-cap{margin-top:12px;color:var(--muted);font-size:.95rem}
+@media (max-width:760px){.news,.event-photos{grid-template-columns:1fr}.press-row{justify-content:flex-start}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Course", "name": "IGCSE Mathematics 0580 online tuition", "courseCode": "0580", "description": "Live one-to-one online tuition for Cambridge IGCSE Mathematics (0580) with a vetted teacher. Free demo, monthly plans.", "url": "https://www.valeem.com/online-tuition/igcse-mathematics-0580/", "provider": {"@type": "EducationalOrganization", "@id": "https://www.valeem.com/#org", "name": "Valeem", "url": "https://www.valeem.com/"}, "educationalLevel": "IGCSE", "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online", "courseWorkload": "Live one-to-one classes, scheduled by arrangement"}, "offers": {"@type": "Offer", "category": "Paid", "description": "Monthly plan; fee shared after a free demo class."}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do you offer one-to-one IGCSE Mathematics tuition online?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Valeem teaches Cambridge IGCSE Mathematics (0580) live and one-to-one online. Your child's teacher holds an A or B grade in Mathematics and has passed our interview and training."}}, {"@type": "Question", "name": "What does IGCSE Mathematics 0580 tuition cover?", "acceptedAnswer": {"@type": "Answer", "text": "The full Mathematics 0580 syllabus: Number, algebra and graphs, coordinate geometry, geometry, mensuration, trigonometry, transformations and vectors, probability and statistics, with past-paper practice and exam technique."}}, {"@type": "Question", "name": "Which IGCSE Mathematics topics do students find hardest?", "acceptedAnswer": {"@type": "Answer", "text": "Most students we teach need extra help with choosing Core or Extended, functions and multi-step problems. The teacher finds your child's gaps in the free demo and builds the plan around them."}}, {"@type": "Question", "name": "Do you teach the latest syllabus?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Teachers follow the Mathematics 0580 syllabus for your child's exam year, including any changes Cambridge has announced, and use past papers from recent series."}}, {"@type": "Question", "name": "How much is IGCSE Mathematics tuition?", "acceptedAnswer": {"@type": "Answer", "text": "Tuition is a monthly plan. The fee depends on the grade, the number of months, classes per week, class length and whether you want a fixed time slot. A counsellor shares the fee after the free demo."}}, {"@type": "Question", "name": "Can students in Saudi Arabia and the Gulf join?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. About 70% of our families live in the Middle East, most of them in Saudi Arabia. Classes are scheduled after school in your time zone."}}]}</script>
@@ -528,6 +584,9 @@ iframe.inf{width:100%;border:0;display:block;border-radius:14px;background:#fff}
     <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-news" viewBox="0 0 24 24"><rect x="3" y="4" width="15" height="16" rx="2"/><path d="M18 8h3v10a2 2 0 0 1-2 2M7 8h7M7 12h7M7 16h4"/></symbol>
+    <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
     <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8.300 8 9 4.600-.7 8-4.500 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
     <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></symbol>
     <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="m8.500 14-1.500 7 5-3 5 3-1.500-7"/></symbol>
@@ -594,7 +653,14 @@ iframe.inf{width:100%;border:0;display:block;border-radius:14px;background:#fff}
   </div>
 </section>
 
-<section id="classes" class="wash">
+<section class="fold-wrap wash">
+  <div class="wrap">
+    <details class="fold" id="classes">
+      <summary>
+        <span class="fold-head"><span class="kicker">How the classes work</span><span class="fold-title">Built Around Where Your Child Loses Marks.</span><span class="fold-line">Most students we teach in IGCSE Mathematics need help with choosing Core or Extended, functions and multi-step problems.</span></span>
+        <span class="fold-toggle" aria-hidden="true"><span class="more-t">See how classes work</span><span class="less-t">Show less</span><svg class="icon"><use href="#i-chevron"/></svg></span>
+      </summary>
+      <div class="fold-body">
   <div class="wrap feat">
     <figure class="photo"><img src="/online-tuition/images/evening.webp" alt="A student smiling during an evening online Mathematics class" width="1000" height="800" loading="lazy"></figure>
     <div>
@@ -611,9 +677,19 @@ iframe.inf{width:100%;border:0;display:block;border-radius:14px;background:#fff}
       </ul>
     </div>
   </div>
+</div>
+    </details>
+  </div>
 </section>
 
-<section id="teachers" class="vet">
+<section class="fold-wrap">
+  <div class="wrap">
+    <details class="fold" id="teachers">
+      <summary>
+        <span class="fold-head"><span class="kicker">How we choose teachers</span><span class="fold-title">Every Mathematics Teacher Passes Four Checks.</span><span class="fold-line">Fewer teachers make it through, so your child learns from someone who knows the subject and can teach it.</span></span>
+        <span class="fold-toggle" aria-hidden="true"><span class="more-t">See the four checks</span><span class="less-t">Show less</span><svg class="icon"><use href="#i-chevron"/></svg></span>
+      </summary>
+      <div class="fold-body vet">
   <div class="wrap">
     <div class="head">
       <p class="kicker">How we choose teachers</p>
@@ -631,8 +707,18 @@ iframe.inf{width:100%;border:0;display:block;border-radius:14px;background:#fff}
       <a href="https://www.valeem.com/teach-at-valeem/">Are you a teacher? Apply to teach</a>
     </div>
   </div>
+</div>
+    </details>
+  </div>
 </section>
-<section id="fees" class="wash">
+<section class="fold-wrap wash">
+  <div class="wrap">
+    <details class="fold" id="fees">
+      <summary>
+        <span class="fold-head"><span class="kicker">How fees work</span><span class="fold-title">One Monthly Fee, Built Around Your Child.</span><span class="fold-line">Tuition is a monthly plan. Your counsellor shares the fee after the free demo, based on five things.</span></span>
+        <span class="fold-toggle" aria-hidden="true"><span class="more-t">See how fees work</span><span class="less-t">Show less</span><svg class="icon"><use href="#i-chevron"/></svg></span>
+      </summary>
+      <div class="fold-body">
   <div class="wrap fees-grid">
     <div class="head" style="margin-bottom:0">
       <p class="kicker">How fees work</p>
@@ -649,6 +735,24 @@ iframe.inf{width:100%;border:0;display:block;border-radius:14px;background:#fff}
       <li><span class="badge"><svg class="icon"><use href="#i-calendar"/></svg></span><div><b>Number of months</b><span>Longer plans cost less per month</span></div></li>
       <li class="wide"><span class="badge"><svg class="icon"><use href="#i-invoice"/></svg></span><div><b>Invoiced monthly</b><span>Your plan renews each month with an invoice. Many families pay from a Saudi or Pakistani bank account.</span></div></li>
     </ul>
+  </div>
+</div>
+    </details>
+  </div>
+</section>
+<section id="testimonials">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">In their words</p>
+      <h2>What Parents and Students Say.</h2>
+      <p class="lede">From families and students who learn with Valeem, many of them in Saudi Arabia.</p>
+    </div>
+    <div class="quotes">
+      <figure class="quote"><svg class="icon q" aria-hidden="true"><use href="#i-chat"/></svg><blockquote>Valeem has been a blessing for our O Level preparation. We found a tutor who understood our child&#x27;s needs and progress improved within weeks!</blockquote><figcaption><span class="av av-i" aria-hidden="true"><svg class="icon"><use href="#i-user"/></svg></span><span class="who"><b>Parent from Jeddah</b><span>Saudi Arabia · O Level tuition</span></span></figcaption></figure>
+      <figure class="quote"><svg class="icon q" aria-hidden="true"><use href="#i-chat"/></svg><blockquote>My name is Fatima Shah, I live in Dammam, Saudi Arabia. I am an A Level student and a private candidate studying at Valeem. I was struggling to find teachers, I kept looking for online courses but was hopeless at some point when my friend told me about Valeem. I immediately contacted them and had my demo classes. It&#x27;s great to see such wonderful, talented, passionate and committed teachers there.</blockquote><figcaption><img class="av" src="https://valeem.com/moodle/pluginfile.php/142/mod_page/content/7/A%20Levels.jpg" alt="Fatima Shah" width="56" height="56" loading="lazy"><span class="who"><b>Fatima Shah</b><span>A Level private candidate, Dammam</span></span></figcaption></figure>
+      <figure class="quote"><svg class="icon q" aria-hidden="true"><use href="#i-chat"/></svg><blockquote>My sessions with Sir Murtaza Farooq have been very encouraging. He is a great teacher. He is always very well prepared for the class, which helps a lot! Sir Murtaza always keeps a check on his students, whether they&#x27;re doing their work or not. Overall, he is a good teacher and I would recommend him.</blockquote><figcaption><img class="av" src="https://valeem.com/moodle/pluginfile.php/142/mod_page/content/7/O%20Levels.jpg" alt="Shireen Khan" width="56" height="56" loading="lazy"><span class="who"><b>Shireen Khan</b><span>O Level student</span></span></figcaption></figure>
+      <figure class="quote"><svg class="icon q" aria-hidden="true"><use href="#i-chat"/></svg><blockquote>Ms. Javeria is a brilliant teacher with a very professional method of teaching. She has full grip on her subjects. Wajih is now settled with her. Initially he had some challenges but now, Alhamdulillah, he has adjusted. Thank you Valeem.</blockquote><figcaption><img class="av" src="https://valeem.com/moodle/pluginfile.php/142/mod_page/content/7/k12%20Tuitions.jpg" alt="Mr &amp; Mrs Imran Ansari" width="56" height="56" loading="lazy"><span class="who"><b>Mr &amp; Mrs Imran Ansari</b><span>Parents, online tuition</span></span></figcaption></figure>
+    </div>
   </div>
 </section>
 <section id="start">
@@ -723,6 +827,7 @@ iframe.inf{width:100%;border:0;display:block;border-radius:14px;background:#fff}
       <div><h4>Valeem</h4><ul>
         <li><a href="https://www.valeem.com/mod/page/view.php?id=2">About us</a></li>
         <li><a href="https://www.valeem.com/teach-at-valeem/">Teach with Valeem</a></li>
+        <li><a href="https://www.valeem.com/in-the-news/">Valeem in the news</a></li>
         <li><a href="https://www.valeem.com/blog/">Blog</a></li>
         <li><a href="https://www.valeem.com/login/index.php">Student log in</a></li>
         <li><a href="https://www.valeem.com/mod/page/view.php?id=3">Terms &amp; Conditions</a></li>
@@ -769,6 +874,12 @@ iframe.inf{width:100%;border:0;display:block;border-radius:14px;background:#fff}
   }
   $all('[data-wa]').forEach(function(a){ a.href = waUrl(); a.addEventListener('click', function(){ track('whatsapp_click', {location:a.dataset.wa}); }); });
   $all('[data-cta]').forEach(function(a){ a.addEventListener('click', function(){ track('demo_cta_click', {location:a.dataset.cta}); }); });
+  /* Folded sections: track opens; open a fold when a link or the address points at it */
+  $all('details.fold').forEach(function(d){ d.addEventListener('toggle', function(){ if(d.open) track('fold_open', {section:d.id}); }); });
+  function openFold(id){ var d = id && document.getElementById(id); if(d && d.tagName === 'DETAILS' && !d.open){ d.open = true; } }
+  if(location.hash) openFold(location.hash.slice(1));
+  window.addEventListener('hashchange', function(){ openFold(location.hash.slice(1)); });
+  $all('a[href^="#"]').forEach(function(a){ a.addEventListener('click', function(){ openFold(a.getAttribute('href').slice(1)); }); });
   var nav = $('#nav'), mb = $('#menuBtn');
   mb.addEventListener('click', function(){ var o = nav.classList.toggle('open'); mb.setAttribute('aria-expanded', o); mb.setAttribute('aria-label', o ? 'Close menu' : 'Open menu'); });
   nav.addEventListener('click', function(e){ if(e.target.tagName === 'A'){ nav.classList.remove('open'); mb.setAttribute('aria-expanded','false'); } });

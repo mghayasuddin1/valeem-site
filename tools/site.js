@@ -22,6 +22,12 @@
   }
   $all('[data-wa]').forEach(function(a){ a.href = waUrl(); a.addEventListener('click', function(){ track('whatsapp_click', {location:a.dataset.wa}); }); });
   $all('[data-cta]').forEach(function(a){ a.addEventListener('click', function(){ track('demo_cta_click', {location:a.dataset.cta}); }); });
+  /* Folded sections: track opens; open a fold when a link or the address points at it */
+  $all('details.fold').forEach(function(d){ d.addEventListener('toggle', function(){ if(d.open) track('fold_open', {section:d.id}); }); });
+  function openFold(id){ var d = id && document.getElementById(id); if(d && d.tagName === 'DETAILS' && !d.open){ d.open = true; } }
+  if(location.hash) openFold(location.hash.slice(1));
+  window.addEventListener('hashchange', function(){ openFold(location.hash.slice(1)); });
+  $all('a[href^="#"]').forEach(function(a){ a.addEventListener('click', function(){ openFold(a.getAttribute('href').slice(1)); }); });
   var nav = $('#nav'), mb = $('#menuBtn');
   mb.addEventListener('click', function(){ var o = nav.classList.toggle('open'); mb.setAttribute('aria-expanded', o); mb.setAttribute('aria-label', o ? 'Close menu' : 'Open menu'); });
   nav.addEventListener('click', function(e){ if(e.target.tagName === 'A'){ nav.classList.remove('open'); mb.setAttribute('aria-expanded','false'); } });

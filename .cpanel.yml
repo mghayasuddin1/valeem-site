@@ -19,7 +19,9 @@ deployment:
     - /bin/mkdir -p $DEPLOYPATH/skills-courses
     - /bin/cp -R skills-courses/. $DEPLOYPATH/skills-courses/
     - /bin/mkdir -p $DEPLOYPATH/teach-at-valeem
+    - /bin/mkdir -p $DEPLOYPATH/in-the-news
     - /bin/cp -R teach-at-valeem/. $DEPLOYPATH/teach-at-valeem/
+    - /bin/cp -R in-the-news/. $DEPLOYPATH/in-the-news/
     - /bin/cp root-files/home-index.html $DEPLOYPATH/index.html
     - /bin/cp root-files/htaccess $DEPLOYPATH/.htaccess
     - /bin/cp root-files/llms.txt $DEPLOYPATH/llms.txt

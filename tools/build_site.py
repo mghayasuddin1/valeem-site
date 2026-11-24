@@ -114,6 +114,7 @@ FOOTER = f'''<footer>
       <div><h4>Valeem</h4><ul>
         <li><a href="{B}/mod/page/view.php?id=2">About us</a></li>
         <li><a href="{B}/teach-at-valeem/">Teach with Valeem</a></li>
+        <li><a href="{B}/in-the-news/">Valeem in the news</a></li>
         <li><a href="{B}/blog/">Blog</a></li>
         <li><a href="{B}/login/index.php">Student log in</a></li>
         <li><a href="{B}/mod/page/view.php?id=3">Terms &amp; Conditions</a></li>
@@ -137,7 +138,8 @@ def sticky(label='Book a Free Demo'):
 </div>
 '''
 
-def page(head_html, body_attrs, active, main, cta='Book a Free Demo', sticky_label='Book a Free Demo'):
+def page(head_html, body_attrs, active, main, cta='Book a Free Demo', sticky_label='Book a Free Demo', folds=()):
+    if folds: main = fold_sections(main, folds)
     return (head_html + f'<body{body_attrs}>\n\n' + ICONS + '\n\n' + header(active, cta) + '\n<main id="top">\n' + main +
             '\n</main>\n\n' + FOOTER + '\n' + sticky(sticky_label) + '\n' + SCRIPT + '\n</body>\n</html>\n')
 
@@ -326,17 +328,72 @@ def faq(groups, title='Questions Parents and Students Ask.', wash=True):
 
 # ---------- testimonials (published on the previous valeem.com homepage) ----------
 TESTIMONIALS = [
- ("Valeem has been a blessing for our O Level preparation. We found a tutor who understood our child's needs and progress improved within weeks!", "Parent from Jeddah", "Saudi Arabia · O Level tuition"),
- ("My name is Fatima Shah, I live in Dammam, Saudi Arabia. I am an A Level student and a private candidate studying at Valeem. I was struggling to find teachers, I kept looking for online courses but was hopeless at some point when my friend told me about Valeem. I immediately contacted them and had my demo classes. It's great to see such wonderful, talented, passionate and committed teachers there.", "Fatima Shah", "A Level private candidate, Dammam"),
- ("My sessions with Sir Murtaza Farooq have been very encouraging. He is a great teacher. He is always very well prepared for the class, which helps a lot! Sir Murtaza always keeps a check on his students, whether they're doing their work or not. Overall, he is a good teacher and I would recommend him.", "Shireen Khan", "O Level student"),
- ("Ms. Javeria is a brilliant teacher with a very professional method of teaching. She has full grip on her subjects. Wajih is now settled with her. Initially he had some challenges but now, Alhamdulillah, he has adjusted. Thank you Valeem.", "Mr & Mrs Imran Ansari", "Parents, online tuition"),
+ ("Valeem has been a blessing for our O Level preparation. We found a tutor who understood our child's needs and progress improved within weeks!", "Parent from Jeddah", "Saudi Arabia · O Level tuition", ""),
+ ("My name is Fatima Shah, I live in Dammam, Saudi Arabia. I am an A Level student and a private candidate studying at Valeem. I was struggling to find teachers, I kept looking for online courses but was hopeless at some point when my friend told me about Valeem. I immediately contacted them and had my demo classes. It's great to see such wonderful, talented, passionate and committed teachers there.", "Fatima Shah", "A Level private candidate, Dammam", "https://valeem.com/moodle/pluginfile.php/142/mod_page/content/7/A%20Levels.jpg"),
+ ("My sessions with Sir Murtaza Farooq have been very encouraging. He is a great teacher. He is always very well prepared for the class, which helps a lot! Sir Murtaza always keeps a check on his students, whether they're doing their work or not. Overall, he is a good teacher and I would recommend him.", "Shireen Khan", "O Level student", "https://valeem.com/moodle/pluginfile.php/142/mod_page/content/7/O%20Levels.jpg"),
+ ("Ms. Javeria is a brilliant teacher with a very professional method of teaching. She has full grip on her subjects. Wajih is now settled with her. Initially he had some challenges but now, Alhamdulillah, he has adjusted. Thank you Valeem.", "Mr & Mrs Imran Ansari", "Parents, online tuition", "https://valeem.com/moodle/pluginfile.php/142/mod_page/content/7/k12%20Tuitions.jpg"),
 ]
+def _avatar(n, img):
+    if img: return f'<img class="av" src="{img}" alt="{esc(n)}" width="56" height="56" loading="lazy">'
+    return '<span class="av av-i" aria-hidden="true"><svg class="icon"><use href="#i-user"/></svg></span>'
 def testimonials(wash=False, title='What Parents and Students Say.'):
-    cards = '\n'.join(f'      <figure class="quote"><svg class="icon q" aria-hidden="true"><use href="#i-chat"/></svg><blockquote>{esc(q)}</blockquote><figcaption><b>{esc(n)}</b><span>{esc(w)}</span></figcaption></figure>' for q, n, w in TESTIMONIALS)
+    cards = '\n'.join(f'      <figure class="quote"><svg class="icon q" aria-hidden="true"><use href="#i-chat"/></svg><blockquote>{esc(q)}</blockquote><figcaption>{_avatar(n, img)}<span class="who"><b>{esc(n)}</b><span>{esc(w)}</span></span></figcaption></figure>' for q, n, w, img in TESTIMONIALS)
     cls = ' class="wash"' if wash else ''
     return (f'<section id="testimonials"{cls}>\n  <div class="wrap">\n    <div class="head">\n      <p class="kicker">In their words</p>\n      <h2>{title}</h2>\n'
             '      <p class="lede">From families and students who learn with Valeem, many of them in Saudi Arabia.</p>\n    </div>\n'
             f'    <div class="quotes">\n{cards}\n    </div>\n  </div>\n</section>\n')
+
+# ---------- media coverage ----------
+PRESS = [
+ ("Dawn", "25 Jan 2024", "Blome visits IBA", "US Ambassador Donald Blome met Valeem and other startups at IBA's Center for Entrepreneurial Development.", "https://www.dawn.com/news/1808328"),
+ ("Digital Times Journal", "17 Mar 2023", "Valeem: the first local startup to join the cross-border edtech boom", "A profile of Valeem as a Pakistani startup teaching students across borders.", "https://digitaltimesjournal.com/valeem-the-first-local-startup-to-join-the-cross-border-edtech-boom/"),
+ ("ProPakistani", "10 Feb 2023", "8 NIC startups exhibit at LEAP Tech Conference 2023 in Saudi Arabia", "Valeem exhibited at LEAP 2023 in Riyadh and reached the semi-finals of the Rocket Fuel startup pitch competition.", "https://propakistani.pk/2023/02/10/8-nic-startups-exhibit-at-leap-tech-conference-2023-in-saudi-arabia/"),
+ ("IBA Karachi", "14 Jan 2023", "IBA Aman CED celebrates the fundraising success of its incubated company Valeem", "IBA's entrepreneurship centre on Valeem's pre-seed round from an American angel investor.", "https://www.iba.edu.pk/iba-aman-ced-celebrated-fundraising-success-incubated-company-valeem.php"),
+ ("Daily Times", "23 Dec 2022", "Valeem, Pakistan's pioneer edtech marketplace, secures pre-seed funding at a 7-figure valuation", "Coverage of Valeem's pre-seed funding round.", "https://dailytimes.com.pk/1042399/valeem-pakistans-pioneer-edtech-marketplace-secures-pre-seed-funding-at-a-company-valuation-of-7-figures/"),
+ ("ProPakistani", "Dec 2022", "Valeem, Pakistan's pioneer ed-tech marketplace, secures pre-seed funding at a 7-figure valuation", "Valeem raised pre-seed funding from a US investor to grow its platform.", "https://propakistani.pk/2022/12/23/valeem-pakistans-pioneer-ed-tech-marketplace-secures-pre-seed-funding-at-a-7-figure-company-valuation/"),
+]
+def press_strip(wash=False):
+    outlets = []
+    for o, d, t, x, u in PRESS:
+        if o not in [a for a, _ in outlets]: outlets.append((o, u))
+    links = ''.join(f'<li><a href="{u}" target="_blank" rel="noopener">{o}</a></li>' for o, u in outlets)
+    cls = ' wash' if wash else ''
+    return f'''<section id="press" class="press{cls}" aria-label="Valeem in the news">
+  <div class="wrap press-row">
+    <p class="press-k"><svg class="icon"><use href="#i-news"/></svg>As featured in</p>
+    <ul class="press-list">{links}</ul>
+    <a class="press-more" href="{B}/in-the-news/">All coverage <svg class="icon"><use href="#i-right"/></svg></a>
+  </div>
+</section>
+'''
+
+# ---------- fold long sections behind a button ----------
+FOLD_MORE = {'teachers': 'See the four checks', 'fees': 'See how fees work', 'process': 'See the steps', 'how': 'See the steps',
+             'about': 'Read our story', 'why': 'See why families choose us', 'team': 'Teach with Valeem', 'classes': 'See how classes work',
+             'gulf': 'For Gulf families', 'who': 'See who it is for', 'levels': 'See the levels', 'private-candidates': 'Read more'}
+def _txt(h): return re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', '', h or '')).strip()
+def fold_sections(html_, ids):
+    for sid in ids:
+        m = re.search(r'<section id="' + re.escape(sid) + r'"(?: class="([^"]*)")?>', html_)
+        if not m: continue
+        end = html_.index('</section>', m.end())
+        inner = html_[m.end():end]
+        cls = (m.group(1) or '').split()
+        wash = 'wash' in cls
+        body_cls = ' '.join(['fold-body'] + [c for c in cls if c != 'wash'])
+        k = re.search(r'<p class="kicker">(.*?)</p>', inner, re.S)
+        t = re.search(r'<h2[^>]*>(.*?)</h2>', inner, re.S)
+        l = re.search(r'<p class="lede">(.*?)</p>', inner, re.S)
+        line = _txt(l.group(1)) if l else ''
+        if len(line) > 140: line = line[:line.rfind(' ', 0, 140)] + '…'
+        more = FOLD_MORE.get(sid, 'Read more')
+        new_ = (f'<section class="fold-wrap{" wash" if wash else ""}">\n  <div class="wrap">\n    <details class="fold" id="{sid}">\n      <summary>\n'
+                f'        <span class="fold-head"><span class="kicker">{_txt(k.group(1)) if k else ""}</span><span class="fold-title">{_txt(t.group(1)) if t else ""}</span>'
+                + (f'<span class="fold-line">{line}</span>' if line else '') + '</span>\n'
+                f'        <span class="fold-toggle" aria-hidden="true"><span class="more-t">{more}</span><span class="less-t">Show less</span><svg class="icon"><use href="#i-chevron"/></svg></span>\n      </summary>\n'
+                f'      <div class="{body_cls}">{inner}</div>\n    </details>\n  </div>\n</section>')
+        html_ = html_[:m.start()] + new_ + html_[end + len('</section>'):]
+    return html_
 
 INF_STUDENT = 'iwRmYUkbwrC'
 INF_TEACHER = 'f5ff3893-4c5c-4b7b-82c1-f4bca5817094'
@@ -439,7 +496,8 @@ h = head('Valeem | Online Tuition for IGCSE, O &amp; A Level, Coding Courses and
          'One-to-one tuition for IGCSE, O Level and A Level with vetted teachers, coding and IELTS courses, and a structured homeschool pathway. Book a free demo.',
          B + '/new-home/images/share.jpg', [org, site, home_faq_ld],
          '<link rel="preload" as="image" href="images/slide-tuition.webp" media="(min-width:761px)">\n<link rel="preload" as="image" href="images/slide-tuition-m.webp" media="(max-width:760px)">', noindex=True)
-home = page(h, ' data-lead="HOMEPAGE"', '', main)
+main = main.replace('<!-- 3. THREE PROGRAMMES -->', press_strip() + '\n<!-- 3. THREE PROGRAMMES -->', 1)
+home = page(h, ' data-lead="HOMEPAGE"', '', main, folds=('teachers', 'about', 'how', 'fees', 'why', 'team'))
 home = home.replace(f'<a class="brand" href="{B}/"', '<a class="brand" href="#top"')
 open(R + '/new-home/index.html', 'w').write(home)
 
@@ -569,7 +627,8 @@ h = head('Online Tuition for IGCSE, O Level and A Level | Valeem',
   'Live one-to-one online tuition for IGCSE, O Level and A Level with vetted teachers who hold A or B grades. Classes in Saudi and Gulf time zones, free demo, monthly plans.',
   url, 'Online Tuition for IGCSE, O Level and A Level | Valeem', 'Vetted one-to-one teachers, classes in your time zone, a free demo and monthly plans.',
   url + 'images/hero.webp', [service, ld, crumbs_ld('Online Tuition', url)])
-open(R + '/online-tuition/index.html', 'w').write(page(h, ' data-lead="TUITION PAGE"', 'tuition', main))
+main = main.replace('<section id="testimonials">', press_strip(wash=True) + '<section id="testimonials">', 1)
+open(R + '/online-tuition/index.html', 'w').write(page(h, ' data-lead="TUITION PAGE"', 'tuition', main, folds=('classes', 'teachers', 'gulf', 'fees', 'process')))
 
 # =====================================================================
 # SKILLS & COURSES
@@ -668,7 +727,7 @@ h = head('Coding, IELTS, English and Quran Classes Online | Valeem Skills &amp; 
   'Live online courses with vetted teachers: Scratch coding for kids, Python, SQL and Power BI for teens and adults, IELTS, English, language and Quran classes. Free demo.',
   url, 'Valeem Skills & Courses: Coding, IELTS, English and Quran', 'Live courses for children, teens and adults with vetted Valeem teachers. Free demo.',
   url + 'images/hero.webp', [offer, ld, crumbs_ld('Skills & Courses', url)])
-open(R + '/skills-courses/index.html', 'w').write(page(h, ' data-lead="SKILLS PAGE" data-wa-text="Hello, I\'m interested in a Valeem course. I would like to book a free demo."', 'skills', main, cta='Ask About a Course', sticky_label='Ask About a Course'))
+open(R + '/skills-courses/index.html', 'w').write(page(h, ' data-lead="SKILLS PAGE" data-wa-text="Hello, I\'m interested in a Valeem course. I would like to book a free demo."', 'skills', main, cta='Ask About a Course', sticky_label='Ask About a Course', folds=('who', 'teachers', 'process')))
 
 # =====================================================================
 # TEACH WITH VALEEM

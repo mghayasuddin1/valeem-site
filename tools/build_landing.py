@@ -84,7 +84,7 @@ for slug, lvl, name, code, focus, topics, hard in SUBJECTS:
   </div>
 </section>
 
-''' + vet_section(title=f'Every {name} Teacher Passes Four Checks.') + fees_section() + form_section([], title=f'Book a Free {full} Demo.', lede=f'Tell us your child\'s level and where they need help in {name}. A counsellor will call you to arrange a free demo with a {name} teacher.', form_title='Register for a free trial lesson', wash=False) + fs + f'''
+''' + vet_section(title=f'Every {name} Teacher Passes Four Checks.') + fees_section() + testimonials() + form_section([], title=f'Book a Free {full} Demo.', lede=f'Tell us your child\'s level and where they need help in {name}. A counsellor will call you to arrange a free demo with a {name} teacher.', form_title='Register for a free trial lesson', wash=False) + fs + f'''
 <section id="more-subjects" class="wash">
   <div class="wrap">
     <div class="head">
@@ -101,7 +101,7 @@ for slug, lvl, name, code, focus, topics, hard in SUBJECTS:
              url, f'{full} {code} Online Tuition | Valeem', f'One-to-one {full} {code} classes with a vetted teacher. Free demo, monthly plans.',
              B + '/online-tuition/images/levels.webp', [course, ld, crumbs])
     wa = f"Hello, I would like a free demo for {full} ({code})."
-    html_ = page(h, f' data-lead="SUBJECT {full} {code}" data-wa-text="{esc(wa)}"', 'tuition', main)
+    html_ = page(h, f' data-lead="SUBJECT {full} {code}" data-wa-text="{esc(wa)}"', 'tuition', main, folds=('classes', 'teachers', 'fees'))
     write(f'{R}/online-tuition/{slug}/index.html', absimg(html_, 'online-tuition'))
 
 # =====================================================================
@@ -214,7 +214,8 @@ for cc, c in COUNTRIES.items():
              f'Live one-to-one online tuition for O Level, IGCSE and A Level for families in {c["the"]}. Vetted teachers, classes in {c["short"]}, free demo, monthly plans.',
              url, f'Online Tuition in {c["the"]} | Valeem', f'One-to-one IGCSE, O Level and A Level classes in {c["short"]}. Free demo.',
              url + 'images/share.jpg', [service, ld, crumbs_ld(f'Tuition in {c["the"]}', url)])
-    html_ = page(h, f' data-lead="{c["lead"]}" data-country="{cc}"', 'tuition', main)
+    main = main.replace('<section id="testimonials">', press_strip(wash=True) + '<section id="testimonials">', 1)
+    html_ = page(h, f' data-lead="{c["lead"]}" data-country="{cc}"', 'tuition', main, folds=('teachers', 'fees', 'process'))
     write(f"{R}/{c['folder']}/index.html", html_)
 
 # =====================================================================
@@ -296,4 +297,48 @@ h = head('O Level and IGCSE as a Private Candidate in Saudi Arabia | Valeem Guid
          B + '/online-tuition-saudi-arabia/images/share.jpg', [article, ld, crumbs])
 html_ = page(h, ' data-lead="SAUDI PRIVATE CANDIDATE GUIDE" data-country="SA"', 'tuition', main)
 write(f'{R}/online-tuition-saudi-arabia/private-candidate-guide/index.html', absimg(html_, 'online-tuition-saudi-arabia'))
-print('built', len(SUBJECTS), 'subject pages, 2 country pages, 1 guide')
+
+# =====================================================================
+# IN THE NEWS  /in-the-news/
+# =====================================================================
+url = f'{B}/in-the-news/'
+cards = '\n'.join(f'      <li><a href="{u}" target="_blank" rel="noopener"><span class="src">{o}<time>{d}</time></span><h3>{esc(t)}</h3><p>{esc(x)}</p><span class="go">Read on {o} <svg class="icon"><use href="#i-ext"/></svg></span></a></li>' for o, d, t, x, u in PRESS)
+main = page_hero('Valeem in the news', 'Press and recognition', 'Valeem <em>in the News.</em>',
+    'Funding, LEAP 2023 in Riyadh, and our time at IBA Karachi’s Center for Entrepreneurial Development. Here is what has been written about Valeem.',
+    '<a class="btn btn-primary" href="#demo" data-cta="hero" data-prog="Online Tuition: IGCSE, O Level or A Level">Book a Free Demo</a>' + WA_BTN,
+    [('i-award', 'Pre-seed funded'), ('i-globe', 'LEAP 2023, Riyadh'), ('i-cap', 'Incubated at IBA')], 'iba-visit-1.webp',
+    'Valeem at a networking session at IBA Karachi’s Center for Entrepreneurial Development') + f'''
+<section id="coverage">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">Coverage</p>
+      <h2>Articles About Valeem.</h2>
+      <p class="lede">Each link opens the original article on the publisher’s website.</p>
+    </div>
+    <ul class="news">
+{cards}
+    </ul>
+  </div>
+</section>
+
+<section id="iba-visit" class="wash">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">January 2024 · IBA Karachi</p>
+      <h2>Meeting the US Ambassador at IBA.</h2>
+      <p class="lede">Valeem was among the startups that met US Ambassador Donald Blome during his visit to IBA’s Center for Entrepreneurial Development, <a href="https://www.dawn.com/news/1808328" target="_blank" rel="noopener">reported by Dawn</a>.</p>
+    </div>
+    <figure class="event-photos">
+      <img src="images/iba-visit-2.webp" alt="Networking session at IBA Karachi’s Center for Entrepreneurial Development" width="1400" height="947" loading="lazy">
+      <img src="images/iba-visit-1.webp" alt="Startup founders and guests in discussion at IBA Karachi" width="1400" height="928" loading="lazy">
+    </figure>
+  </div>
+</section>
+
+''' + testimonials() + form_section([], title='Book a Free Demo Class.', lede='Tell us what your child needs. A counsellor will call you to arrange a free demo at your time.', form_title='Register for a free trial lesson', wash=True)
+coll = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Valeem in the news", "url": url, "about": ORG,
+        "hasPart": [{"@type": "NewsArticle", "headline": t, "url": u, "publisher": {"@type": "Organization", "name": o}} for o, d, t, x, u in PRESS]}
+h = head('Valeem in the News | Press Coverage and Recognition', 'Press coverage of Valeem: pre-seed funding, LEAP 2023 in Riyadh, IBA Karachi incubation and the US Ambassador’s visit to IBA’s Center for Entrepreneurial Development.',
+         url, 'Valeem in the News', 'Funding, LEAP 2023 and IBA Karachi: what has been written about Valeem.', url + 'images/share.jpg', [coll, crumbs_ld('Valeem in the news', url)])
+write(f'{R}/in-the-news/index.html', page(h, ' data-lead="PRESS PAGE"', '', main))
+print('built', len(SUBJECTS), 'subject pages, 2 country pages, 1 guide, press page')

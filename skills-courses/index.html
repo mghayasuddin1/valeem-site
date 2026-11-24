@@ -493,6 +493,62 @@ iframe.inf{width:100%;border:0;display:block;border-radius:14px;background:#fff}
 .quote figcaption{margin-top:auto;display:flex;flex-direction:column;gap:2px}
 .quote figcaption span{color:var(--muted);font-size:.9rem}
 @media (max-width:760px){.quotes{grid-template-columns:1fr}}
+.fold-wrap{padding:56px 0}
+details.fold{border:1px solid var(--line);border-radius:22px;background:#fff;box-shadow:0 20px 40px -34px rgba(43,17,69,.5)}
+.fold-wrap.wash details.fold{background:#fff}
+details.fold>summary{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding:30px 32px;min-height:0;font:inherit;color:inherit;cursor:pointer;list-style:none;border-radius:22px}
+details.fold>summary::after{display:none}
+details.fold>summary:hover .fold-toggle{background:var(--plum);color:#fff;border-color:var(--plum)}
+.fold-head{display:flex;flex-direction:column;gap:10px}
+.fold-title{font:700 clamp(1.5rem,3vw,2.2rem)/1.15 var(--display);color:var(--plum-deep);letter-spacing:-.015em;text-wrap:balance}
+.fold-line{color:var(--muted);font-size:1.02rem}
+.fold-toggle{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border:2px solid var(--line);border-radius:999px;font:700 .82rem/1 var(--body);letter-spacing:.04em;text-transform:uppercase;color:var(--plum);white-space:nowrap;transition:background .2s,color .2s,border-color .2s}
+.fold-toggle .icon{width:18px;height:18px;transition:transform .3s}
+.fold-toggle .less-t,details.fold[open] .fold-toggle .more-t{display:none}
+details.fold[open] .fold-toggle .less-t{display:inline}
+details.fold[open] .fold-toggle .icon{transform:rotate(180deg)}
+.fold-body{padding:0 32px 32px;animation:foldIn .45s ease}
+@keyframes foldIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.fold-body.learn{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:start}
+.fold-body .ps-top{grid-template-columns:1.6fr .7fr;margin-bottom:24px;align-items:stretch}
+.fold-body .ps-top .photo{aspect-ratio:auto;min-height:320px}
+.fold-body .support-grid{grid-template-columns:repeat(2,1fr)}
+.fold-body .pull{margin-top:0}
+@media (max-width:900px){.fold-body.learn,.fold-body .ps-top{grid-template-columns:1fr}.fold-body .ps-top .photo{min-height:0;aspect-ratio:4/3}}
+@media (max-width:640px){details.fold>summary{grid-template-columns:1fr;padding:24px 20px;gap:16px}.fold-toggle{justify-self:start}.fold-body{padding:0 20px 24px}.fold-body .support-grid{grid-template-columns:1fr}.fold-wrap{padding:40px 0}}
+.fold-body .wrap{padding:0;max-width:none;width:auto}
+.fold-body .head>.kicker,.fold-body .head>h2,.fold-body .head>.lede{display:none}
+.fold-body .head:empty{display:none}
+.fold-body.wash,.fold-body.vet,.fold-body.gulf{background:transparent}
+@media (prefers-reduced-motion:reduce){.fold-toggle .icon{transition:none}.fold-body{animation:none}}
+.quote figcaption{flex-direction:row;align-items:center;gap:14px}
+.quote .who{display:flex;flex-direction:column;gap:2px}
+.quote .who span{color:var(--muted);font-size:.9rem}
+.quote .av{width:56px;height:56px;border-radius:50%;object-fit:cover;object-position:50% 25%;flex:none;background:var(--line)}
+.quote .av-i{display:grid;place-items:center;color:var(--plum)}
+.quote .av-i .icon{width:26px;height:26px}
+.press{padding:34px 0}
+.press-row{display:flex;align-items:center;gap:22px 34px;flex-wrap:wrap;justify-content:space-between}
+.press-k{display:flex;align-items:center;gap:8px;margin:0;font:700 .78rem/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.press-k .icon{width:18px;height:18px;color:var(--orange)}
+.press-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:14px 34px;align-items:center}
+.press-list a{font:700 1.2rem/1 var(--display);color:var(--plum-deep);text-decoration:none;opacity:.8;transition:opacity .2s}
+.press-list a:hover{opacity:1;color:var(--plum)}
+.press-more{display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--plum);text-decoration:none;white-space:nowrap}
+.press-more .icon{width:16px;height:16px}
+.news{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.news a{display:flex;flex-direction:column;gap:10px;height:100%;padding:24px 26px;border:1px solid var(--line);border-radius:20px;background:#fff;color:var(--ink);text-decoration:none;transition:border-color .2s,transform .2s}
+.news a:hover{border-color:var(--orange);transform:translateY(-2px)}
+.news .src{display:flex;justify-content:space-between;gap:10px;font:700 .78rem/1.2 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--orange)}
+.news .src time{color:var(--muted);letter-spacing:.04em}
+.news h3{margin:0;font:700 1.2rem/1.3 var(--display);color:var(--plum-deep)}
+.news p{margin:0;color:var(--muted)}
+.news .go{margin-top:auto;display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--plum)}
+.news .go .icon{width:16px;height:16px}
+.event-photos{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:0}
+.event-photos img{width:100%;height:100%;aspect-ratio:4/3;object-fit:cover;border-radius:20px}
+.event-cap{margin-top:12px;color:var(--muted);font-size:.95rem}
+@media (max-width:760px){.news,.event-photos{grid-template-columns:1fr}.press-row{justify-content:flex-start}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "OfferCatalog", "name": "Valeem Skills & Courses", "url": "https://www.valeem.com/skills-courses/", "itemListElement": [{"@type": "Course", "name": "Scratch coding for young learners", "description": "Live online Scratch coding classes for children.", "provider": {"@type": "EducationalOrganization", "@id": "https://www.valeem.com/#org", "name": "Valeem", "url": "https://www.valeem.com/"}, "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online"}}, {"@type": "Course", "name": "Python", "description": "Live online Python programming classes for teenagers and adults.", "provider": {"@type": "EducationalOrganization", "@id": "https://www.valeem.com/#org", "name": "Valeem", "url": "https://www.valeem.com/"}, "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online"}}, {"@type": "Course", "name": "SQL", "description": "Live online SQL classes for teenagers and adults.", "provider": {"@type": "EducationalOrganization", "@id": "https://www.valeem.com/#org", "name": "Valeem", "url": "https://www.valeem.com/"}, "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online"}}, {"@type": "Course", "name": "Power BI", "description": "Live online Power BI data visualisation classes for adults.", "provider": {"@type": "EducationalOrganization", "@id": "https://www.valeem.com/#org", "name": "Valeem", "url": "https://www.valeem.com/"}, "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online"}}, {"@type": "Course", "name": "IELTS preparation", "description": "Live online IELTS preparation.", "provider": {"@type": "EducationalOrganization", "@id": "https://www.valeem.com/#org", "name": "Valeem", "url": "https://www.valeem.com/"}, "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online"}}, {"@type": "Course", "name": "English improvement", "description": "Live online classes to improve spoken and written English.", "provider": {"@type": "EducationalOrganization", "@id": "https://www.valeem.com/#org", "name": "Valeem", "url": "https://www.valeem.com/"}, "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online"}}, {"@type": "Course", "name": "Quran classes", "description": "Live online Quran classes for children and adults.", "provider": {"@type": "EducationalOrganization", "@id": "https://www.valeem.com/#org", "name": "Valeem", "url": "https://www.valeem.com/"}, "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online"}}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What coding courses does Valeem offer?", "acceptedAnswer": {"@type": "Answer", "text": "Scratch for young learners, and Python, SQL and Power BI for teenagers and adults. Classes are live with a Valeem teacher."}}, {"@type": "Question", "name": "What age can my child start coding?", "acceptedAnswer": {"@type": "Answer", "text": "Young learners start with Scratch, a visual way to learn coding. Tell us your child's age and we will suggest the right starting point."}}, {"@type": "Question", "name": "Do you offer IELTS preparation?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. IELTS preparation is taught live for teenagers and adults, alongside English improvement classes."}}, {"@type": "Question", "name": "Which languages do you teach?", "acceptedAnswer": {"@type": "Answer", "text": "English, Urdu, Arabic, Chinese and German, for children and adults, from beginner level upwards."}}, {"@type": "Question", "name": "Do you offer Quran classes?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Live online Quran classes are available for children and adults."}}, {"@type": "Question", "name": "How are courses priced?", "acceptedAnswer": {"@type": "Answer", "text": "Courses are billed monthly. The fee depends on the course, classes per week and class length, and is shared after a free demo."}}]}</script>
@@ -528,6 +584,9 @@ iframe.inf{width:100%;border:0;display:block;border-radius:14px;background:#fff}
     <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-news" viewBox="0 0 24 24"><rect x="3" y="4" width="15" height="16" rx="2"/><path d="M18 8h3v10a2 2 0 0 1-2 2M7 8h7M7 12h7M7 16h4"/></symbol>
+    <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
     <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8.300 8 9 4.600-.7 8-4.500 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
     <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></symbol>
     <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="m8.500 14-1.500 7 5-3 5 3-1.500-7"/></symbol>
@@ -624,7 +683,14 @@ iframe.inf{width:100%;border:0;display:block;border-radius:14px;background:#fff}
   </div>
 </section>
 
-<section id="who" class="wash">
+<section class="fold-wrap wash">
+  <div class="wrap">
+    <details class="fold" id="who">
+      <summary>
+        <span class="fold-head"><span class="kicker">Who it's for</span><span class="fold-title">Courses for Every Stage of Life.</span></span>
+        <span class="fold-toggle" aria-hidden="true"><span class="more-t">See who it is for</span><span class="less-t">Show less</span><svg class="icon"><use href="#i-chevron"/></svg></span>
+      </summary>
+      <div class="fold-body">
   <div class="wrap">
     <div class="head">
       <p class="kicker">Who it's for</p>
@@ -636,9 +702,19 @@ iframe.inf{width:100%;border:0;display:block;border-radius:14px;background:#fff}
       <div><h3>Working adults</h3><p>SQL, Power BI, Python and IELTS for your career or a move abroad.</p></div>
     </div>
   </div>
+</div>
+    </details>
+  </div>
 </section>
 
-<section id="teachers" class="vet">
+<section class="fold-wrap">
+  <div class="wrap">
+    <details class="fold" id="teachers">
+      <summary>
+        <span class="fold-head"><span class="kicker">How we choose teachers</span><span class="fold-title">Every Course Teacher Passes Four Checks.</span><span class="fold-line">The same selection process as our tuition teachers: proven grades, an interview and training before the first class.</span></span>
+        <span class="fold-toggle" aria-hidden="true"><span class="more-t">See the four checks</span><span class="less-t">Show less</span><svg class="icon"><use href="#i-chevron"/></svg></span>
+      </summary>
+      <div class="fold-body vet">
   <div class="wrap">
     <div class="head">
       <p class="kicker">How we choose teachers</p>
@@ -656,9 +732,19 @@ iframe.inf{width:100%;border:0;display:block;border-radius:14px;background:#fff}
       <a href="https://www.valeem.com/teach-at-valeem/">Are you a teacher? Apply to teach</a>
     </div>
   </div>
+</div>
+    </details>
+  </div>
 </section>
 
-<section id="process">
+<section class="fold-wrap">
+  <div class="wrap">
+    <details class="fold" id="process">
+      <summary>
+        <span class="fold-head"><span class="kicker">How to start</span><span class="fold-title">From Free Demo to Your First Course.</span></span>
+        <span class="fold-toggle" aria-hidden="true"><span class="more-t">See the steps</span><span class="less-t">Show less</span><svg class="icon"><use href="#i-chevron"/></svg></span>
+      </summary>
+      <div class="fold-body">
   <div class="wrap feat">
     <figure class="photo"><img src="images/adults.webp" alt="An adult learner typing on a laptop" width="800" height="880" loading="lazy"></figure>
     <div>
@@ -674,6 +760,9 @@ iframe.inf{width:100%;border:0;display:block;border-radius:14px;background:#fff}
         <li><span class="t-ic"><svg class="icon"><use href="#i-check"/></svg></span><div><b>Classes continue</b><span>Learning continues month to month, with progress you can follow.</span></div></li>
       </ol>
     </div>
+  </div>
+</div>
+    </details>
   </div>
 </section>
 
@@ -733,6 +822,7 @@ iframe.inf{width:100%;border:0;display:block;border-radius:14px;background:#fff}
       <div><h4>Valeem</h4><ul>
         <li><a href="https://www.valeem.com/mod/page/view.php?id=2">About us</a></li>
         <li><a href="https://www.valeem.com/teach-at-valeem/">Teach with Valeem</a></li>
+        <li><a href="https://www.valeem.com/in-the-news/">Valeem in the news</a></li>
         <li><a href="https://www.valeem.com/blog/">Blog</a></li>
         <li><a href="https://www.valeem.com/login/index.php">Student log in</a></li>
         <li><a href="https://www.valeem.com/mod/page/view.php?id=3">Terms &amp; Conditions</a></li>
@@ -779,6 +869,12 @@ iframe.inf{width:100%;border:0;display:block;border-radius:14px;background:#fff}
   }
   $all('[data-wa]').forEach(function(a){ a.href = waUrl(); a.addEventListener('click', function(){ track('whatsapp_click', {location:a.dataset.wa}); }); });
   $all('[data-cta]').forEach(function(a){ a.addEventListener('click', function(){ track('demo_cta_click', {location:a.dataset.cta}); }); });
+  /* Folded sections: track opens; open a fold when a link or the address points at it */
+  $all('details.fold').forEach(function(d){ d.addEventListener('toggle', function(){ if(d.open) track('fold_open', {section:d.id}); }); });
+  function openFold(id){ var d = id && document.getElementById(id); if(d && d.tagName === 'DETAILS' && !d.open){ d.open = true; } }
+  if(location.hash) openFold(location.hash.slice(1));
+  window.addEventListener('hashchange', function(){ openFold(location.hash.slice(1)); });
+  $all('a[href^="#"]').forEach(function(a){ a.addEventListener('click', function(){ openFold(a.getAttribute('href').slice(1)); }); });
   var nav = $('#nav'), mb = $('#menuBtn');
   mb.addEventListener('click', function(){ var o = nav.classList.toggle('open'); mb.setAttribute('aria-expanded', o); mb.setAttribute('aria-label', o ? 'Close menu' : 'Open menu'); });
   nav.addEventListener('click', function(e){ if(e.target.tagName === 'A'){ nav.classList.remove('open'); mb.setAttribute('aria-expanded','false'); } });
