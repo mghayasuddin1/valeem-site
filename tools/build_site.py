@@ -65,7 +65,7 @@ SCRIPT = js
 
 # ---------- shared parts ----------
 def head(title, desc, canonical, og_title, og_desc, og_img, jsonld, preload='', noindex=False):
-    s = [open(T + 'gtag.html').read(),
+    s = [open(T + 'gtag.html').read(), open(T + 'pixel.html').read(),
          '<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">',
          f'<title>{title}</title>', f'<meta name="description" content="{esc(desc)}">', f'<link rel="canonical" href="{canonical}">']
     if noindex: s.append('<meta name="robots" content="noindex, follow"><!-- REMOVE this robots line when this page becomes the real homepage -->')
