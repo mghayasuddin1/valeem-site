@@ -1,5 +1,7 @@
 """Build the Valeem homepage draft and the three programme/teacher pages from shared parts."""
-import json, re, html, sys
+import json, re, html, sys, os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from subjects import SUBJECTS
 R = sys.argv[1]
 T = '/home/claude/tools/'
 B = 'https://www.valeem.com'
@@ -39,25 +41,26 @@ js = js[:a] + gal.rstrip() + "\n  }\n\n  if($('#leadForm')){\n" + js[f:b] + '\n 
 # 'still' is defined inside the carousel closure; define it globally for the gallery
 js = js.replace("  /* Programme preselect", "  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;\n\n  /* Programme preselect")
 js = js.replace("  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;\n  hero.style", "  hero.style")
-js = js.replace("  /* Programme preselect", r'''  /* Location: Cloudflare tells us the visitor's country; Gulf families see a line for them */
+js = js.replace("  /* Programme preselect", r'''  /* Location: the visitor's time zone tells us the country; Gulf families see a line for them */
   var GULF = {SA:['Saudi Arabia', 'https://www.valeem.com/online-tuition-saudi-arabia/', 'Riyadh, Saudi Arabia', 'Saudi time'], AE:['the UAE', 'https://www.valeem.com/online-tuition-uae/', 'Dubai, UAE', 'UAE time'], QA:['Qatar', '', 'Doha, Qatar', 'Qatar time'], KW:['Kuwait', '', 'Kuwait City, Kuwait', 'Kuwait time'], BH:['Bahrain', '', 'Manama, Bahrain', 'Bahrain time'], OM:['Oman', '', 'Muscat, Oman', 'Oman time']};
-  if(window.fetch && /valeem\.com$/.test(location.hostname)){
-    fetch('/cdn-cgi/trace', {cache:'no-store'}).then(function(r){ return r.ok ? r.text() : ''; }).then(function(t){
-      var m = /loc=([A-Z]{2})/.exec(t || ''); if(!m) return;
-      var c = m[1], g = GULF[c], bar = $('#geo'), city = $('#city');
+  var TZ = {'Asia/Riyadh':'SA', 'Asia/Dubai':'AE', 'Asia/Qatar':'QA', 'Asia/Kuwait':'KW', 'Asia/Bahrain':'BH', 'Asia/Muscat':'OM', 'Asia/Karachi':'PK'};
+  try{
+    var c = TZ[Intl.DateTimeFormat().resolvedOptions().timeZone];
+    if(c){
+      var g = GULF[c], bar = $('#geo'), city = $('#city'), here = document.body.getAttribute('data-country');
       document.documentElement.setAttribute('data-country', c);
       if(city && g) city.placeholder = 'e.g. ' + g[2];
       if(city && c === 'PK') city.placeholder = 'e.g. Karachi, Pakistan';
-      if(g && bar){
+      if(g && bar && here !== c){
         $('#geoText').innerHTML = '<b>Families in ' + g[0] + ':</b> classes are scheduled after school, in ' + g[3] + '.';
         var l = $('#geoLink'); if(g[1]){ l.href = g[1]; l.textContent = 'Tuition in ' + g[0]; } else { l.remove(); }
         bar.hidden = false; track('geo_bar_shown', {country:c});
       }
-    }).catch(function(){});
-  }
+    }
+  }catch(e){}
 
   /* Programme preselect''')
-assert "if($('#leadForm'))" in js and 'infinity_form_view' in js and 'LEAD + ' in js and "if(document.getElementById('slides'))" in js and 'if(strip){' in js and 'cdn-cgi/trace' in js
+assert "if($('#leadForm'))" in js and 'infinity_form_view' in js and 'LEAD + ' in js and "if(document.getElementById('slides'))" in js and 'if(strip){' in js and 'resolvedOptions' in js
 SCRIPT = js
 
 # ---------- shared parts ----------
@@ -429,6 +432,24 @@ open(R + '/new-home/index.html', 'w').write(home)
 # ONLINE TUITION
 # =====================================================================
 url = B + '/online-tuition/'
+def subj_links(exclude=None):
+    out = []
+    for lvl in ('O Level', 'IGCSE', 'A Level'):
+        items = ''.join(f'<li><a href="{B}/online-tuition/{sl}/">{lv} {nm} <small>{cd}</small></a></li>' for sl, lv, nm, cd, *_ in SUBJECTS if lv == lvl and sl != exclude)
+        if items: out.append(f'      <h3 class="subj-h">{lvl}</h3>\n      <ul class="subj">{items}</ul>')
+    return '\n'.join(out)
+SUBJ_SECTION = f'''<section id="subjects">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">Popular subjects</p>
+      <h2>Find Your Subject and Syllabus Code.</h2>
+      <p class="lede">These are the subjects families ask for most. We teach every IGCSE, O Level and A Level subject, so ask us if yours isn't listed.</p>
+    </div>
+{subj_links()}
+  </div>
+</section>
+
+'''
 tq = [
  ("", [
   ("Which levels does Valeem teach?", "IGCSE, O Level and A Level (AS and A2), usually from Grade 8 upwards. We also teach younger students from Grade 5 in English and Maths, and help with homework."),
@@ -476,7 +497,7 @@ main = page_hero('Online Tuition', 'Online Tuition · IGCSE · O Level · A Leve
   </div>
 </section>
 
-<section id="classes" class="wash">
+{SUBJ_SECTION}<section id="classes" class="wash">
   <div class="wrap feat">
     <figure class="photo"><img src="images/levels.webp" alt="A student smiling at his laptop during a live lesson" width="900" height="945" loading="lazy"></figure>
     <div>

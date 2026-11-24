@@ -461,6 +461,22 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
 iframe.inf{width:100%;border:0;display:block;border-radius:14px;background:#fff}
 .inf-student{height:1140px}.inf-teacher{height:2360px}
 @media (max-width:600px){.inf-student{height:1210px}.inf-teacher{height:2450px}.form-card.embed{padding:6px}}
+.subj-h{font-size:1.05rem;margin:22px 0 10px;color:var(--plum)}
+.subj{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.subj a{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:13px 16px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--ink);font-weight:600;text-decoration:none;transition:border-color .2s}
+.subj a:hover{border-color:var(--orange)}
+.subj small{color:var(--muted);font-weight:600;font-size:.85rem;white-space:nowrap}
+@media (max-width:900px){.subj{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.subj{grid-template-columns:1fr}}
+.topics{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.topics li{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:12px;background:#fff;border:1px solid var(--line);font-weight:500}
+.topics li .icon{flex:none;color:var(--orange);margin-top:2px}
+@media (max-width:600px){.topics{grid-template-columns:1fr}}
+.note{font-size:.92rem;color:var(--muted);margin-top:14px}
+.steps-plain{counter-reset:s;list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.steps-plain li{counter-increment:s;position:relative;padding:16px 18px 16px 58px;border:1px solid var(--line);border-radius:14px;background:#fff}
+.steps-plain li:before{content:counter(s);position:absolute;left:16px;top:14px;width:30px;height:30px;border-radius:50%;background:var(--orange);color:#fff;font-weight:700;display:grid;place-items:center}
+.steps-plain b{display:block;margin-bottom:2px}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "OfferCatalog", "name": "Valeem Skills & Courses", "url": "https://www.valeem.com/skills-courses/", "itemListElement": [{"@type": "Course", "name": "Scratch coding for young learners", "description": "Live online Scratch coding classes for children.", "provider": {"@type": "EducationalOrganization", "@id": "https://www.valeem.com/#org", "name": "Valeem", "url": "https://www.valeem.com/"}, "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online"}}, {"@type": "Course", "name": "Python", "description": "Live online Python programming classes for teenagers and adults.", "provider": {"@type": "EducationalOrganization", "@id": "https://www.valeem.com/#org", "name": "Valeem", "url": "https://www.valeem.com/"}, "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online"}}, {"@type": "Course", "name": "SQL", "description": "Live online SQL classes for teenagers and adults.", "provider": {"@type": "EducationalOrganization", "@id": "https://www.valeem.com/#org", "name": "Valeem", "url": "https://www.valeem.com/"}, "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online"}}, {"@type": "Course", "name": "Power BI", "description": "Live online Power BI data visualisation classes for adults.", "provider": {"@type": "EducationalOrganization", "@id": "https://www.valeem.com/#org", "name": "Valeem", "url": "https://www.valeem.com/"}, "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online"}}, {"@type": "Course", "name": "IELTS preparation", "description": "Live online IELTS preparation.", "provider": {"@type": "EducationalOrganization", "@id": "https://www.valeem.com/#org", "name": "Valeem", "url": "https://www.valeem.com/"}, "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online"}}, {"@type": "Course", "name": "English improvement", "description": "Live online classes to improve spoken and written English.", "provider": {"@type": "EducationalOrganization", "@id": "https://www.valeem.com/#org", "name": "Valeem", "url": "https://www.valeem.com/"}, "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online"}}, {"@type": "Course", "name": "Quran classes", "description": "Live online Quran classes for children and adults.", "provider": {"@type": "EducationalOrganization", "@id": "https://www.valeem.com/#org", "name": "Valeem", "url": "https://www.valeem.com/"}, "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online"}}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What coding courses does Valeem offer?", "acceptedAnswer": {"@type": "Answer", "text": "Scratch for young learners, and Python, SQL and Power BI for teenagers and adults. Classes are live with a Valeem teacher."}}, {"@type": "Question", "name": "What age can my child start coding?", "acceptedAnswer": {"@type": "Answer", "text": "Young learners start with Scratch, a visual way to learn coding. Tell us your child's age and we will suggest the right starting point."}}, {"@type": "Question", "name": "Do you offer IELTS preparation?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. IELTS preparation is taught live for teenagers and adults, alongside English improvement classes."}}, {"@type": "Question", "name": "Which languages do you teach?", "acceptedAnswer": {"@type": "Answer", "text": "English, Urdu, Arabic, Chinese and German, for children and adults, from beginner level upwards."}}, {"@type": "Question", "name": "Do you offer Quran classes?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Live online Quran classes are available for children and adults."}}, {"@type": "Question", "name": "How are courses priced?", "acceptedAnswer": {"@type": "Answer", "text": "Courses are billed monthly. The fee depends on the course, classes per week and class length, and is shared after a free demo."}}]}</script>
@@ -756,22 +772,23 @@ iframe.inf{width:100%;border:0;display:block;border-radius:14px;background:#fff}
 
   var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* Location: Cloudflare tells us the visitor's country; Gulf families see a line for them */
+  /* Location: the visitor's time zone tells us the country; Gulf families see a line for them */
   var GULF = {SA:['Saudi Arabia', 'https://www.valeem.com/online-tuition-saudi-arabia/', 'Riyadh, Saudi Arabia', 'Saudi time'], AE:['the UAE', 'https://www.valeem.com/online-tuition-uae/', 'Dubai, UAE', 'UAE time'], QA:['Qatar', '', 'Doha, Qatar', 'Qatar time'], KW:['Kuwait', '', 'Kuwait City, Kuwait', 'Kuwait time'], BH:['Bahrain', '', 'Manama, Bahrain', 'Bahrain time'], OM:['Oman', '', 'Muscat, Oman', 'Oman time']};
-  if(window.fetch && /valeem\.com$/.test(location.hostname)){
-    fetch('/cdn-cgi/trace', {cache:'no-store'}).then(function(r){ return r.ok ? r.text() : ''; }).then(function(t){
-      var m = /loc=([A-Z]{2})/.exec(t || ''); if(!m) return;
-      var c = m[1], g = GULF[c], bar = $('#geo'), city = $('#city');
+  var TZ = {'Asia/Riyadh':'SA', 'Asia/Dubai':'AE', 'Asia/Qatar':'QA', 'Asia/Kuwait':'KW', 'Asia/Bahrain':'BH', 'Asia/Muscat':'OM', 'Asia/Karachi':'PK'};
+  try{
+    var c = TZ[Intl.DateTimeFormat().resolvedOptions().timeZone];
+    if(c){
+      var g = GULF[c], bar = $('#geo'), city = $('#city'), here = document.body.getAttribute('data-country');
       document.documentElement.setAttribute('data-country', c);
       if(city && g) city.placeholder = 'e.g. ' + g[2];
       if(city && c === 'PK') city.placeholder = 'e.g. Karachi, Pakistan';
-      if(g && bar){
+      if(g && bar && here !== c){
         $('#geoText').innerHTML = '<b>Families in ' + g[0] + ':</b> classes are scheduled after school, in ' + g[3] + '.';
         var l = $('#geoLink'); if(g[1]){ l.href = g[1]; l.textContent = 'Tuition in ' + g[0]; } else { l.remove(); }
         bar.hidden = false; track('geo_bar_shown', {country:c});
       }
-    }).catch(function(){});
-  }
+    }
+  }catch(e){}
 
   /* Programme preselect from any CTA with data-prog */
   $all('[data-prog]').forEach(function(a){ a.addEventListener('click', function(){ var s = $('#prog'); if(s){ s.value = a.dataset.prog; } }); });

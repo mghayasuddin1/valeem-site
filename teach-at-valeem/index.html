@@ -461,6 +461,22 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
 iframe.inf{width:100%;border:0;display:block;border-radius:14px;background:#fff}
 .inf-student{height:1140px}.inf-teacher{height:2360px}
 @media (max-width:600px){.inf-student{height:1210px}.inf-teacher{height:2450px}.form-card.embed{padding:6px}}
+.subj-h{font-size:1.05rem;margin:22px 0 10px;color:var(--plum)}
+.subj{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.subj a{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:13px 16px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--ink);font-weight:600;text-decoration:none;transition:border-color .2s}
+.subj a:hover{border-color:var(--orange)}
+.subj small{color:var(--muted);font-weight:600;font-size:.85rem;white-space:nowrap}
+@media (max-width:900px){.subj{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.subj{grid-template-columns:1fr}}
+.topics{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.topics li{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:12px;background:#fff;border:1px solid var(--line);font-weight:500}
+.topics li .icon{flex:none;color:var(--orange);margin-top:2px}
+@media (max-width:600px){.topics{grid-template-columns:1fr}}
+.note{font-size:.92rem;color:var(--muted);margin-top:14px}
+.steps-plain{counter-reset:s;list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.steps-plain li{counter-increment:s;position:relative;padding:16px 18px 16px 58px;border:1px solid var(--line);border-radius:14px;background:#fff}
+.steps-plain li:before{content:counter(s);position:absolute;left:16px;top:14px;width:30px;height:30px;border-radius:50%;background:var(--orange);color:#fff;font-weight:700;display:grid;place-items:center}
+.steps-plain b{display:block;margin-bottom:2px}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Teach with Valeem", "url": "https://www.valeem.com/teach-at-valeem/", "about": {"@type": "EducationalOrganization", "@id": "https://www.valeem.com/#org", "name": "Valeem", "url": "https://www.valeem.com/"}, "description": "Apply to teach IGCSE, O Level, A Level and skills courses live online with Valeem. Four-step selection: application, proven grades, interview, training."}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What do I need to teach with Valeem?", "acceptedAnswer": {"@type": "Answer", "text": "An A or B grade in the subject you want to teach, at O Level, IGCSE or A Level, confident spoken English, and the ability to teach live online."}}, {"@type": "Question", "name": "What is the selection process?", "acceptedAnswer": {"@type": "Answer", "text": "Four steps: you apply, you share proof of your subject grades, you have a one-to-one interview with our team, and you complete onboarding and training before your first class."}}, {"@type": "Question", "name": "What does the training cover?", "acceptedAnswer": {"@type": "Answer", "text": "Managing student and parent expectations, using AI in your teaching, building presentations and running live classes on our platform."}}, {"@type": "Question", "name": "Can I teach from anywhere?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. All classes are live online. Our students are in 14+ countries, most of them in Saudi Arabia and the Gulf."}}, {"@type": "Question", "name": "What can I teach?", "acceptedAnswer": {"@type": "Answer", "text": "IGCSE, O Level and A Level subjects, younger students from Grade 5, skills courses such as coding and IELTS, and Homeschool Pathways."}}]}</script>
@@ -716,22 +732,23 @@ iframe.inf{width:100%;border:0;display:block;border-radius:14px;background:#fff}
 
   var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* Location: Cloudflare tells us the visitor's country; Gulf families see a line for them */
+  /* Location: the visitor's time zone tells us the country; Gulf families see a line for them */
   var GULF = {SA:['Saudi Arabia', 'https://www.valeem.com/online-tuition-saudi-arabia/', 'Riyadh, Saudi Arabia', 'Saudi time'], AE:['the UAE', 'https://www.valeem.com/online-tuition-uae/', 'Dubai, UAE', 'UAE time'], QA:['Qatar', '', 'Doha, Qatar', 'Qatar time'], KW:['Kuwait', '', 'Kuwait City, Kuwait', 'Kuwait time'], BH:['Bahrain', '', 'Manama, Bahrain', 'Bahrain time'], OM:['Oman', '', 'Muscat, Oman', 'Oman time']};
-  if(window.fetch && /valeem\.com$/.test(location.hostname)){
-    fetch('/cdn-cgi/trace', {cache:'no-store'}).then(function(r){ return r.ok ? r.text() : ''; }).then(function(t){
-      var m = /loc=([A-Z]{2})/.exec(t || ''); if(!m) return;
-      var c = m[1], g = GULF[c], bar = $('#geo'), city = $('#city');
+  var TZ = {'Asia/Riyadh':'SA', 'Asia/Dubai':'AE', 'Asia/Qatar':'QA', 'Asia/Kuwait':'KW', 'Asia/Bahrain':'BH', 'Asia/Muscat':'OM', 'Asia/Karachi':'PK'};
+  try{
+    var c = TZ[Intl.DateTimeFormat().resolvedOptions().timeZone];
+    if(c){
+      var g = GULF[c], bar = $('#geo'), city = $('#city'), here = document.body.getAttribute('data-country');
       document.documentElement.setAttribute('data-country', c);
       if(city && g) city.placeholder = 'e.g. ' + g[2];
       if(city && c === 'PK') city.placeholder = 'e.g. Karachi, Pakistan';
-      if(g && bar){
+      if(g && bar && here !== c){
         $('#geoText').innerHTML = '<b>Families in ' + g[0] + ':</b> classes are scheduled after school, in ' + g[3] + '.';
         var l = $('#geoLink'); if(g[1]){ l.href = g[1]; l.textContent = 'Tuition in ' + g[0]; } else { l.remove(); }
         bar.hidden = false; track('geo_bar_shown', {country:c});
       }
-    }).catch(function(){});
-  }
+    }
+  }catch(e){}
 
   /* Programme preselect from any CTA with data-prog */
   $all('[data-prog]').forEach(function(a){ a.addEventListener('click', function(){ var s = $('#prog'); if(s){ s.value = a.dataset.prog; } }); });

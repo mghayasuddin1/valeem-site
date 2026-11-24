@@ -461,6 +461,22 @@ footer{background:var(--plum-deep);color:#d9cde6;padding:56px 0 110px;font-size:
 iframe.inf{width:100%;border:0;display:block;border-radius:14px;background:#fff}
 .inf-student{height:1140px}.inf-teacher{height:2360px}
 @media (max-width:600px){.inf-student{height:1210px}.inf-teacher{height:2450px}.form-card.embed{padding:6px}}
+.subj-h{font-size:1.05rem;margin:22px 0 10px;color:var(--plum)}
+.subj{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.subj a{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:13px 16px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--ink);font-weight:600;text-decoration:none;transition:border-color .2s}
+.subj a:hover{border-color:var(--orange)}
+.subj small{color:var(--muted);font-weight:600;font-size:.85rem;white-space:nowrap}
+@media (max-width:900px){.subj{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.subj{grid-template-columns:1fr}}
+.topics{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.topics li{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:12px;background:#fff;border:1px solid var(--line);font-weight:500}
+.topics li .icon{flex:none;color:var(--orange);margin-top:2px}
+@media (max-width:600px){.topics{grid-template-columns:1fr}}
+.note{font-size:.92rem;color:var(--muted);margin-top:14px}
+.steps-plain{counter-reset:s;list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.steps-plain li{counter-increment:s;position:relative;padding:16px 18px 16px 58px;border:1px solid var(--line);border-radius:14px;background:#fff}
+.steps-plain li:before{content:counter(s);position:absolute;left:16px;top:14px;width:30px;height:30px;border-radius:50%;background:var(--orange);color:#fff;font-weight:700;display:grid;place-items:center}
+.steps-plain b{display:block;margin-bottom:2px}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Online Tuition for IGCSE, O Level and A Level", "serviceType": "Online tutoring", "description": "Live one-to-one online tuition for IGCSE, O Level and A Level, plus English, Maths and homework support from Grade 5. Vetted teachers, free demo, monthly plans.", "url": "https://www.valeem.com/online-tuition/", "provider": {"@type": "EducationalOrganization", "@id": "https://www.valeem.com/#org", "name": "Valeem", "url": "https://www.valeem.com/"}, "areaServed": [{"@type": "Country", "name": "Saudi Arabia"}, {"@type": "Country", "name": "United Arab Emirates"}, {"@type": "Country", "name": "Qatar"}, {"@type": "Country", "name": "Kuwait"}, {"@type": "Country", "name": "Bahrain"}, {"@type": "Country", "name": "Oman"}, {"@type": "Country", "name": "Pakistan"}], "audience": {"@type": "EducationalAudience", "educationalRole": "student"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Which levels does Valeem teach?", "acceptedAnswer": {"@type": "Answer", "text": "IGCSE, O Level and A Level (AS and A2), usually from Grade 8 upwards. We also teach younger students from Grade 5 in English and Maths, and help with homework."}}, {"@type": "Question", "name": "Which subjects can my child study?", "acceptedAnswer": {"@type": "Answer", "text": "All subjects offered for IGCSE, O Level and A Level in schools in Pakistan and Saudi Arabia. We match a teacher who holds an A or B grade in that subject and has passed our interview and training."}}, {"@type": "Question", "name": "Are classes one-to-one?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every Online Tuition class is live and one-to-one, so the teacher follows your child's syllabus, pace and goals."}}, {"@type": "Question", "name": "How much does online tuition cost?", "acceptedAnswer": {"@type": "Answer", "text": "Tuition is a monthly plan. The fee depends on the grade, the number of months, classes per week, class length and whether you want a fixed time slot. A counsellor shares the fee after the free demo."}}, {"@type": "Question", "name": "How do we pay?", "acceptedAnswer": {"@type": "Answer", "text": "We send a monthly invoice and the plan renews each month. Many families pay from a Saudi or Pakistani bank account."}}, {"@type": "Question", "name": "What time are classes for families in Saudi Arabia?", "acceptedAnswer": {"@type": "Answer", "text": "Classes are scheduled after school in Saudi time (AST, UTC+3), at times that suit your child."}}, {"@type": "Question", "name": "Can my child try a class first?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The first class is a free live demo at your time. If the teacher isn't the right fit later, we arrange another."}}, {"@type": "Question", "name": "How are teachers selected?", "acceptedAnswer": {"@type": "Answer", "text": "Every teacher passes four checks: an application, proof of an A or B grade in the subject they teach, a one-to-one interview, and onboarding and training."}}]}</script>
@@ -564,6 +580,22 @@ iframe.inf{width:100%;border:0;display:block;border-radius:14px;background:#fff}
       <li><span class="ic"><svg class="icon"><use href="#i-cap"/></svg></span><i>Grades 9–11</i><b>IGCSE &amp; O Level</b><span>Full syllabus, past papers and exam technique.</span><span class="core">Most popular</span></li>
       <li><span class="ic"><svg class="icon"><use href="#i-route"/></svg></span><i>AS &amp; A2</i><b>A Level</b><span>Subject specialists for the step up.</span></li>
     </ol>
+  </div>
+</section>
+
+<section id="subjects">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">Popular subjects</p>
+      <h2>Find Your Subject and Syllabus Code.</h2>
+      <p class="lede">These are the subjects families ask for most. We teach every IGCSE, O Level and A Level subject, so ask us if yours isn't listed.</p>
+    </div>
+      <h3 class="subj-h">O Level</h3>
+      <ul class="subj"><li><a href="https://www.valeem.com/online-tuition/o-level-mathematics-4024/">O Level Mathematics <small>4024</small></a></li><li><a href="https://www.valeem.com/online-tuition/o-level-additional-mathematics-4037/">O Level Additional Mathematics <small>4037</small></a></li><li><a href="https://www.valeem.com/online-tuition/o-level-physics-5054/">O Level Physics <small>5054</small></a></li><li><a href="https://www.valeem.com/online-tuition/o-level-chemistry-5070/">O Level Chemistry <small>5070</small></a></li><li><a href="https://www.valeem.com/online-tuition/o-level-biology-5090/">O Level Biology <small>5090</small></a></li><li><a href="https://www.valeem.com/online-tuition/o-level-economics-2281/">O Level Economics <small>2281</small></a></li><li><a href="https://www.valeem.com/online-tuition/o-level-pakistan-studies-2059/">O Level Pakistan Studies <small>2059</small></a></li><li><a href="https://www.valeem.com/online-tuition/o-level-english-language-1123/">O Level English Language <small>1123</small></a></li></ul>
+      <h3 class="subj-h">IGCSE</h3>
+      <ul class="subj"><li><a href="https://www.valeem.com/online-tuition/igcse-mathematics-0580/">IGCSE Mathematics <small>0580</small></a></li><li><a href="https://www.valeem.com/online-tuition/igcse-pakistan-studies-0448/">IGCSE Pakistan Studies <small>0448</small></a></li></ul>
+      <h3 class="subj-h">A Level</h3>
+      <ul class="subj"><li><a href="https://www.valeem.com/online-tuition/a-level-mathematics-9709/">A Level Mathematics <small>9709</small></a></li><li><a href="https://www.valeem.com/online-tuition/a-level-physics-9702/">A Level Physics <small>9702</small></a></li><li><a href="https://www.valeem.com/online-tuition/a-level-chemistry-9701/">A Level Chemistry <small>9701</small></a></li><li><a href="https://www.valeem.com/online-tuition/a-level-biology-9700/">A Level Biology <small>9700</small></a></li><li><a href="https://www.valeem.com/online-tuition/a-level-economics-9708/">A Level Economics <small>9708</small></a></li></ul>
   </div>
 </section>
 
@@ -776,22 +808,23 @@ iframe.inf{width:100%;border:0;display:block;border-radius:14px;background:#fff}
 
   var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* Location: Cloudflare tells us the visitor's country; Gulf families see a line for them */
+  /* Location: the visitor's time zone tells us the country; Gulf families see a line for them */
   var GULF = {SA:['Saudi Arabia', 'https://www.valeem.com/online-tuition-saudi-arabia/', 'Riyadh, Saudi Arabia', 'Saudi time'], AE:['the UAE', 'https://www.valeem.com/online-tuition-uae/', 'Dubai, UAE', 'UAE time'], QA:['Qatar', '', 'Doha, Qatar', 'Qatar time'], KW:['Kuwait', '', 'Kuwait City, Kuwait', 'Kuwait time'], BH:['Bahrain', '', 'Manama, Bahrain', 'Bahrain time'], OM:['Oman', '', 'Muscat, Oman', 'Oman time']};
-  if(window.fetch && /valeem\.com$/.test(location.hostname)){
-    fetch('/cdn-cgi/trace', {cache:'no-store'}).then(function(r){ return r.ok ? r.text() : ''; }).then(function(t){
-      var m = /loc=([A-Z]{2})/.exec(t || ''); if(!m) return;
-      var c = m[1], g = GULF[c], bar = $('#geo'), city = $('#city');
+  var TZ = {'Asia/Riyadh':'SA', 'Asia/Dubai':'AE', 'Asia/Qatar':'QA', 'Asia/Kuwait':'KW', 'Asia/Bahrain':'BH', 'Asia/Muscat':'OM', 'Asia/Karachi':'PK'};
+  try{
+    var c = TZ[Intl.DateTimeFormat().resolvedOptions().timeZone];
+    if(c){
+      var g = GULF[c], bar = $('#geo'), city = $('#city'), here = document.body.getAttribute('data-country');
       document.documentElement.setAttribute('data-country', c);
       if(city && g) city.placeholder = 'e.g. ' + g[2];
       if(city && c === 'PK') city.placeholder = 'e.g. Karachi, Pakistan';
-      if(g && bar){
+      if(g && bar && here !== c){
         $('#geoText').innerHTML = '<b>Families in ' + g[0] + ':</b> classes are scheduled after school, in ' + g[3] + '.';
         var l = $('#geoLink'); if(g[1]){ l.href = g[1]; l.textContent = 'Tuition in ' + g[0]; } else { l.remove(); }
         bar.hidden = false; track('geo_bar_shown', {country:c});
       }
-    }).catch(function(){});
-  }
+    }
+  }catch(e){}
 
   /* Programme preselect from any CTA with data-prog */
   $all('[data-prog]').forEach(function(a){ a.addEventListener('click', function(){ var s = $('#prog'); if(s){ s.value = a.dataset.prog; } }); });

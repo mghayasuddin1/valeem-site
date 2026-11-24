@@ -115,3 +115,19 @@
 iframe.inf{width:100%;border:0;display:block;border-radius:14px;background:#fff}
 .inf-student{height:1140px}.inf-teacher{height:2360px}
 @media (max-width:600px){.inf-student{height:1210px}.inf-teacher{height:2450px}.form-card.embed{padding:6px}}
+.subj-h{font-size:1.05rem;margin:22px 0 10px;color:var(--plum)}
+.subj{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.subj a{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:13px 16px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--ink);font-weight:600;text-decoration:none;transition:border-color .2s}
+.subj a:hover{border-color:var(--orange)}
+.subj small{color:var(--muted);font-weight:600;font-size:.85rem;white-space:nowrap}
+@media (max-width:900px){.subj{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.subj{grid-template-columns:1fr}}
+.topics{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.topics li{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:12px;background:#fff;border:1px solid var(--line);font-weight:500}
+.topics li .icon{flex:none;color:var(--orange);margin-top:2px}
+@media (max-width:600px){.topics{grid-template-columns:1fr}}
+.note{font-size:.92rem;color:var(--muted);margin-top:14px}
+.steps-plain{counter-reset:s;list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.steps-plain li{counter-increment:s;position:relative;padding:16px 18px 16px 58px;border:1px solid var(--line);border-radius:14px;background:#fff}
+.steps-plain li:before{content:counter(s);position:absolute;left:16px;top:14px;width:30px;height:30px;border-radius:50%;background:var(--orange);color:#fff;font-weight:700;display:grid;place-items:center}
+.steps-plain b{display:block;margin-bottom:2px}
