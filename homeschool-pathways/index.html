@@ -311,6 +311,11 @@ input:focus,select:focus,textarea:focus{outline:3px solid rgba(248,128,15,.45);b
 .hp{position:absolute!important;left:-9999px;width:1px!important;height:1px!important;min-height:0!important;padding:0!important;border:0!important;opacity:0}
 @media (max-width:900px){.start-grid{grid-template-columns:1fr}}
 @media (max-width:560px){fieldset{grid-template-columns:1fr}.form-card{padding:22px 18px}}
+.form-card.embed{padding:0;overflow:hidden}
+.form-card.embed iframe{display:block;width:100%;height:1480px;border:0}
+.form-card.embed .form-alt{padding:14px 22px 20px;margin:0;text-align:center}
+@media (max-width:560px){.form-card.embed iframe{height:1600px}}
+
 
 /* FAQ */
 .faq{max-width:860px}
@@ -865,69 +870,9 @@ details.fold[open] .fold-toggle .icon{transform:rotate(180deg)}
       <a class="btn btn-ghost" data-wa="start" href="#" target="_blank" rel="noopener" style="margin-top:24px"><svg class="icon"><use href="#i-wa"/></svg>Chat with us on WhatsApp</a>
     </div>
 
-    <div class="form-card" id="consultation">
-      <form id="leadForm" novalidate>
-        <h3>Book a Parent Consultation</h3>
-        <p>Tell us a little about your child. It takes about two minutes.</p>
-
-        <fieldset>
-          <legend>About you</legend>
-          <div class="f"><label for="pname">Parent or guardian name</label><input type="text" id="pname" name="parent_name" autocomplete="name" required><span class="err" id="pname-err"></span></div>
-          <div class="f"><label for="phone">WhatsApp or contact number</label><input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" placeholder="e.g. 0300 1234567" required><span class="err" id="phone-err"></span></div>
-          <div class="f"><label for="email">Email address <small>(optional)</small></label><input type="email" id="email" name="email" autocomplete="email"><span class="err" id="email-err"></span></div>
-          <div class="f"><label for="city">City and country</label><input type="text" id="city" name="city_country" placeholder="e.g. Lahore, Pakistan" required><span class="err" id="city-err"></span></div>
-        </fieldset>
-
-        <fieldset>
-          <legend>About your child</legend>
-          <div class="f"><label for="age">Child's age</label>
-            <select id="age" name="child_age" required>
-              <option value="">Select age</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15 or older</option>
-            </select><span class="err" id="age-err"></span></div>
-          <div class="f"><label for="hs">Is your child currently homeschooled?</label>
-            <select id="hs" name="homeschooled" required>
-              <option value="">Select</option><option>Yes</option><option>No</option><option>Transitioning</option>
-            </select><span class="err" id="hs-err"></span></div>
-          <div class="f"><label for="bg">Current level or academic background</label><input type="text" id="bg" name="background" placeholder="e.g. Grade 4 level, left school in 2025"></div>
-          <div class="f"><label for="dur">Homeschooling for how long? <small>(optional)</small></label><input type="text" id="dur" name="homeschool_duration" placeholder="e.g. 2 years"></div>
-        </fieldset>
-
-        <fieldset style="grid-template-columns:1fr">
-          <legend>What are you looking for?</legend>
-          <div class="opts" role="group" aria-label="Areas of interest">
-            <label><input type="checkbox" name="interest" value="Academic structure and subject teaching">Structure and subject teaching</label>
-            <label><input type="checkbox" name="interest" value="Explorers programme">Explorers</label>
-            <label><input type="checkbox" name="interest" value="Innovators programme">Innovators</label>
-            <label><input type="checkbox" name="interest" value="Scholars programme">Scholars</label>
-            <label><input type="checkbox" name="interest" value="O Level/IGCSE preparation">O Level / IGCSE preparation</label>
-            <label><input type="checkbox" name="interest" value="Subject selection guidance">Subject selection</label>
-            <label><input type="checkbox" name="interest" value="Private-candidate examination guidance">Private-candidate guidance</label>
-            <label><input type="checkbox" name="interest" value="A Level academic planning">A Level planning</label>
-            <label><input type="checkbox" name="interest" value="Parent counselling">Parent counselling</label>
-            <label><input type="checkbox" name="interest" value="Other">Other</label>
-          </div>
-          <div class="f"><label for="msg">Anything else? <small>(optional)</small></label><textarea id="msg" name="message" placeholder="Tell us a little about your child's current learning journey and what support you are looking for."></textarea></div>
-        </fieldset>
-
-        <label class="consent" for="consent"><input type="checkbox" id="consent" name="consent" required><span>I agree that Valeem may contact me by phone, WhatsApp or email about this enquiry.</span></label>
-        <span class="err" id="consent-err"></span>
-
-        <!-- Hidden attribution fields, filled by script -->
-        <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_content"><input type="hidden" name="utm_term">
-        <input type="hidden" name="landing_page"><input type="hidden" name="referrer"><input type="hidden" name="interests">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
-
-        <button class="btn btn-primary" type="submit" id="submitBtn">Book a Parent Consultation</button>
-        <div class="form-msg" id="formMsg" role="alert" hidden></div>
-        <p class="form-alt">Prefer to talk now? <a data-wa="form" href="#" target="_blank" rel="noopener">Chat with us on WhatsApp</a></p>
-      </form>
-
-      <div class="thanks" id="thanks" role="status" tabindex="-1" hidden>
-        <span class="tick"><svg class="icon" style="width:32px;height:32px"><use href="#i-check"/></svg></span>
-        <h3>Thank you for reaching out to Valeem Homeschool Pathways.</h3>
-        <p>We've received your enquiry. Our homeschool team will contact you to understand your child's learning journey and help you explore the appropriate academic pathway.</p>
-        <a class="btn btn-ghost" data-wa="thanks" href="#" target="_blank" rel="noopener"><svg class="icon"><use href="#i-wa"/></svg>Message us on WhatsApp</a>
-      </div>
+    <div class="form-card embed" id="consultation">
+      <iframe id="hsForm" src="https://app.startinfinity.com/form/Kq21G8Ev8yf" title="Book a Parent Consultation" loading="lazy" class="inf-hs"></iframe>
+      <p class="form-alt">Form not loading? <a href="https://app.startinfinity.com/form/Kq21G8Ev8yf" target="_blank" rel="noopener">Open it in a new tab</a> or <a data-wa="form" href="#" target="_blank" rel="noopener">chat with us on WhatsApp</a>.</p>
     </div>
   </div>
 </section>
@@ -1091,8 +1036,19 @@ details.fold[open] .fold-toggle .icon{transform:rotate(180deg)}
   $all('details.fold').forEach(function(d){ d.addEventListener('toggle', function(){ if(d.open) track('fold_open', {section:d.id}); }); });
 
 
+
+  /* Infinity consultation form: view and start */
+  (function(){
+    var f = document.getElementById('hsForm'); if(!f) return;
+    var seen = false, started = false;
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(es, o){ es.forEach(function(e){ if(e.isIntersecting && !seen){ seen = true; track('infinity_form_view', {form:'homeschool'}); o.disconnect(); } }); }, {threshold:0.3}).observe(f);
+    }
+    window.addEventListener('blur', function(){ setTimeout(function(){ if(document.activeElement === f && !started){ started = true; track('infinity_form_start', {form:'homeschool'}); try{ if(window.fbq) fbq('track', 'Lead', {content_name:'Homeschool consultation form start'}); }catch(e){} } }, 0); });
+  })();
+
   /* Attribution: keep UTM values from the first page view of the visit */
-  var form = $('#leadForm'), KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'], attr = {};
+  var form = $('#leadForm') || document.createElement('form'), KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'], attr = {};
   try{ attr = JSON.parse(sessionStorage.getItem('vhp_attr') || '{}'); }catch(e){}
   try{
     var qs = new URLSearchParams(location.search), found = false;
