@@ -20,6 +20,10 @@ TICK = '<svg class="icon"><use href="#i-check"/></svg>'
 
 # =====================================================================
 # SUBJECT PAGES  /online-tuition/<slug>/
+def subj_quotes(code):
+    first = {'9708': ['dua'], '5070': ['aiza'], '9701': ['aiza'], '0620': ['aiza']}.get(code, [])
+    rest = [k for k in ('aiza', 'zynah', 'jeddah', 'fatima', 'dua', 'ansari') if k not in first]
+    return tuple(first + rest)[:3]
 # =====================================================================
 for slug, lvl, name, code, focus, topics, hard in SUBJECTS:
     full = f'{lvl} {name}'
@@ -84,7 +88,7 @@ for slug, lvl, name, code, focus, topics, hard in SUBJECTS:
   </div>
 </section>
 
-''' + vet_section(title=f'Every {name} Teacher Passes Four Checks.') + fees_section() + testimonials() + form_section([], title=f'Book a Free {full} Demo.', lede=f'Tell us your child\'s level and where they need help in {name}. A counsellor will call you to arrange a free demo with a {name} teacher.', form_title='Register for a free trial lesson', wash=False) + fs + f'''
+''' + vet_section(title=f'Every {name} Teacher Passes Four Checks.') + fees_section() + testimonials(keys=subj_quotes(code)) + form_section([], title=f'Book a Free {full} Demo.', lede=f'Tell us your child\'s level and where they need help in {name}. A counsellor will call you to arrange a free demo with a {name} teacher.', form_title='Register for a free trial lesson', wash=False) + fs + f'''
 <section id="more-subjects" class="wash">
   <div class="wrap">
     <div class="head">
@@ -209,7 +213,7 @@ for cc, c in COUNTRIES.items():
   </div>
 </section>
 
-''' + testimonials() + form_section([], title='Book a Free Demo Class.', lede=f'Tell us what your child needs. A counsellor will call you to arrange a free demo in {c["short"]}.', form_title='Register for a free trial lesson', wash=True) + fs
+''' + testimonials(keys=T_KSA if cc == 'SA' else T_HOME, title=('What Families in Saudi Arabia Say.' if cc == 'SA' else 'What Parents and Students Say.'), lede=('From families and students in Riyadh, Jeddah, Dammam and across the Kingdom.' if cc == 'SA' else 'From families and students who learn with Valeem.')) + form_section([], title='Book a Free Demo Class.', lede=f'Tell us what your child needs. A counsellor will call you to arrange a free demo in {c["short"]}.', form_title='Register for a free trial lesson', wash=True) + fs
     h = head(f'Online O Level, IGCSE and A Level Tuition in {c['title']} | Valeem',
              f'Live one-to-one online tuition for O Level, IGCSE and A Level for families in {c["the"]}. Vetted teachers, classes in {c["short"]}, free demo, monthly plans.',
              url, f'Online Tuition in {c["the"]} | Valeem', f'One-to-one IGCSE, O Level and A Level classes in {c["short"]}. Free demo.',
@@ -290,7 +294,7 @@ main = page_hero(f'<a href="{B}/online-tuition-saudi-arabia/">Tuition in Saudi A
   </div>
 </section>
 
-''' + form_section([], title='Plan Your Child\'s Exams With Us.', lede='Tell us the subjects and the exam series. A counsellor will call you to arrange a free demo and a study plan.', form_title='Register for a free trial lesson', wash=True) + fs
+''' + testimonials(keys=('fatima', 'aiza', 'zynah'), title='Students in Saudi Arabia, in Their Words.', lede='Private candidates and school students who prepared with Valeem from the Kingdom.') + form_section([], title='Plan Your Child\'s Exams With Us.', lede='Tell us the subjects and the exam series. A counsellor will call you to arrange a free demo and a study plan.', form_title='Register for a free trial lesson', wash=True) + fs
 h = head('O Level and IGCSE as a Private Candidate in Saudi Arabia | Valeem Guide',
          'How to sit Cambridge O Level, IGCSE and A Level exams as a private candidate in Saudi Arabia: subjects, exam series, British Council registration and how to prepare.',
          url, 'Private Candidate Guide: Saudi Arabia | Valeem', 'Sitting O Levels or IGCSEs privately in Saudi Arabia, step by step.',

@@ -327,20 +327,33 @@ def faq(groups, title='Questions Parents and Students Ask.', wash=True):
 
 
 # ---------- testimonials (published on the previous valeem.com homepage) ----------
+M = 'https://valeem.com/moodle/pluginfile.php/142/mod_page/content/7/'
+# (key, quote, name, where, photo, result)
 TESTIMONIALS = [
- ("Valeem has been a blessing for our O Level preparation. We found a tutor who understood our child's needs and progress improved within weeks!", "Parent from Jeddah", "Saudi Arabia · O Level tuition", ""),
- ("My name is Fatima Shah, I live in Dammam, Saudi Arabia. I am an A Level student and a private candidate studying at Valeem. I was struggling to find teachers, I kept looking for online courses but was hopeless at some point when my friend told me about Valeem. I immediately contacted them and had my demo classes. It's great to see such wonderful, talented, passionate and committed teachers there.", "Fatima Shah", "A Level private candidate, Dammam", "https://valeem.com/moodle/pluginfile.php/142/mod_page/content/7/A%20Levels.jpg"),
- ("My sessions with Sir Murtaza Farooq have been very encouraging. He is a great teacher. He is always very well prepared for the class, which helps a lot! Sir Murtaza always keeps a check on his students, whether they're doing their work or not. Overall, he is a good teacher and I would recommend him.", "Shireen Khan", "O Level student", "https://valeem.com/moodle/pluginfile.php/142/mod_page/content/7/O%20Levels.jpg"),
- ("Ms. Javeria is a brilliant teacher with a very professional method of teaching. She has full grip on her subjects. Wajih is now settled with her. Initially he had some challenges but now, Alhamdulillah, he has adjusted. Thank you Valeem.", "Mr & Mrs Imran Ansari", "Parents, online tuition", "https://valeem.com/moodle/pluginfile.php/142/mod_page/content/7/k12%20Tuitions.jpg"),
+ ("aiza", "Alhamdulillah, Aiza achieved an A** in Chemistry module II and an A* in Chemistry overall. We are very grateful for your contribution to her success and for your encouragement along the way.", "Parents of Aiza S.", "Saudi Arabia · Edexcel International GCSE Chemistry", "", "A* in Chemistry"),
+ ("zynah", "Valeem really helped me during my exam season. All my teachers were great and very helpful.", "Zynah S.", "Saudi Arabia · Cambridge IGCSE", "", "7 As"),
+ ("dua", "I maintained my grade in Economics, which was my main goal, and Ms Maliha was the best! Her classes were so engaging and she was very cooperative. Thank you for helping me so much during my A Levels.", "Dua M.", "Pakistan · A Level Economics 9708", "", ""),
+ ("jeddah", "Valeem has been a blessing for our O Level preparation. We found a tutor who understood our child's needs and progress improved within weeks!", "Parent from Jeddah", "Saudi Arabia · O Level tuition", "", ""),
+ ("fatima", "I am an A Level private candidate in Dammam. I was struggling to find teachers and had almost lost hope, until a friend told me about Valeem. It's great to see such talented, passionate and committed teachers there.", "Fatima Shah", "Saudi Arabia · A Level private candidate", M+"A%20Levels.jpg", ""),
+ ("huzaifa", "I have taken classes from Valeem with my siblings for quite some time now. The attention given to students and the quality of teaching from their experienced staff cannot be described in words.", "Syed Muhammad H.", "Saudi Arabia · Cambridge IGCSE", "", ""),
+ ("qudoos", "My son takes online classes with Valeem while we live in Saudi Arabia. I am satisfied with the services of Valeem and their teachers.", "Mother of Abdul Q.", "Saudi Arabia · Federal Board Chemistry and Biology", "", ""),
+ ("shireen", "My sessions with Sir Murtaza Farooq have been very encouraging. He is always well prepared for class and keeps a check on whether his students are doing their work. I would recommend him.", "Shireen Khan", "O Level student", M+"O%20Levels.jpg", ""),
+ ("ansari", "Ms. Javeria is a brilliant teacher with a very professional method of teaching and a full grip on her subjects. Wajih is now settled with her. Thank you Valeem.", "Mr & Mrs Imran Ansari", "Parents · online tuition", M+"k12%20Tuitions.jpg", ""),
 ]
+T_BY = {t[0]: t for t in TESTIMONIALS}
+T_HOME = ('aiza', 'zynah', 'dua', 'jeddah', 'fatima', 'ansari')
+T_KSA = ('aiza', 'zynah', 'jeddah', 'fatima', 'huzaifa', 'qudoos')
 def _avatar(n, img):
     if img: return f'<img class="av" src="{img}" alt="{esc(n)}" width="56" height="56" loading="lazy">'
     return '<span class="av av-i" aria-hidden="true"><svg class="icon"><use href="#i-user"/></svg></span>'
-def testimonials(wash=False, title='What Parents and Students Say.'):
-    cards = '\n'.join(f'      <figure class="quote"><svg class="icon q" aria-hidden="true"><use href="#i-chat"/></svg><blockquote>{esc(q)}</blockquote><figcaption>{_avatar(n, img)}<span class="who"><b>{esc(n)}</b><span>{esc(w)}</span></span></figcaption></figure>' for q, n, w, img in TESTIMONIALS)
+def testimonials(wash=False, title='What Parents and Students Say.', keys=T_HOME, lede='From families and students who learn with Valeem, many of them in Saudi Arabia.'):
+    items = [T_BY[k] for k in keys]
+    cards = '\n'.join(f'      <figure class="quote"><svg class="icon q" aria-hidden="true"><use href="#i-chat"/></svg>'
+                      + (f'<p class="result">Result: {esc(r)}</p>' if r else '')
+                      + f'<blockquote>{esc(q)}</blockquote><figcaption>{_avatar(n, img)}<span class="who"><b>{esc(n)}</b><span>{esc(w)}</span></span></figcaption></figure>' for k, q, n, w, img, r in items)
     cls = ' class="wash"' if wash else ''
     return (f'<section id="testimonials"{cls}>\n  <div class="wrap">\n    <div class="head">\n      <p class="kicker">In their words</p>\n      <h2>{title}</h2>\n'
-            '      <p class="lede">From families and students who learn with Valeem, many of them in Saudi Arabia.</p>\n    </div>\n'
+            f'      <p class="lede">{lede}</p>\n    </div>\n'
             f'    <div class="quotes">\n{cards}\n    </div>\n  </div>\n</section>\n')
 
 # ---------- media coverage ----------
