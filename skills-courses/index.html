@@ -553,6 +553,31 @@ details.fold[open] .fold-toggle .icon{transform:rotate(180deg)}
 .quotes{grid-template-columns:repeat(3,1fr)}
 @media (max-width:1000px){.quotes{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:760px){.quotes{grid-template-columns:1fr}}
+.brand .tag{font:700 .7rem/1.2 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--orange-ink,#a64b00)}
+@media (max-width:520px){.brand span.tag{display:block;font-size:.6rem;padding-left:8px}}
+.foot-tag{font:700 1.05rem/1.3 var(--display);color:#ffc48a;margin:14px 0 4px}
+.quality{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.quality li{display:flex;flex-direction:column;gap:8px;padding:22px 20px;background:#fff;border:1px solid var(--line);border-radius:var(--r,20px)}
+.quality .badge{width:44px;height:44px;border-radius:12px;background:var(--wash);color:var(--plum);display:grid;place-items:center}
+.quality .badge .icon{width:22px;height:22px}
+.quality b{font:700 1.08rem/1.25 var(--display);color:var(--plum-deep)}
+.quality span:last-child{color:var(--muted);font-size:.95rem;line-height:1.5}
+@media (max-width:1100px){.quality{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:760px){.quality{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.quality{grid-template-columns:1fr}}
+.boards{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.boards li{padding:7px 14px;border-radius:999px;background:#fff;border:1px solid var(--line);font:600 .88rem/1.2 var(--body);color:var(--plum-deep)}
+.boards li.lbl{background:none;border:0;padding-left:0;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:.74rem}
+.tuition .boards li{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);color:#fff}
+.tuition .boards li.lbl{color:#e6dcf0}
+.press-top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:16px}
+.press-logos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.press-logos a{height:72px;display:flex;align-items:center;justify-content:center;gap:10px;padding:12px 16px;background:#fff;border:1px solid var(--line);border-radius:16px;text-decoration:none;font:700 .98rem/1.15 var(--display);color:var(--plum-deep);transition:border-color .2s,transform .2s,box-shadow .2s}
+.press-logos a:hover,.press-logos a:focus-visible{border-color:var(--orange);transform:translateY(-2px);box-shadow:0 14px 28px -22px rgba(43,17,69,.6)}
+.press-logos a.word img{max-height:30px;max-width:100%;width:auto;height:auto;display:block}
+.press-logos a.icon img{width:32px;height:32px;border-radius:8px;flex:none}
+@media (max-width:900px){.press-logos{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:560px){.press-logos{grid-template-columns:1fr 1fr}.press-logos a{height:62px;padding:10px 12px;font-size:.88rem}.press-logos li:last-child{grid-column:1/-1}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "OfferCatalog", "name": "Valeem Skills & Courses", "url": "https://www.valeem.com/skills-courses/", "itemListElement": [{"@type": "Course", "name": "Scratch coding for young learners", "description": "Live online Scratch coding classes for children.", "provider": {"@type": "EducationalOrganization", "@id": "https://www.valeem.com/#org", "name": "Valeem", "url": "https://www.valeem.com/"}, "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online"}}, {"@type": "Course", "name": "Python", "description": "Live online Python programming classes for teenagers and adults.", "provider": {"@type": "EducationalOrganization", "@id": "https://www.valeem.com/#org", "name": "Valeem", "url": "https://www.valeem.com/"}, "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online"}}, {"@type": "Course", "name": "SQL", "description": "Live online SQL classes for teenagers and adults.", "provider": {"@type": "EducationalOrganization", "@id": "https://www.valeem.com/#org", "name": "Valeem", "url": "https://www.valeem.com/"}, "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online"}}, {"@type": "Course", "name": "Power BI", "description": "Live online Power BI data visualisation classes for adults.", "provider": {"@type": "EducationalOrganization", "@id": "https://www.valeem.com/#org", "name": "Valeem", "url": "https://www.valeem.com/"}, "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online"}}, {"@type": "Course", "name": "IELTS preparation", "description": "Live online IELTS preparation.", "provider": {"@type": "EducationalOrganization", "@id": "https://www.valeem.com/#org", "name": "Valeem", "url": "https://www.valeem.com/"}, "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online"}}, {"@type": "Course", "name": "English improvement", "description": "Live online classes to improve spoken and written English.", "provider": {"@type": "EducationalOrganization", "@id": "https://www.valeem.com/#org", "name": "Valeem", "url": "https://www.valeem.com/"}, "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online"}}, {"@type": "Course", "name": "Quran classes", "description": "Live online Quran classes for children and adults.", "provider": {"@type": "EducationalOrganization", "@id": "https://www.valeem.com/#org", "name": "Valeem", "url": "https://www.valeem.com/"}, "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online"}}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What coding courses does Valeem offer?", "acceptedAnswer": {"@type": "Answer", "text": "Scratch for young learners, and Python, SQL and Power BI for teenagers and adults. Classes are live with a Valeem teacher."}}, {"@type": "Question", "name": "What age can my child start coding?", "acceptedAnswer": {"@type": "Answer", "text": "Young learners start with Scratch, a visual way to learn coding. Tell us your child's age and we will suggest the right starting point."}}, {"@type": "Question", "name": "Do you offer IELTS preparation?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. IELTS preparation is taught live for teenagers and adults, alongside English improvement classes."}}, {"@type": "Question", "name": "Which languages do you teach?", "acceptedAnswer": {"@type": "Answer", "text": "English, Urdu, Arabic, Chinese and German, for children and adults, from beginner level upwards."}}, {"@type": "Question", "name": "Do you offer Quran classes?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Live online Quran classes are available for children and adults."}}, {"@type": "Question", "name": "How are courses priced?", "acceptedAnswer": {"@type": "Answer", "text": "Courses are billed monthly. The fee depends on the course, classes per week and class length, and is shared after a free demo."}}]}</script>
@@ -604,8 +629,9 @@ details.fold[open] .fold-toggle .icon{transform:rotate(180deg)}
 
 <header class="site-header">
   <div class="wrap bar">
-    <a class="brand" href="https://www.valeem.com/" aria-label="Valeem home"><img src="images/valeem-logo.png" alt="Valeem" width="132" height="48"></a>
+    <a class="brand" href="https://www.valeem.com/" aria-label="Valeem home"><img src="images/valeem-logo.png" alt="Valeem" width="132" height="48"><span class="tag">Learn the<br>smart way</span></a>
     <nav class="nav" id="nav" aria-label="Main">
+      <a href="https://www.valeem.com/">Home</a>
       <a href="https://www.valeem.com/online-tuition/">Online Tuition</a>
       <a href="https://www.valeem.com/skills-courses/" aria-current="page">Skills &amp; Courses</a>
       <a href="https://www.valeem.com/homeschool-pathways/">Homeschool Pathways</a>
@@ -727,8 +753,8 @@ details.fold[open] .fold-toggle .icon{transform:rotate(180deg)}
     </div>
     <ol class="checks" aria-label="Teacher selection process">
       <li><span class="dot"><svg class="icon"><use href="#i-file"/></svg></span><b>Application</b><span>Teachers apply and share their subjects, levels and teaching background.</span></li>
-      <li><span class="dot"><svg class="icon"><use href="#i-award"/></svg></span><b>Proven grades</b><span>They must prove an A or B grade in the subject they teach, at O Level, IGCSE or A Level.</span></li>
-      <li><span class="dot"><svg class="icon"><use href="#i-chat"/></svg></span><b>One-to-one interview</b><span>Our team checks subject knowledge, academic depth and how clearly and confidently they teach.</span></li>
+      <li><span class="dot"><svg class="icon"><use href="#i-award"/></svg></span><b>Proven subject expertise</b><span>They prove their academic depth: an A or B grade in the subject at O Level, IGCSE or A Level, or a relevant degree such as a BSc, MSc or PhD.</span></li>
+      <li><span class="dot"><svg class="icon"><use href="#i-chat"/></svg></span><b>Interview and demo</b><span>Our team tests subject knowledge and communication: how clearly, patiently and confidently they explain.</span></li>
       <li><span class="dot"><svg class="icon"><use href="#i-sparkle"/></svg></span><b>Onboarding and training</b><span>Training on managing student and parent expectations, using AI, presentations and running live classes.</span></li>
     </ol>
     <div class="vet-foot">
@@ -750,7 +776,7 @@ details.fold[open] .fold-toggle .icon{transform:rotate(180deg)}
       </summary>
       <div class="fold-body">
   <div class="wrap feat">
-    <figure class="photo"><img src="images/adults.webp" alt="An adult learner typing on a laptop" width="800" height="880" loading="lazy"></figure>
+    <figure class="photo"><img src="images/adults.webp" alt="An adult learner typing on a laptop" width="800" height="880"></figure>
     <div>
       <div class="head" style="margin-bottom:24px">
         <p class="kicker">How to start</p>
@@ -814,10 +840,11 @@ details.fold[open] .fold-toggle .icon{transform:rotate(180deg)}
     <div class="foot">
       <div>
         <a class="logo" href="https://www.valeem.com/"><img src="images/valeem-logo.png" alt="Valeem" width="121" height="44"></a>
-        <p>Live online tuition, skills courses and a structured homeschool pathway. Teaching online since 2019.</p>
+        <p class="foot-tag">Learn the smart way.</p>
+        <p>Live &amp; interactive online tuition, skills courses and a structured homeschool pathway. Teaching online since 2019.</p>
       </div>
       <div><h4>Programmes</h4><ul>
-        <li><a href="https://www.valeem.com/online-tuition/">Online Tuition</a></li>
+        <li><a href="https://www.valeem.com/online-tuition/">Live Online Tuition</a></li>
         <li><a href="https://www.valeem.com/skills-courses/">Skills &amp; Courses</a></li>
         <li><a href="https://www.valeem.com/homeschool-pathways/">Homeschool Pathways</a></li>
         <li><a href="https://www.valeem.com/online-tuition-saudi-arabia/">Tuition in Saudi Arabia</a></li>

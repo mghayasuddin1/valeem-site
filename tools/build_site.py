@@ -3,7 +3,7 @@ import json, re, html, sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from subjects import SUBJECTS
 R = sys.argv[1]
-T = '/home/claude/tools/'
+T = os.path.dirname(os.path.abspath(__file__)) + '/'
 B = 'https://www.valeem.com'
 CSS = open(T + 'site.css').read() + open(T + 'site_extra.css').read()
 ICONS = open(T + 'icons.svg').read().replace('  </defs>', '''    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8.300 8 9 4.600-.7 8-4.500 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
@@ -79,14 +79,14 @@ def head(title, desc, canonical, og_title, og_desc, og_img, jsonld, preload='', 
     s += ['<script type="application/ld+json">' + json.dumps(j, ensure_ascii=False) + '</script>' for j in jsonld]
     return '<!DOCTYPE html>\n<html lang="en">\n<head>\n' + '\n'.join(x for x in s if x) + '\n</head>\n'
 
-NAV = [('Online Tuition', B + '/online-tuition/', 'tuition'), ('Skills &amp; Courses', B + '/skills-courses/', 'skills'),
+NAV = [('Home', B + '/', 'home'), ('Online Tuition', B + '/online-tuition/', 'tuition'), ('Skills &amp; Courses', B + '/skills-courses/', 'skills'),
        ('Homeschool Pathways', B + '/homeschool-pathways/', 'homeschool'), ('Teach With Us', B + '/teach-at-valeem/', 'teach'),
        ('About Us', B + '/mod/page/view.php?id=2', 'about'), ('Contact', '#contact', 'contact'), ('Log In', B + '/login/index.php', 'login')]
 def header(active, cta='Book a Free Demo', cta_href='#demo', home_href=B + '/'):
     links = '\n'.join(f'      <a href="{h}"' + (' aria-current="page"' if k == active else '') + f'>{t}</a>' for t, h, k in NAV)
     return f'''<header class="site-header">
   <div class="wrap bar">
-    <a class="brand" href="{home_href}" aria-label="Valeem home"><img src="images/valeem-logo.png" alt="Valeem" width="132" height="48"></a>
+    <a class="brand" href="{home_href}" aria-label="Valeem home"><img src="images/valeem-logo.png" alt="Valeem" width="132" height="48"><span class="tag">Learn the<br>smart way</span></a>
     <nav class="nav" id="nav" aria-label="Main">
 {links}
     </nav>
@@ -102,10 +102,11 @@ FOOTER = f'''<footer>
     <div class="foot">
       <div>
         <a class="logo" href="{B}/"><img src="images/valeem-logo.png" alt="Valeem" width="121" height="44"></a>
-        <p>Live online tuition, skills courses and a structured homeschool pathway. Teaching online since 2019.</p>
+        <p class="foot-tag">Learn the smart way.</p>
+        <p>Live &amp; interactive online tuition, skills courses and a structured homeschool pathway. Teaching online since 2019.</p>
       </div>
       <div><h4>Programmes</h4><ul>
-        <li><a href="{B}/online-tuition/">Online Tuition</a></li>
+        <li><a href="{B}/online-tuition/">Live Online Tuition</a></li>
         <li><a href="{B}/skills-courses/">Skills &amp; Courses</a></li>
         <li><a href="{B}/homeschool-pathways/">Homeschool Pathways</a></li>
         <li><a href="{B}/online-tuition-saudi-arabia/">Tuition in Saudi Arabia</a></li>
@@ -140,13 +141,14 @@ def sticky(label='Book a Free Demo'):
 
 def page(head_html, body_attrs, active, main, cta='Book a Free Demo', sticky_label='Book a Free Demo', folds=()):
     if folds: main = fold_sections(main, folds)
+    main = live_wording(main)
     return (head_html + f'<body{body_attrs}>\n\n' + ICONS + '\n\n' + header(active, cta) + '\n<main id="top">\n' + main +
             '\n</main>\n\n' + FOOTER + '\n' + sticky(sticky_label) + '\n' + SCRIPT + '\n</body>\n</html>\n')
 
 # ---------- shared sections ----------
 CHECKS = [('i-file', 'Application', 'Teachers apply and share their subjects, levels and teaching background.'),
-          ('i-award', 'Proven grades', 'They must prove an A or B grade in the subject they teach, at O Level, IGCSE or A Level.'),
-          ('i-chat', 'One-to-one interview', 'Our team checks subject knowledge, academic depth and how clearly and confidently they teach.'),
+          ('i-award', 'Proven subject expertise', 'They prove their academic depth: an A or B grade in the subject at O Level, IGCSE or A Level, or a relevant degree such as a BSc, MSc or PhD.'),
+          ('i-chat', 'Interview and demo', 'Our team tests subject knowledge and communication: how clearly, patiently and confidently they explain.'),
           ('i-sparkle', 'Onboarding and training', 'Training on managing student and parent expectations, using AI, presentations and running live classes.')]
 def vet_section(kicker='How we choose teachers', title='Every Teacher Passes Four Checks.', lede='Fewer teachers make it through, so your child learns from someone who knows the subject and can teach it.', foot=True, sid='teachers'):
     lis = '\n'.join(f'      <li><span class="dot"><svg class="icon"><use href="#{i}"/></svg></span><b>{t}</b><span>{d}</span></li>' for i, t, d in CHECKS)
@@ -168,6 +170,32 @@ def vet_section(kicker='How we choose teachers', title='Every Teacher Passes Fou
   </div>
 </section>
 '''
+
+QUALITY = [('i-shield', 'Vetted and trained tutors', 'Proven subject expertise, an interview on teaching and communication, then our training.'),
+           ('i-users', 'Monthly parent-teacher meetings', 'Every month you meet the teacher to review progress and agree next steps.'),
+           ('i-loop', 'Tutor replacement policy', 'Not the right fit? We replace the tutor and keep your child on track.'),
+           ('i-chat', 'Counselling support', 'A counsellor guides you from the free demo to subject choices and exam planning.'),
+           ('i-invoice', 'Fee refund policy', 'Fees are covered by our refund policy. Your counsellor explains the terms before you start.')]
+def quality_section(sid='quality', wash=False, kicker='Why choose Valeem', title='Our Quality Checks, in Five Promises.',
+                    lede='Live &amp; interactive classes are only half of it. This is how we make sure every month goes well.'):
+    lis = '\n'.join(f'      <li><span class="badge"><svg class="icon"><use href="#{i}"/></svg></span><b>{t}</b><span>{d}</span></li>' for i, t, d in QUALITY)
+    cls = ' class="wash"' if wash else ''
+    return f'''<section id="{sid}"{cls}>
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">{kicker}</p>
+      <h2>{title}</h2>
+      <p class="lede">{lede}</p>
+    </div>
+    <ol class="quality" aria-label="Valeem quality checks">
+{lis}
+    </ol>
+  </div>
+</section>
+'''
+BOARDS = ['Cambridge (O Level, IGCSE, AS &amp; A Level)', 'Pearson Edexcel', 'OCR', 'AQA', 'IB']
+def boards_strip(label='Boards we teach'):
+    return '<ul class="boards"><li class="lbl">' + label + '</li>' + ''.join(f'<li>{b}</li>' for b in BOARDS) + '</ul>'
 
 FACTORS = [('i-cap', 'Grade or level', 'Grade 5 to A Level'), ('i-repeat', 'Classes per week', 'How often your child learns'),
            ('i-clock', 'Class length', 'Minutes per class'), ('i-lock', 'Fixed time slot', 'A time reserved only for your child'),
@@ -227,7 +255,7 @@ def form_section(options, kicker='Contact us', title='Book a Free Demo Class.', 
     if teacher:
         side = '''
       <ul class="ticks" style="grid-template-columns:1fr;margin-top:24px">
-        <li><svg class="icon"><use href="#i-check"/></svg>An A or B grade in the subject you teach</li>
+        <li><svg class="icon"><use href="#i-check"/></svg>An A or B grade in your subject, or a relevant degree (BSc, MSc, PhD)</li>
         <li><svg class="icon"><use href="#i-check"/></svg>Confident speaking and explaining</li>
         <li><svg class="icon"><use href="#i-check"/></svg>Ready to teach live online</li>
       </ul>'''
@@ -365,17 +393,30 @@ PRESS = [
  ("Daily Times", "23 Dec 2022", "Valeem, Pakistan's pioneer edtech marketplace, secures pre-seed funding at a 7-figure valuation", "Coverage of Valeem's pre-seed funding round.", "https://dailytimes.com.pk/1042399/valeem-pakistans-pioneer-edtech-marketplace-secures-pre-seed-funding-at-a-company-valuation-of-7-figures/"),
  ("ProPakistani", "Dec 2022", "Valeem, Pakistan's pioneer ed-tech marketplace, secures pre-seed funding at a 7-figure valuation", "Valeem raised pre-seed funding from a US investor to grow its platform.", "https://propakistani.pk/2022/12/23/valeem-pakistans-pioneer-ed-tech-marketplace-secures-pre-seed-funding-at-a-7-figure-company-valuation/"),
 ]
+G = 'https://www.google.com/s2/favicons?sz=128&domain='
+PRESS_LOGO = {  # (image, wordmark?)  wordmarks show alone; icons show with the outlet name
+ 'Dawn': ('https://www.dawn.com/_img/logo.png', True),
+ 'ProPakistani': ('https://propakistani.pk/wp-content/uploads/2020/09/pp_site_logo.png', True),
+ 'IBA Karachi': (G + 'iba.edu.pk', False),
+ 'Daily Times': ('https://dailytimes.com.pk/assets/uploads/2020/08/app-icon-192x192-1.png', False),
+ 'Digital Times Journal': (G + 'digitaltimesjournal.com', False),
+}
+PRESS_ORDER = ['Dawn', 'ProPakistani', 'IBA Karachi', 'Daily Times', 'Digital Times Journal']
 def press_strip(wash=False):
-    outlets = []
+    first = {}
     for o, d, t, x, u in PRESS:
-        if o not in [a for a, _ in outlets]: outlets.append((o, u))
-    links = ''.join(f'<li><a href="{u}" target="_blank" rel="noopener">{o}</a></li>' for o, u in outlets)
+        first.setdefault(o, u)
+    tiles = []
+    for o in PRESS_ORDER:
+        img, word = PRESS_LOGO[o]
+        inner = (f'<img src="{img}" alt="{o}" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(document.createTextNode(this.alt))">' if word else
+                 f'<img src="{img}" alt="" width="32" height="32" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span>{o}</span>')
+        tiles.append(f'<li><a class="{"word" if word else "icon"}" href="{first[o]}" target="_blank" rel="noopener" aria-label="Read the {o} coverage" data-press="{o}">{inner}</a></li>')
     cls = ' wash' if wash else ''
     return f'''<section id="press" class="press{cls}" aria-label="Valeem in the news">
-  <div class="wrap press-row">
-    <p class="press-k"><svg class="icon"><use href="#i-news"/></svg>As featured in</p>
-    <ul class="press-list">{links}</ul>
-    <a class="press-more" href="{B}/in-the-news/">All coverage <svg class="icon"><use href="#i-right"/></svg></a>
+  <div class="wrap">
+    <div class="press-top"><p class="press-k"><svg class="icon"><use href="#i-news"/></svg>As featured in</p><a class="press-more" href="{B}/in-the-news/">All coverage <svg class="icon"><use href="#i-right"/></svg></a></div>
+    <ul class="press-logos">{''.join(tiles)}</ul>
   </div>
 </section>
 '''
@@ -384,6 +425,14 @@ def press_strip(wash=False):
 FOLD_MORE = {'teachers': 'See the four checks', 'fees': 'See how fees work', 'process': 'See the steps', 'how': 'See the steps',
              'about': 'Read our story', 'why': 'See why families choose us', 'team': 'Teach with Valeem', 'classes': 'See how classes work',
              'gulf': 'For Gulf families', 'who': 'See who it is for', 'levels': 'See the levels', 'private-candidates': 'Read more'}
+def live_wording(h):
+    """Say 'Live Online Tuition' in visible text; leave attributes, URLs and form values alone."""
+    def fix(m):
+        t = m.group(1)
+        t = re.sub(r'(?<!Live )(?<!Interactive )(?<!&amp; Interactive )Online Tuition(?!:)', 'Live Online Tuition', t)
+        return '>' + t + '<'
+    parts = re.split(r'(<script\b.*?</script>|<style\b.*?</style>)', h, flags=re.S)
+    return ''.join(p if p.startswith(('<script', '<style')) else re.sub(r'>([^<>]+)<', fix, p) for p in parts)
 def _txt(h): return re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', '', h or '')).strip()
 def fold_sections(html_, ids):
     for sid in ids:
@@ -404,7 +453,7 @@ def fold_sections(html_, ids):
                 f'        <span class="fold-head"><span class="kicker">{_txt(k.group(1)) if k else ""}</span><span class="fold-title">{_txt(t.group(1)) if t else ""}</span>'
                 + (f'<span class="fold-line">{line}</span>' if line else '') + '</span>\n'
                 f'        <span class="fold-toggle" aria-hidden="true"><span class="more-t">{more}</span><span class="less-t">Show less</span><svg class="icon"><use href="#i-chevron"/></svg></span>\n      </summary>\n'
-                f'      <div class="{body_cls}">{inner}</div>\n    </details>\n  </div>\n</section>')
+                f'      <div class="{body_cls}">{inner.replace(' loading="lazy"', '')}</div>\n    </details>\n  </div>\n</section>')
         html_ = html_[:m.start()] + new_ + html_[end + len('</section>'):]
     return html_
 
@@ -465,21 +514,27 @@ rep('''      <li><b>Tell us what you need</b><span>Level, subject or course, and
       <li><b>Monthly plan and invoice</b><span>Once you are happy, classes continue month to month.</span></li>''')
 rep('<!-- 9. WHY VALEEM -->', fees_section(wash=False, lede='Tuition is a monthly plan. Your counsellor shares the fee after the free demo, based on five things.') + '\n<!-- 9. WHY VALEEM -->')
 rep('<section id="why">', '<section id="why" class="wash">')
-rep('<h3>Trained subject teachers</h3><p>Selected for their subject and trained to teach live online.</p>', '<h3>Vetted subject teachers</h3><p>Proven A or B grades, interviewed and trained.</p>')
+rep('<h3>Trained subject teachers</h3><p>Selected for their subject and trained to teach live online.</p>', '<h3>Vetted subject teachers</h3><p>Proven subject expertise, interviewed and trained.</p>')
 rep('<section id="team" class="wash">', '<section id="team">')
 rep('<img src="images/teach-1.webp" alt="A Valeem educator teaching on her laptop" width="700" height="805" loading="lazy">', '<img src="images/teach-1.webp" alt="A Valeem teacher explaining a concept during a live class" width="700" height="805" loading="lazy">')
-rep('<img src="images/teach-2.webp" alt="A Valeem educator smiling during an online lesson" width="700" height="805" loading="lazy">', '<img src="images/teach-2.webp" alt="A Valeem teacher preparing a lesson on her laptop" width="700" height="805" loading="lazy">')
+rep('<img src="images/teach-2.webp" alt="A Valeem educator smiling during an online lesson" width="700" height="805" loading="lazy">', '<img src="images/teach-2.webp" alt="A Valeem teacher preparing a lesson on his laptop" width="700" height="805" loading="lazy">')
 rep('<p class="lede">Join 650+ educators teaching students in 14+ countries. We train you on our platform and match you with students who need your subject.</p>',
-    '<p class="lede">Join 650+ educators teaching students in 14+ countries. If you hold an A or B grade in your subject and love explaining it, we will train you and match you with students.</p>')
+    '<p class="lede">Join 650+ educators teaching students in 14+ countries. If you can prove your expertise in a subject, through an A or B grade or a relevant degree, and love explaining it, we will train you and match you with students.</p>')
 rep(f'<div class="cta-row"><a class="btn btn-ghost" href="https://www.valeem.com/mod/page/view.php?id=21">Become a Teacher</a></div>',
     f'<div class="cta-row"><a class="btn btn-primary" href="{B}/teach-at-valeem/">Apply to Teach</a><a class="btn btn-ghost" href="{B}/teach-at-valeem/#process">See the Selection Process</a></div>')
 a_ = main.index('<!-- 11. CONTACT'); b_ = main.index('<!-- 12. FAQS -->')
-main = main[:a_] + testimonials() + '\n<!-- 11. CONTACT: Infinity free-trial form -->\n' + form_section([], title='Book a Free Trial Class.', lede='Tell us what you need. A counsellor will call you to arrange a free trial class with a suitable teacher.', form_title='Register for a free trial lesson', wash=True) + '\n' + main[b_:]
+main = main[:a_] + '\n<!-- 11. CONTACT: Infinity free-trial form -->\n' + form_section([], title='Book a Free Trial Class.', lede='Tell us what you need. A counsellor will call you to arrange a free trial class with a suitable teacher.', form_title='Register for a free trial lesson', wash=True) + '\n' + main[b_:]
+rep('<!-- 5. SKILLS & COURSES -->', testimonials(wash=True, title='What Parents and Students Say.') + '\n<!-- 5. SKILLS & COURSES -->')
+rep('<p class="kicker">01 · Online Tuition</p>', '<p class="kicker">01 · Live &amp; Interactive Online Tuition</p>')
+rep('<p class="lede">Live one-to-one classes, planned around your child\'s syllabus, pace and goals.</p>',
+    '<p class="lede">Live &amp; interactive one-to-one classes, planned around your child\'s syllabus, pace and goals.</p>\n      ' + boards_strip())
+_w0 = main.index('<!-- 9. WHY VALEEM -->'); _w1 = main.index('</section>', main.index('<section id="why"', _w0)) + len('</section>')
+main = main[:_w0] + '<!-- 9. WHY VALEEM -->\n' + quality_section(sid='why', wash=True) + main[_w1:]
 home_faq = [
  ("General", [
   ("What is Valeem?", "Valeem is an online education company, teaching live since 2019. It offers Online Tuition for IGCSE, O Level and A Level, Skills & Courses such as coding, IELTS, English and Quran, and Homeschool Pathways for homeschooled children aged 7 to 14. Over 650 vetted educators teach students in more than 14 countries."),
   ("Do you teach students in Saudi Arabia and the Gulf?", "Yes. About 70% of our families live in the Middle East, most of them in Saudi Arabia. Classes are scheduled after school, in your time zone."),
-  ("How are Valeem teachers selected?", "Every teacher passes four checks: an application, proof of an A or B grade in the subject they teach, a one-to-one interview, and onboarding and training before they teach."),
+  ("How are Valeem teachers selected?", "Every teacher passes four checks: an application, proof of subject expertise (an A or B grade in the subject, or a relevant degree such as an MSc or PhD), an interview on subject depth and communication, and onboarding and training before they teach."),
  ]),
  ("Online Tuition", [
   ("Which levels does Valeem teach?", "One-to-one live tuition for IGCSE, O Level and A Level students, usually from Grade 8 upwards. We also support younger students from Grade 5 with English, Maths and homework."),
@@ -510,7 +565,7 @@ h = head('Valeem | Online Tuition for IGCSE, O &amp; A Level, Coding Courses and
          B + '/new-home/images/share.jpg', [org, site, home_faq_ld],
          '<link rel="preload" as="image" href="images/slide-tuition.webp" media="(min-width:761px)">\n<link rel="preload" as="image" href="images/slide-tuition-m.webp" media="(max-width:760px)">', noindex=True)
 main = main.replace('<!-- 3. THREE PROGRAMMES -->', press_strip() + '\n<!-- 3. THREE PROGRAMMES -->', 1)
-home = page(h, ' data-lead="HOMEPAGE"', '', main, folds=('teachers', 'about', 'how', 'fees', 'why', 'team'))
+home = page(h, ' data-lead="HOMEPAGE"', 'home', main, folds=('teachers', 'about', 'how', 'fees', 'team'))
 home = home.replace(f'<a class="brand" href="{B}/"', '<a class="brand" href="#top"')
 open(R + '/new-home/index.html', 'w').write(home)
 
@@ -539,20 +594,20 @@ SUBJ_SECTION = f'''<section id="subjects">
 tq = [
  ("", [
   ("Which levels does Valeem teach?", "IGCSE, O Level and A Level (AS and A2), usually from Grade 8 upwards. We also teach younger students from Grade 5 in English and Maths, and help with homework."),
-  ("Which subjects can my child study?", "All subjects offered for IGCSE, O Level and A Level in schools in Pakistan and Saudi Arabia. We match a teacher who holds an A or B grade in that subject and has passed our interview and training."),
+  ("Which subjects can my child study?", "All subjects offered for IGCSE, O Level and A Level in schools in Pakistan and Saudi Arabia. We match a teacher with proven expertise in that subject, an A or B grade or a relevant degree, who has passed our interview and training."),
   ("Are classes one-to-one?", "Yes. Every Online Tuition class is live and one-to-one, so the teacher follows your child's syllabus, pace and goals."),
   ("How much does online tuition cost?", "Tuition is a monthly plan. The fee depends on the grade, the number of months, classes per week, class length and whether you want a fixed time slot. A counsellor shares the fee after the free demo."),
   ("How do we pay?", "We send a monthly invoice and the plan renews each month. Many families pay from a Saudi or Pakistani bank account."),
   ("What time are classes for families in Saudi Arabia?", "Classes are scheduled after school in Saudi time (AST, UTC+3), at times that suit your child.", ("Saudi time", B + "/online-tuition-saudi-arabia/")),
   ("Can my child try a class first?", "Yes. The first class is a free live demo at your time. If the teacher isn't the right fit later, we arrange another."),
-  ("How are teachers selected?", "Every teacher passes four checks: an application, proof of an A or B grade in the subject they teach, a one-to-one interview, and onboarding and training."),
+  ("How are teachers selected?", "Every teacher passes four checks: an application, proof of subject expertise (an A or B grade, or a relevant degree such as an MSc or PhD), an interview on subject depth and communication, and onboarding and training."),
  ])]
 fs, ld = faq(tq, title='Online Tuition: Your Questions Answered.')
 service = {"@context": "https://schema.org", "@type": "Service", "name": "Online Tuition for IGCSE, O Level and A Level", "serviceType": "Online tutoring",
   "description": "Live one-to-one online tuition for IGCSE, O Level and A Level, plus English, Maths and homework support from Grade 5. Vetted teachers, free demo, monthly plans.",
   "url": url, "provider": ORG, "areaServed": [{"@type": "Country", "name": n} for n in ["Saudi Arabia", "United Arab Emirates", "Qatar", "Kuwait", "Bahrain", "Oman", "Pakistan"]],
   "audience": {"@type": "EducationalAudience", "educationalRole": "student"}}
-main = page_hero('Online Tuition', 'Online Tuition · IGCSE · O Level · A Level', 'Live One-to-One Tuition for IGCSE, O Level and <em>A Level.</em>',
+main = page_hero('Online Tuition', 'Online Tuition · IGCSE · O Level · A Level', 'Live &amp; Interactive Tuition for IGCSE, O Level and <em>A Level.</em>',
   'A vetted subject teacher, classes at your time, and a plan for your child, from Grade 5 to A Level.',
   '<a class="btn btn-primary" href="#demo" data-cta="hero" data-prog="Online Tuition: IGCSE, O Level or A Level">Book a Free Demo</a>' + WA_BTN,
   [('i-user', 'One-to-one'), ('i-play', 'Free demo'), ('i-globe', 'Gulf time zones')], 'hero.webp', 'A student giving a thumbs up beside her laptop during an online class') + f'''
@@ -572,7 +627,8 @@ main = page_hero('Online Tuition', 'Online Tuition · IGCSE · O Level · A Leve
     <div class="head">
       <p class="kicker">Levels we teach</p>
       <h2>A Teacher for Every Step, From Grade 5 to A Level.</h2>
-      <p class="lede">Every subject taught for IGCSE, O Level and A Level in schools in Pakistan and Saudi Arabia.</p>
+      <p class="lede">Every subject taught for IGCSE, O Level and A Level in schools in Pakistan and Saudi Arabia, across the major exam boards.</p>
+      {boards_strip()}
     </div>
     <ol class="ladder light" aria-label="Online tuition levels">
       <li><span class="ic"><svg class="icon"><use href="#i-book"/></svg></span><i>Grades 5–7</i><b>Strong Basics</b><span>English, Maths and homework support.</span></li>
@@ -624,7 +680,7 @@ main = page_hero('Online Tuition', 'Online Tuition · IGCSE · O Level · A Leve
 ''' + fees_section() + f'''
 <section id="process">
   <div class="wrap feat">
-    <figure class="photo"><img src="images/counsellor.webp" alt="A Valeem counsellor holding a laptop" width="800" height="880" loading="lazy" style="object-position:50% 25%"></figure>
+    <figure class="photo"><img src="images/counsellor.webp" alt="A Valeem counsellor speaking with a parent on the phone" width="800" height="880" loading="lazy" style="object-position:50% 25%"></figure>
     <div>
       <div class="head" style="margin-bottom:24px">
         <p class="kicker">How to start</p>
@@ -637,10 +693,10 @@ main = page_hero('Online Tuition', 'Online Tuition · IGCSE · O Level · A Leve
 
 ''' + testimonials() + form_section([('Online Tuition', ['Online Tuition: IGCSE, O Level or A Level', 'Online Tuition: Grades 5–8']), 'Not sure yet'], wash=True) + fs
 h = head('Online Tuition for IGCSE, O Level and A Level | Valeem',
-  'Live one-to-one online tuition for IGCSE, O Level and A Level with vetted teachers who hold A or B grades. Classes in Saudi and Gulf time zones, free demo, monthly plans.',
+  'Live one-to-one online tuition for IGCSE, O Level and A Level with vetted, trained subject experts. Classes in Saudi and Gulf time zones, free demo, monthly plans.',
   url, 'Online Tuition for IGCSE, O Level and A Level | Valeem', 'Vetted one-to-one teachers, classes in your time zone, a free demo and monthly plans.',
   url + 'images/hero.webp', [service, ld, crumbs_ld('Online Tuition', url)])
-main = main.replace('<section id="testimonials">', press_strip(wash=True) + '<section id="testimonials">', 1)
+main = main.replace('<section id="testimonials">', quality_section() + press_strip(wash=True) + '<section id="testimonials">', 1)
 open(R + '/online-tuition/index.html', 'w').write(page(h, ' data-lead="TUITION PAGE"', 'tuition', main, folds=('classes', 'teachers', 'gulf', 'fees', 'process')))
 
 # =====================================================================
@@ -747,7 +803,7 @@ open(R + '/skills-courses/index.html', 'w').write(page(h, ' data-lead="SKILLS PA
 # =====================================================================
 url = B + '/teach-at-valeem/'
 eq = [("", [
-  ("What do I need to teach with Valeem?", "An A or B grade in the subject you want to teach, at O Level, IGCSE or A Level, confident spoken English, and the ability to teach live online."),
+  ("What do I need to teach with Valeem?", "Proven expertise in the subject you want to teach, either an A or B grade at O Level, IGCSE or A Level or a relevant degree such as a BSc, MSc or PhD, plus clear, confident spoken English and the ability to teach live online."),
   ("What is the selection process?", "Four steps: you apply, you share proof of your subject grades, you have a one-to-one interview with our team, and you complete onboarding and training before your first class."),
   ("What does the training cover?", "Managing student and parent expectations, using AI in your teaching, building presentations and running live classes on our platform."),
   ("Can I teach from anywhere?", "Yes. All classes are live online. Our students are in 14+ countries, most of them in Saudi Arabia and the Gulf."),
@@ -780,7 +836,7 @@ main = page_hero('Teach With Valeem', 'Teach with Valeem', 'Teach Students Acros
 ''' + vet_section(kicker='The selection process', title='Four Steps to Your First Class.', lede='Our process is strict, so families trust every Valeem teacher. Here is what to expect.', foot=False, sid='process') + f'''
 <section id="training" class="wash">
   <div class="wrap feat">
-    <figure class="photo"><img src="images/training.webp" alt="A Valeem trainer holding a laptop" width="800" height="880" loading="lazy" style="object-position:50% 25%"></figure>
+    <figure class="photo"><img src="images/training.webp" alt="A Valeem teacher preparing a lesson on his laptop" width="800" height="880" loading="lazy" style="object-position:50% 25%"></figure>
     <div>
       <div class="head" style="margin-bottom:24px">
         <p class="kicker">Onboarding and training</p>
@@ -815,7 +871,7 @@ main = page_hero('Teach With Valeem', 'Teach with Valeem', 'Teach Students Acros
                    kicker='Apply to teach', title='Start Your Application.', lede='Fill in the Valeem Instructor Registration Form. If your profile fits, our team will contact you for the next step.',
                    form_title='Teacher application', submit='Send My Application', teacher=True, wash=True) + fs
 h = head('Teach With Valeem | Online Teaching Jobs for IGCSE, O Level and A Level Teachers',
-  'Apply to teach IGCSE, O Level, A Level, coding, IELTS and Quran live online with Valeem. Four-step selection: application, proven A or B grades, interview and training.',
+  'Apply to teach IGCSE, O Level, A Level, coding, IELTS and Quran live online with Valeem. Four-step selection: application, proven subject expertise, interview and training.',
   url, 'Teach With Valeem', 'Join 650+ educators teaching students in 14+ countries. Apply in a minute.',
   url + 'images/hero.webp', [job, ld, crumbs_ld('Teach With Valeem', url)])
 open(R + '/teach-at-valeem/index.html', 'w').write(page(h, ' data-lead="TEACHER APPLICATION" data-wa-text="Hello, I would like to apply to teach with Valeem."', 'teach', main, cta='Apply to Teach', sticky_label='Apply to Teach'))

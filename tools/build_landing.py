@@ -30,7 +30,7 @@ for slug, lvl, name, code, focus, topics, hard in SUBJECTS:
     url = f'{B}/online-tuition/{slug}/'
     lvl_full = {'O Level': 'Cambridge O Level', 'IGCSE': 'Cambridge IGCSE', 'A Level': 'Cambridge International AS & A Level'}[lvl]
     q = [("", [
-        (f"Do you offer one-to-one {full} tuition online?", f"Yes. Valeem teaches {lvl_full} {name} ({code}) live and one-to-one online. Your child's teacher holds an A or B grade in {name} and has passed our interview and training."),
+        (f"Do you offer one-to-one {full} tuition online?", f"Yes. Valeem teaches {lvl_full} {name} ({code}) live and one-to-one online. Your child's teacher has proven expertise in {name}, an A or B grade in the subject or a degree such as an MSc or PhD, and has passed our interview on subject depth and communication, then our training."),
         (f"What does {full} {code} tuition cover?", f"The full {name} {code} syllabus: " + ', '.join(t.lower() if i else t for i, t in enumerate(topics[:-1])) + f" and {topics[-1].lower()}, with past-paper practice and exam technique."),
         (f"Which {full} topics do students find hardest?", f"Most students we teach need extra help with {hard}. The teacher finds your child's gaps in the free demo and builds the plan around them."),
         ("Do you teach the latest syllabus?", f"Yes. Teachers follow the {name} {code} syllabus for your child's exam year, including any changes Cambridge has announced, and use past papers from recent series."),
@@ -65,13 +65,14 @@ for slug, lvl, name, code, focus, topics, hard in SUBJECTS:
     <ul class="topics">
 {tlis}
     </ul>
-    <p class="note">Topic areas follow the {lvl_full} {name} {code} syllabus. We always teach the version for your child's exam year.</p>
+    <p class="note">Topic areas follow the {lvl_full} {name} {code} syllabus. We always teach the version for your child's exam year. Studying {name} with another board? We teach it for these too:</p>
+    {boards_strip(label='Boards')}
   </div>
 </section>
 
 <section id="classes" class="wash">
   <div class="wrap feat">
-    <figure class="photo"><img src="images/evening.webp" alt="A student smiling during an evening online {name} class" width="1000" height="800" loading="lazy"></figure>
+    <figure class="photo"><img src="images/teacher-live.webp" alt="A Valeem teacher during a live online {name} class" width="1000" height="1075" loading="lazy"></figure>
     <div>
       <div class="head" style="margin-bottom:24px">
         <p class="kicker">How the classes work</p>
@@ -88,7 +89,7 @@ for slug, lvl, name, code, focus, topics, hard in SUBJECTS:
   </div>
 </section>
 
-''' + vet_section(title=f'Every {name} Teacher Passes Four Checks.') + fees_section() + testimonials(keys=subj_quotes(code)) + form_section([], title=f'Book a Free {full} Demo.', lede=f'Tell us your child\'s level and where they need help in {name}. A counsellor will call you to arrange a free demo with a {name} teacher.', form_title='Register for a free trial lesson', wash=False) + fs + f'''
+''' + vet_section(title=f'Every {name} Teacher Passes Four Checks.') + fees_section() + quality_section(wash=True) + testimonials(keys=subj_quotes(code)) + form_section([], title=f'Book a Free {full} Demo.', lede=f'Tell us your child\'s level and where they need help in {name}. A counsellor will call you to arrange a free demo with a {name} teacher.', form_title='Register for a free trial lesson', wash=False) + fs + f'''
 <section id="more-subjects" class="wash">
   <div class="wrap">
     <div class="head">
@@ -128,7 +129,7 @@ COUNTRIES = {
 for cc, c in COUNTRIES.items():
     url = f"{B}/{c['folder']}/"
     q = [("", [
-        (f"Do you offer online O Level, IGCSE and A Level tuition in {c['the']}?", f"Yes. Valeem teaches students across {c['the']} live and one-to-one online, for IGCSE, O Level and A Level, and younger students from Grade 5. Every teacher holds an A or B grade in their subject."),
+        (f"Do you offer online O Level, IGCSE and A Level tuition in {c['the']}?", f"Yes. Valeem teaches students across {c['the']} live and one-to-one online, for IGCSE, O Level and A Level, and younger students from Grade 5. Every teacher has proven subject expertise (an A or B grade, or a relevant degree) and has passed our interview on subject depth and communication."),
         (f"What time are classes for families in {c['the']}?", f"Every class is booked in {c['tz']}, after school or at weekends. {c['week']}"),
         ("Which subjects do you teach?", "Every subject offered for IGCSE, O Level and A Level, including Mathematics, Additional Mathematics, Physics, Chemistry, Biology, Economics, English Language and Pakistan Studies.", ("Pakistan Studies", B + "/online-tuition/igcse-pakistan-studies-0448/")),
         ("How much does tuition cost?", f"Tuition is a monthly plan. The fee depends on the grade, the number of months, classes per week, class length and whether you want a fixed time slot. A counsellor shares the fee after the free demo. {c['pay']}"),
@@ -179,6 +180,7 @@ for cc, c in COUNTRIES.items():
     <div class="head">
       <p class="kicker">Levels we teach</p>
       <h2>From Grade 5 to A Level.</h2>
+      {boards_strip()}
     </div>
     <ol class="ladder light" aria-label="Online tuition levels">
       <li><span class="ic"><svg class="icon"><use href="#i-book"/></svg></span><i>Grades 5–7</i><b>Strong Basics</b><span>English, Maths and homework support.</span></li>
@@ -202,7 +204,7 @@ for cc, c in COUNTRIES.items():
 ''' + guide + vet_section(title='Every Teacher Passes Four Checks.') + fees_section() + f'''
 <section id="process">
   <div class="wrap feat">
-    <figure class="photo"><img src="images/homeschool.webp" alt="A parent and child at a laptop" width="900" height="945" loading="lazy"></figure>
+    <figure class="photo"><img src="images/homeschool.webp" alt="A mother and her son following a live class on a laptop" width="1000" height="1075" loading="lazy"></figure>
     <div>
       <div class="head" style="margin-bottom:24px">
         <p class="kicker">How to start</p>
@@ -218,7 +220,7 @@ for cc, c in COUNTRIES.items():
              f'Live one-to-one online tuition for O Level, IGCSE and A Level for families in {c["the"]}. Vetted teachers, classes in {c["short"]}, free demo, monthly plans.',
              url, f'Online Tuition in {c["the"]} | Valeem', f'One-to-one IGCSE, O Level and A Level classes in {c["short"]}. Free demo.',
              url + 'images/share.jpg', [service, ld, crumbs_ld(f'Tuition in {c["the"]}', url)])
-    main = main.replace('<section id="testimonials">', press_strip(wash=True) + '<section id="testimonials">', 1)
+    main = main.replace('<section id="testimonials">', quality_section() + press_strip(wash=True) + '<section id="testimonials">', 1)
     html_ = page(h, f' data-lead="{c["lead"]}" data-country="{cc}"', 'tuition', main, folds=('teachers', 'fees', 'process'))
     write(f"{R}/{c['folder']}/index.html", html_)
 
@@ -276,7 +278,7 @@ main = page_hero(f'<a href="{B}/online-tuition-saudi-arabia/">Tuition in Saudi A
       </div>
       <ul class="feature-list">
         <li><span class="badge"><svg class="icon"><use href="#i-calendar"/></svg></span><div><h3>A timeline to the series</h3><p>Syllabus first, then past papers, with time for revision.</p></div></li>
-        <li><span class="badge"><svg class="icon"><use href="#i-user"/></svg></span><div><h3>A vetted subject teacher</h3><p>A or B grade in the subject, interviewed and trained.</p></div></li>
+        <li><span class="badge"><svg class="icon"><use href="#i-user"/></svg></span><div><h3>A vetted subject teacher</h3><p>Proven subject expertise, interviewed and trained.</p></div></li>
         <li><span class="badge"><svg class="icon"><use href="#i-clock"/></svg></span><div><h3>Classes in Saudi time</h3><p>Booked in AST (UTC+3), around your family's week.</p></div></li>
         <li><span class="badge"><svg class="icon"><use href="#i-clip"/></svg></span><div><h3>Exam-style practice</h3><p>Past papers marked the way examiners mark them.</p></div></li>
       </ul>
